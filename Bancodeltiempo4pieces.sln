@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyBussinesModel", "LyBussinesModel\LyBussinesModel.csproj", "{AF9B8F7A-BC55-4B1C-8598-1A49E3DA37B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyDataAcces", "LyDataAcces\LyDataAcces.csproj", "{17BDE2D7-6B1D-4124-A1EE-536AC92A7CF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF9B8F7A-BC55-4B1C-8598-1A49E3DA37B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9B8F7A-BC55-4B1C-8598-1A49E3DA37B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9B8F7A-BC55-4B1C-8598-1A49E3DA37B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9B8F7A-BC55-4B1C-8598-1A49E3DA37B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17BDE2D7-6B1D-4124-A1EE-536AC92A7CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BDE2D7-6B1D-4124-A1EE-536AC92A7CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BDE2D7-6B1D-4124-A1EE-536AC92A7CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BDE2D7-6B1D-4124-A1EE-536AC92A7CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5765B22E-5845-4510-87F9-A9C5C275BCFE}
+	EndGlobalSection
+EndGlobal

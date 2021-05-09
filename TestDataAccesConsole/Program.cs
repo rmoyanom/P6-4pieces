@@ -34,7 +34,8 @@ namespace TestDataAccesConsole
             //1.Registrar Usuario
             Console.WriteLine("Registrando un nuevo usuario");
 
-            resultados = _Dao.RegistrarUsuario( new LyBussinesModel.DTO.DTORegistroUsuario("nuevoUser", 
+            resultados = _Dao.RegistrarUsuario( new LyBussinesModel.DTO.DTORegistroUsuario("Usuario1",
+                                                                                            "nuevoUser", 
                                                                                                 "prueba", 
                                                                                                 "123456789", 
                                                                                                 "correofalso@falso.com", 

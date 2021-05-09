@@ -25,5 +25,6 @@ namespace LyDataAcces.ORM
         public virtual Candidatura_Cancelada Candidatura_Cancelada { get; set; }
         public virtual Candidatura_Finalizada Candidatura_Finalizada { get; set; }
         public virtual Servicios Servicios { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

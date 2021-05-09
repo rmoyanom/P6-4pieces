@@ -32,12 +32,11 @@ namespace LyBussinesModel
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Correo { get => _Correo; set => _Correo = value; }
         public DateTime UltimaFiechaAcceso { get => _UltimaFiechaAcceso; set => _UltimaFiechaAcceso = value; }
-        internal List<Servicio> Servicios { get => _Servicios; set => _Servicios = value; }
-        internal List<Candidatura> Candidaturas { get => _Candidaturas; set => _Candidaturas = value; }
-        internal List<Categoria> Categorias { get => _Categorias; set => _Categorias = value; }
+        public List<Servicio> Servicios { get => _Servicios; set => _Servicios = value; }
+        public List<Candidatura> Candidaturas { get => _Candidaturas; set => _Candidaturas = value; }
+        public List<Categoria> Categorias { get => _Categorias; set => _Categorias = value; }
         public string NombreUsuario { get => _NombreUsuario; set => _NombreUsuario = value; }
         public int Id { get => _Id; set => _Id = value; }
-
         public Usuario() { }
 
 

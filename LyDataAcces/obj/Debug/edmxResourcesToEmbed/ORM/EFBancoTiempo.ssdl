@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EFModelBancoTiempo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="EFModeloBancoTiempo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Candidatura">
     <Key>
       <PropertyRef Name="id" />
@@ -72,6 +72,16 @@
     <Property Name="fechaCreacion" Type="datetime" />
     <Property Name="finalizado" Type="bit" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="id" />
@@ -130,6 +140,18 @@
       </Principal>
       <Dependent Role="Candidatura">
         <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidatura_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura">
+        <PropertyRef Name="idUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -193,7 +215,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="EFModelBancoTiempoStoreContainer">
+  <EntityContainer Name="EFModeloBancoTiempoStoreContainer">
     <EntitySet Name="Candidatura" EntityType="Self.Candidatura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Candidatura_Aceptada" EntityType="Self.Candidatura_Aceptada" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Candidatura_Cancelada" EntityType="Self.Candidatura_Cancelada" Schema="dbo" store:Type="Tables" />
@@ -202,6 +224,7 @@
     <EntitySet Name="Categorias_Servicios" EntityType="Self.Categorias_Servicios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categorias_Usuarios" EntityType="Self.Categorias_Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
       <End Role="Candidatura" EntitySet="Candidatura" />
@@ -217,6 +240,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Candidatura_Servicios" Association="Self.FK_Candidatura_Servicios">
       <End Role="Servicios" EntitySet="Servicios" />
+      <End Role="Candidatura" EntitySet="Candidatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Usuarios" Association="Self.FK_Candidatura_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Candidatura" EntitySet="Candidatura" />
     </AssociationSet>
     <AssociationSet Name="FK_Categorias_Servicios_Categorias" Association="Self.FK_Categorias_Servicios_Categorias">

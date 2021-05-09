@@ -72,8 +72,6 @@ namespace TestDataAccesConsole
 
             #region "Mi Cuenta"
             //6.Visualizar historial de Operaciones.
-
-
             //7.Visualizar detalles de operaciones
 
 

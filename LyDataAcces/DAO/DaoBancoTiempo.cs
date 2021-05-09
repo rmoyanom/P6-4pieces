@@ -129,5 +129,66 @@ namespace LyDataAcces.DAO
             }
 
         }
+
+        //6.Visualizar historial de Operaciones.
+        //7.Visualizar detalles de operaciones
+
+        public bool DescargarDatosUsuario(Usuario user)
+        {
+
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    ORM.Usuarios userEncontrado;
+
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from u in db.Usuarios
+                                where u.id == user.Id
+                                select u;
+
+                    userEncontrado = query.First();
+
+                    //Actualizar los datos de usuario.
+                    user.Nombre = userEncontrado.nombre;
+                    user.Apellidos = userEncontrado.apellidos;
+                    user.Telefono = userEncontrado.telefono;
+                    user.Correo = userEncontrado.correo;
+                    
+
+                    //Actualizar los servicios.
+                    user.Servicios = new List<Servicio>();
+
+                    foreach (ORM.Servicios servicio in userEncontrado.Servicios)
+                    {
+                        user.Servicios.Add(
+                                new Servicio(servicio.titulo, 
+                                servicio.descripcion, 
+                                servicio.fechaCreacion, 
+                                servicio.id,
+                                user)
+                            );
+                    }
+
+                    //Actualizar las Categorias.
+                    user.Categorias = new List<Categoria>();
+                    foreach(ORM.Categorias categorias in userEncontrado.Categorias)
+                    {
+                        user.Categorias.Add(new Categoria(categorias.id, categorias.nombre));
+                    }
+
+                    //Actualizar las Candidaturas.
+
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return false;
+            }
+        }
+    
     }
 }

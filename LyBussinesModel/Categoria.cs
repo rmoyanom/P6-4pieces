@@ -11,6 +11,12 @@ namespace LyBussinesModel
         private int _Id;
         private String _Nombre;
 
+        public Categoria(int id, string nombre)
+        {
+            _Id = id;
+            _Nombre = nombre;
+        }
+
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public int Id { get => _Id; set => _Id = value; }
     }

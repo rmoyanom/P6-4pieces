@@ -84,6 +84,9 @@
     <Compile Include="ORM\Servicios.cs">
       <DependentUpon>EFBancoTiempo.tt</DependentUpon>
     </Compile>
+    <Compile Include="ORM\sysdiagrams.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
     <Compile Include="ORM\Usuarios.cs">
       <DependentUpon>EFBancoTiempo.tt</DependentUpon>
     </Compile>

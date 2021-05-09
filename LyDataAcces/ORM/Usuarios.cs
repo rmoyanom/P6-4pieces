@@ -17,6 +17,7 @@ namespace LyDataAcces.ORM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuarios()
         {
+            this.Candidatura = new HashSet<Candidatura>();
             this.Servicios = new HashSet<Servicios>();
             this.Categorias = new HashSet<Categorias>();
         }
@@ -30,6 +31,8 @@ namespace LyDataAcces.ORM
         public string telefono { get; set; }
         public string correo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Candidatura> Candidatura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servicios> Servicios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

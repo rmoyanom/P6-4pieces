@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EFModelBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="EFModeloBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Candidatura">
     <Key>
       <PropertyRef Name="id" />
@@ -14,6 +14,7 @@
     <NavigationProperty Name="Candidatura_Cancelada" Relationship="Self.FK_Candidatura_Cancelada_Candidatura" FromRole="Candidatura" ToRole="Candidatura_Cancelada" />
     <NavigationProperty Name="Candidatura_Finalizada" Relationship="Self.FK_Candidatura_Finalizada_Candidatura" FromRole="Candidatura" ToRole="Candidatura_Finalizada" />
     <NavigationProperty Name="Servicios" Relationship="Self.FK_Candidatura_Servicios" FromRole="Candidatura" ToRole="Servicios" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Candidatura_Usuarios" FromRole="Candidatura" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="Candidatura_Aceptada">
     <Key>
@@ -68,6 +69,16 @@
     <NavigationProperty Name="Usuarios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Servicios" ToRole="Usuarios" />
     <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Servicios" FromRole="Servicios" ToRole="Categorias" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="id" />
@@ -80,6 +91,7 @@
     <Property Name="tiempoAcumulado" Type="Int32" />
     <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Usuarios" FromRole="Usuarios" ToRole="Candidatura" />
     <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
     <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
   </EntityType>
@@ -131,6 +143,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Candidatura_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Servicios_Usuarios">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
     <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
@@ -158,6 +182,7 @@
     <EntitySet Name="Candidatura_Finalizada" EntityType="Self.Candidatura_Finalizada" />
     <EntitySet Name="Categorias" EntityType="Self.Categorias" />
     <EntitySet Name="Servicios" EntityType="Self.Servicios" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
     <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
       <End Role="Candidatura" EntitySet="Candidatura" />
@@ -173,6 +198,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Candidatura_Servicios" Association="Self.FK_Candidatura_Servicios">
       <End Role="Servicios" EntitySet="Servicios" />
+      <End Role="Candidatura" EntitySet="Candidatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Usuarios" Association="Self.FK_Candidatura_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Candidatura" EntitySet="Candidatura" />
     </AssociationSet>
     <AssociationSet Name="FK_Servicios_Usuarios" Association="Self.FK_Servicios_Usuarios">

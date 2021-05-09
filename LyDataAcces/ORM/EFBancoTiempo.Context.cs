@@ -31,6 +31,7 @@ namespace LyDataAcces.ORM
         public virtual DbSet<Candidatura_Finalizada> Candidatura_Finalizada { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Servicios> Servicios { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

@@ -8,21 +8,21 @@ using LyBussinesModel;
 
 namespace LyDataAcces.DAO
 {
-    public class DaoBancoTiempo
+    public class DaoUsuario
     {
         private Exception _Errores;
-        public Exception Errores {
+        public Exception Errores
+        {
             get
             {
                 Exception ex = _Errores;
                 _Errores = null;
                 return ex;
             }
-            set => _Errores = value; 
+            set => _Errores = value;
         }
 
-
-        //1 Registro de un usuario.
+        #region "Aplicación inicial"
         /// <summary>
         /// Registra un usuario en la base de datos
         /// </summary>
@@ -36,20 +36,20 @@ namespace LyDataAcces.DAO
                 {
                     //Se realiza una busqueda del nombre en BD
                     var query = from b in db.Usuarios
-                                  where b.nombreUsuario == datos.NombreUsuario
-                                  select b;
+                                where b.nombreUsuario == datos.NombreUsuario
+                                select b;
 
 
 
                     //Impide registrar un usuario que ya existe.
                     Debug.Write(query.Count().ToString());
 
-                  
+
                     if (query.Count() > 0)
                     {
                         throw new Exception("El usuario ya existe, escoja otro nombre");
                     }
-                    
+
                     ORM.Usuarios nuevoUsuario = new ORM.Usuarios();
                     nuevoUsuario.nombreUsuario = datos.NombreUsuario;
                     nuevoUsuario.nombre = datos.Nombre;
@@ -62,7 +62,8 @@ namespace LyDataAcces.DAO
                     return true;
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 _Errores = ex;
                 return false;
@@ -86,10 +87,10 @@ namespace LyDataAcces.DAO
                     ORM.Usuarios userEncontrado;
                     //Se realiza una busqueda del nombre en BD
                     var query = from b in db.Usuarios
-                                  where b.hasPassword == hash
+                                where b.hasPassword == hash
                                 select b;
 
-                  
+
 
                     //Impide registrar un usuario que ya existe.
                     if (!(query.Count() > 0))
@@ -100,7 +101,7 @@ namespace LyDataAcces.DAO
                     {
                         userEncontrado = (ORM.Usuarios)query.First();
 
-                        if(userEncontrado != null)
+                        if (userEncontrado != null)
                         {
                             return new Usuario(userEncontrado.id,
                                             userEncontrado.nombreUsuario,
@@ -109,16 +110,18 @@ namespace LyDataAcces.DAO
                                              userEncontrado.tiempoAcumulado,
                                              userEncontrado.telefono,
                                              userEncontrado.correo);
-                        }else{
+                        }
+                        else
+                        {
                             return null;
                         }
-                        
+
 
                     }
-                    
-                    
 
- 
+
+
+
                 }
 
             }
@@ -129,66 +132,9 @@ namespace LyDataAcces.DAO
             }
 
         }
+        #endregion
 
-        //6.Visualizar historial de Operaciones.
-        //7.Visualizar detalles de operaciones
+        //Modificar Datos usuario
 
-        public bool DescargarDatosUsuario(Usuario user)
-        {
-
-            try
-            {
-                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
-                {
-                    ORM.Usuarios userEncontrado;
-
-                    //Se realiza una busqueda del nombre en BD
-                    var query = from u in db.Usuarios
-                                where u.id == user.Id
-                                select u;
-
-                    userEncontrado = query.First();
-
-                    //Actualizar los datos de usuario.
-                    user.Nombre = userEncontrado.nombre;
-                    user.Apellidos = userEncontrado.apellidos;
-                    user.Telefono = userEncontrado.telefono;
-                    user.Correo = userEncontrado.correo;
-                    
-
-                    //Actualizar los servicios.
-                    user.Servicios = new List<Servicio>();
-
-                    foreach (ORM.Servicios servicio in userEncontrado.Servicios)
-                    {
-                        user.Servicios.Add(
-                                new Servicio(servicio.titulo, 
-                                servicio.descripcion, 
-                                servicio.fechaCreacion, 
-                                servicio.id,
-                                user)
-                            );
-                    }
-
-                    //Actualizar las Categorias.
-                    user.Categorias = new List<Categoria>();
-                    foreach(ORM.Categorias categorias in userEncontrado.Categorias)
-                    {
-                        user.Categorias.Add(new Categoria(categorias.id, categorias.nombre));
-                    }
-
-                    //Actualizar las Candidaturas.
-
-                    return true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                _Errores = ex;
-                return false;
-            }
-        }
-    
     }
 }

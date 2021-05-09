@@ -50,7 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\DaoBancoTiempo.cs" />
+    <Compile Include="DAO\DaoCandidatura.cs" />
+    <Compile Include="DAO\DaoCategoria.cs" />
+    <Compile Include="DAO\DaoServicios.cs" />
+    <Compile Include="DAO\DaoUsuario.cs" />
     <Compile Include="ORM\Candidatura.cs">
       <DependentUpon>EFBancoTiempo.tt</DependentUpon>
     </Compile>

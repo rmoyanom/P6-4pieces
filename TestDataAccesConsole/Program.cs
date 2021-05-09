@@ -73,11 +73,11 @@ namespace TestDataAccesConsole
             #region "Mi Cuenta"
             //6.Visualizar historial de Operaciones.
             //7.Visualizar detalles de operaciones
-
-
             //8.Visualizar Saldo.
             //9.Acceder a Anuncios propios
             //9.1 Visualizar
+
+
             //9.2 Modificar
             #endregion
 

@@ -69,7 +69,12 @@ namespace LyDataAcces.DAO
             }
         }
 
-
+        /// <summary>
+        /// Verificar usuario y clave para loguear usuario.
+        /// </summary>
+        /// <param name="usuario">Usuario.</param>
+        /// <param name="password"> Clave en texto claro</param>
+        /// <returns>Devuelve Usuario, que coincida con la clave introducida, en el caso de que sea erroneo el acceso, la funcion devuelve null</returns>
         public Usuario IniciarSesion(String usuario, String password)
         {
             Usuario userLogueado = new Usuario();
@@ -86,7 +91,7 @@ namespace LyDataAcces.DAO
 
                   
 
-                    //Impeide registrar un usuario que ya existe.
+                    //Impide registrar un usuario que ya existe.
                     if (!(query.Count() > 0))
                     {
                         return null;
@@ -95,12 +100,19 @@ namespace LyDataAcces.DAO
                     {
                         userEncontrado = (ORM.Usuarios)query.First();
 
-                        return new Usuario(userEncontrado.nombreUsuario,
+                        if(userEncontrado != null)
+                        {
+                            return new Usuario(userEncontrado.id,
+                                            userEncontrado.nombreUsuario,
                                              userEncontrado.nombre,
                                              userEncontrado.apellidos,
                                              userEncontrado.tiempoAcumulado,
                                              userEncontrado.telefono,
                                              userEncontrado.correo);
+                        }else{
+                            return null;
+                        }
+                        
 
                     }
                     

@@ -16,6 +16,7 @@ namespace LyBussinesModel
 
     public class Candidatura
     {
+        private int _Id;
         private Usuario _Candidato;
         private Servicio _Servicio;
         private EstadoCandidatura _Estado;
@@ -29,6 +30,7 @@ namespace LyBussinesModel
         public int Valoracion { get => _Valoracion; set => _Valoracion = value; }
         public string Comentarios { get => _Comentarios; set => _Comentarios = value; }
         public int HorasGanadas { get => _HorasGanadas; set => _HorasGanadas = value; }
+        public int Id { get => _Id; set => _Id = value; }
         internal Usuario Candidato { get => _Candidato; set => _Candidato = value; }
         internal Servicio Servicio { get => _Servicio; set => _Servicio = value; }
     }

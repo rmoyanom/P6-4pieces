@@ -14,6 +14,7 @@ namespace LyBussinesModel
         private List<Candidatura> _Candidaturas;
         private List<Categoria> _Categorias;
 
+        private int _Id;
         private String _NombreUsuario;
         private String _Nombre;
         private String _Apellidos;
@@ -21,6 +22,9 @@ namespace LyBussinesModel
         private String _Telefono;
         private String _Correo;
         private DateTime _UltimaFiechaAcceso;
+        
+
+
         
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string Apellidos { get => _Apellidos; set => _Apellidos = value; }
@@ -32,17 +36,20 @@ namespace LyBussinesModel
         internal List<Candidatura> Candidaturas { get => _Candidaturas; set => _Candidaturas = value; }
         internal List<Categoria> Categorias { get => _Categorias; set => _Categorias = value; }
         public string NombreUsuario { get => _NombreUsuario; set => _NombreUsuario = value; }
+        public int Id { get => _Id; set => _Id = value; }
 
         public Usuario() { }
 
 
-        public Usuario(String nombreUsuario, 
+        public Usuario(int id,
+                        String nombreUsuario, 
                         String nombre, 
                         String apellidos, 
                         int? tiempoAcumulado,
                         String telefono, 
                         String correo)
         {
+            this._Id = id;
             this._NombreUsuario = nombreUsuario;
             this._Nombre = nombre;
             this._Apellidos = apellidos;

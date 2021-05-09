@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANCODELTIEMPOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Candidatura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idServicio" Type="int" />
+    <Property Name="idUsuario" Type="int" />
+    <Property Name="estado" Type="varchar" MaxLength="50" />
+    <Property Name="fechaInscripcion" Type="datetime" />
+    <Property Name="horasRequeridas" Type="int" />
+  </EntityType>
+  <EntityType Name="Candidatura_Aceptada">
+    <Key>
+      <PropertyRef Name="idCandidatura" />
+    </Key>
+    <Property Name="idCandidatura" Type="int" Nullable="false" />
+    <Property Name="fechaAceptacion" Type="datetime" />
+    <Property Name="fechaAcordadaServicio" Type="datetime" />
+    <Property Name="horasAcordadas" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Candidatura_Cancelada">
+    <Key>
+      <PropertyRef Name="idCandidatura" />
+    </Key>
+    <Property Name="idCandidatura" Type="int" Nullable="false" />
+    <Property Name="fechaCancelacion" Type="datetime" />
+    <Property Name="comentario" Type="varchar" MaxLength="50" />
+    <Property Name="motivoCancelacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Candidatura_Finalizada">
+    <Key>
+      <PropertyRef Name="idCandidatura" />
+    </Key>
+    <Property Name="idCandidatura" Type="int" Nullable="false" />
+    <Property Name="valoracion" Type="int" />
+    <Property Name="comentarios" Type="varchar" MaxLength="50" />
+    <Property Name="horasGanadas" Type="int" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Categorias_Servicios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+      <PropertyRef Name="idServicios" />
+    </Key>
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="idServicios" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorias_Usuarios">
+    <Key>
+      <PropertyRef Name="idUsuarios" />
+      <PropertyRef Name="idCategoria" />
+    </Key>
+    <Property Name="idUsuarios" Type="int" Nullable="false" />
+    <Property Name="idCategoria" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCreador" Type="int" />
+    <Property Name="titulo" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="fechaCreacion" Type="datetime" />
+    <Property Name="finalizado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hasPassword" Type="varbinary" MaxLength="256" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellidos" Type="varchar" MaxLength="50" />
+    <Property Name="nombreUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="tiempoAcumulado" Type="int" />
+  </EntityType>
+  <Association Name="FK_Candidatura_Aceptada_Candidatura">
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
+    <End Role="Candidatura_Aceptada" Type="Self.Candidatura_Aceptada" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Candidatura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura_Aceptada">
+        <PropertyRef Name="idCandidatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidatura_Cancelada_Candidatura">
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
+    <End Role="Candidatura_Cancelada" Type="Self.Candidatura_Cancelada" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Candidatura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura_Cancelada">
+        <PropertyRef Name="idCandidatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidatura_Finalizada_Candidatura">
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
+    <End Role="Candidatura_Finalizada" Type="Self.Candidatura_Finalizada" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Candidatura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura_Finalizada">
+        <PropertyRef Name="idCandidatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidatura_Servicios">
+    <End Role="Servicios" Type="Self.Servicios" Multiplicity="0..1" />
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categorias_Servicios_Categorias">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Categorias_Servicios" Type="Self.Categorias_Servicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Categorias_Servicios">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categorias_Servicios_Servicios">
+    <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+    <End Role="Categorias_Servicios" Type="Self.Categorias_Servicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Categorias_Servicios">
+        <PropertyRef Name="idServicios" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categorias_Usuarios_Categorias">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Categorias_Usuarios" Type="Self.Categorias_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Categorias_Usuarios">
+        <PropertyRef Name="idUsuarios" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categorias_Usuarios_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Categorias_Usuarios" Type="Self.Categorias_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Categorias_Usuarios">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servicios_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Servicios">
+        <PropertyRef Name="idCreador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BANCODELTIEMPOModelStoreContainer">
+    <EntitySet Name="Candidatura" EntityType="Self.Candidatura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Candidatura_Aceptada" EntityType="Self.Candidatura_Aceptada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Candidatura_Cancelada" EntityType="Self.Candidatura_Cancelada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Candidatura_Finalizada" EntityType="Self.Candidatura_Finalizada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorias_Servicios" EntityType="Self.Categorias_Servicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorias_Usuarios" EntityType="Self.Categorias_Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
+      <End Role="Candidatura" EntitySet="Candidatura" />
+      <End Role="Candidatura_Aceptada" EntitySet="Candidatura_Aceptada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Cancelada_Candidatura" Association="Self.FK_Candidatura_Cancelada_Candidatura">
+      <End Role="Candidatura" EntitySet="Candidatura" />
+      <End Role="Candidatura_Cancelada" EntitySet="Candidatura_Cancelada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Finalizada_Candidatura" Association="Self.FK_Candidatura_Finalizada_Candidatura">
+      <End Role="Candidatura" EntitySet="Candidatura" />
+      <End Role="Candidatura_Finalizada" EntitySet="Candidatura_Finalizada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Servicios" Association="Self.FK_Candidatura_Servicios">
+      <End Role="Servicios" EntitySet="Servicios" />
+      <End Role="Candidatura" EntitySet="Candidatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Categorias_Servicios_Categorias" Association="Self.FK_Categorias_Servicios_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Categorias_Servicios" EntitySet="Categorias_Servicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Categorias_Servicios_Servicios" Association="Self.FK_Categorias_Servicios_Servicios">
+      <End Role="Servicios" EntitySet="Servicios" />
+      <End Role="Categorias_Servicios" EntitySet="Categorias_Servicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Categorias_Usuarios_Categorias" Association="Self.FK_Categorias_Usuarios_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Categorias_Usuarios" EntitySet="Categorias_Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Categorias_Usuarios_Usuarios" Association="Self.FK_Categorias_Usuarios_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Categorias_Usuarios" EntitySet="Categorias_Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servicios_Usuarios" Association="Self.FK_Servicios_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Servicios" EntitySet="Servicios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

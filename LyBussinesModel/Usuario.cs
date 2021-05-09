@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LyBussinesModel
 {
-    class Usuario
+    public class Usuario
     {
         private List<Servicio> _Servicios;
         private List<Candidatura> _Candidaturas;

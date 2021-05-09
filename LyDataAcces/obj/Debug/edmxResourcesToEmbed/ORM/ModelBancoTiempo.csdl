@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANCODELTIEMPOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Candidatura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idServicio" Type="Int32" />
+    <Property Name="idUsuario" Type="Int32" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInscripcion" Type="DateTime" Precision="3" />
+    <Property Name="horasRequeridas" Type="Int32" />
+    <NavigationProperty Name="Candidatura_Aceptada" Relationship="Self.FK_Candidatura_Aceptada_Candidatura" FromRole="Candidatura" ToRole="Candidatura_Aceptada" />
+    <NavigationProperty Name="Candidatura_Cancelada" Relationship="Self.FK_Candidatura_Cancelada_Candidatura" FromRole="Candidatura" ToRole="Candidatura_Cancelada" />
+    <NavigationProperty Name="Candidatura_Finalizada" Relationship="Self.FK_Candidatura_Finalizada_Candidatura" FromRole="Candidatura" ToRole="Candidatura_Finalizada" />
+    <NavigationProperty Name="Servicios" Relationship="Self.FK_Candidatura_Servicios" FromRole="Candidatura" ToRole="Servicios" />
+  </EntityType>
+  <EntityType Name="Candidatura_Aceptada">
+    <Key>
+      <PropertyRef Name="idCandidatura" />
+    </Key>
+    <Property Name="idCandidatura" Type="Int32" Nullable="false" />
+    <Property Name="fechaAceptacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaAcordadaServicio" Type="DateTime" Precision="3" />
+    <Property Name="horasAcordadas" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Aceptada_Candidatura" FromRole="Candidatura_Aceptada" ToRole="Candidatura" />
+  </EntityType>
+  <EntityType Name="Candidatura_Cancelada">
+    <Key>
+      <PropertyRef Name="idCandidatura" />
+    </Key>
+    <Property Name="idCandidatura" Type="Int32" Nullable="false" />
+    <Property Name="fechaCancelacion" Type="DateTime" Precision="3" />
+    <Property Name="comentario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="motivoCancelacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Cancelada_Candidatura" FromRole="Candidatura_Cancelada" ToRole="Candidatura" />
+  </EntityType>
+  <EntityType Name="Candidatura_Finalizada">
+    <Key>
+      <PropertyRef Name="idCandidatura" />
+    </Key>
+    <Property Name="idCandidatura" Type="Int32" Nullable="false" />
+    <Property Name="valoracion" Type="Int32" />
+    <Property Name="comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="horasGanadas" Type="Int32" />
+    <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Finalizada_Candidatura" FromRole="Candidatura_Finalizada" ToRole="Candidatura" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Servicios" Relationship="Self.Categorias_Servicios" FromRole="Categorias" ToRole="Servicios" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.Categorias_Usuarios" FromRole="Categorias" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCreador" Type="Int32" />
+    <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="finalizado" Type="Boolean" />
+    <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Servicios" FromRole="Servicios" ToRole="Candidatura" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Servicios" ToRole="Usuarios" />
+    <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Servicios" FromRole="Servicios" ToRole="Categorias" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hasPassword" Type="Binary" MaxLength="256" FixedLength="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tiempoAcumulado" Type="Int32" />
+    <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
+    <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
+  </EntityType>
+  <Association Name="FK_Candidatura_Aceptada_Candidatura">
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
+    <End Role="Candidatura_Aceptada" Type="Self.Candidatura_Aceptada" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Candidatura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura_Aceptada">
+        <PropertyRef Name="idCandidatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidatura_Cancelada_Candidatura">
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
+    <End Role="Candidatura_Cancelada" Type="Self.Candidatura_Cancelada" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Candidatura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura_Cancelada">
+        <PropertyRef Name="idCandidatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidatura_Finalizada_Candidatura">
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
+    <End Role="Candidatura_Finalizada" Type="Self.Candidatura_Finalizada" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Candidatura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura_Finalizada">
+        <PropertyRef Name="idCandidatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidatura_Servicios">
+    <End Role="Servicios" Type="Self.Servicios" Multiplicity="0..1" />
+    <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Candidatura">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servicios_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Servicios">
+        <PropertyRef Name="idCreador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Categorias_Servicios">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+    <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+  </Association>
+  <Association Name="Categorias_Usuarios">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BANCODELTIEMPOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Candidatura" EntityType="Self.Candidatura" />
+    <EntitySet Name="Candidatura_Aceptada" EntityType="Self.Candidatura_Aceptada" />
+    <EntitySet Name="Candidatura_Cancelada" EntityType="Self.Candidatura_Cancelada" />
+    <EntitySet Name="Candidatura_Finalizada" EntityType="Self.Candidatura_Finalizada" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+    <EntitySet Name="Servicios" EntityType="Self.Servicios" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
+      <End Role="Candidatura" EntitySet="Candidatura" />
+      <End Role="Candidatura_Aceptada" EntitySet="Candidatura_Aceptada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Cancelada_Candidatura" Association="Self.FK_Candidatura_Cancelada_Candidatura">
+      <End Role="Candidatura" EntitySet="Candidatura" />
+      <End Role="Candidatura_Cancelada" EntitySet="Candidatura_Cancelada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Finalizada_Candidatura" Association="Self.FK_Candidatura_Finalizada_Candidatura">
+      <End Role="Candidatura" EntitySet="Candidatura" />
+      <End Role="Candidatura_Finalizada" EntitySet="Candidatura_Finalizada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidatura_Servicios" Association="Self.FK_Candidatura_Servicios">
+      <End Role="Servicios" EntitySet="Servicios" />
+      <End Role="Candidatura" EntitySet="Candidatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servicios_Usuarios" Association="Self.FK_Servicios_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Servicios" EntitySet="Servicios" />
+    </AssociationSet>
+    <AssociationSet Name="Categorias_Servicios" Association="Self.Categorias_Servicios">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Servicios" EntitySet="Servicios" />
+    </AssociationSet>
+    <AssociationSet Name="Categorias_Usuarios" Association="Self.Categorias_Usuarios">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

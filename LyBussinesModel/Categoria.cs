@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LyBussinesModel
 {
-    class Categoria
+    public class Categoria
     {
         private String _Nombre;
 

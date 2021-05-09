@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,10 +50,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DaoBancoTiempo.cs" />
+    <Compile Include="ORM\Candidatura.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\Candidatura_Aceptada.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\Candidatura_Cancelada.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\Candidatura_Finalizada.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\Categorias.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\EFBancoTiempo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFBancoTiempo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\EFBancoTiempo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\EFBancoTiempo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFBancoTiempo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\Servicios.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\sysdiagrams.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORM\Usuarios.cs">
+      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ORM\EFBancoTiempo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EFBancoTiempo.edmx</DependentUpon>
+      <LastGenOutput>EFBancoTiempo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ORM\EFBancoTiempo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EFBancoTiempo.edmx</DependentUpon>
+      <LastGenOutput>EFBancoTiempo.cs</LastGenOutput>
+    </Content>
     <Content Include="SchemaBANCODELTIEMPOt.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LyBussinesModel\LyBussinesModel.csproj">
+      <Project>{af9b8f7a-bc55-4b1c-8598-1a49e3da37b7}</Project>
+      <Name>LyBussinesModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ORM\EFBancoTiempo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EFBancoTiempo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ORM\EFBancoTiempo.edmx.diagram">
+      <DependentUpon>EFBancoTiempo.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

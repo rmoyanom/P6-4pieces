@@ -14,7 +14,7 @@ namespace LyBussinesModel
         FINALIZADA
     }
 
-    class Candidatura
+    public class Candidatura
     {
         private Usuario _Candidato;
         private Servicio _Servicio;

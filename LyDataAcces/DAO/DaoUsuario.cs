@@ -192,7 +192,7 @@ namespace LyDataAcces.DAO
         /// Consultar todos los usuarios.
         /// </summary>
         /// <returns>Devuelve una lista con todos los usuarios en el sistema</returns>
-        public List<Usuario> GetTodosUsuarios() {
+        public List<Usuario> GetAllUsuarios() {
             try
             {
                 List<Usuario> allUsers = new List<Usuario>();

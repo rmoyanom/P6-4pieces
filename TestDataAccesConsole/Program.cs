@@ -76,9 +76,6 @@ namespace TestDataAccesConsole
                 Console.WriteLine("Fallo al iniciar sesión");
                 Console.ResetColor();
             }
-
-
-
             #endregion
 
 

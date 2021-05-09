@@ -11,16 +11,3 @@ C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.csproj.C
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.csproj.CopyComplete
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.dll
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.pdb
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\LyDataAcces.dll
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\LyDataAcces.pdb
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\EntityFramework.dll
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\LyBussinesModel.dll
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\LyBussinesModel.pdb
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\EntityFramework.xml
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.csprojAssemblyReference.cache
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.csproj.CoreCompileInputs.cache
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.csproj.CopyComplete
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.dll
-C:\Users\richi\OneDrive\Escritorio\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.pdb

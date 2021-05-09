@@ -11,3 +11,4 @@ C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.csproj.C
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.csproj.CopyComplete
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.dll
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Debug\LyDataAcces.dll.config

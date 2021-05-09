@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EFModelBAncoTiempo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EFModelBancoTiempo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Candidatura">
           <Key>
             <PropertyRef Name="id" />
@@ -77,22 +77,12 @@
           <Property Name="fechaCreacion" Type="datetime" />
           <Property Name="finalizado" Type="bit" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="hasPassword" Type="varbinary" MaxLength="256" />
+          <Property Name="hasPassword" Type="varchar" MaxLength="256" />
           <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="apellidos" Type="varchar" MaxLength="50" />
           <Property Name="nombreUsuario" Type="varchar" MaxLength="50" />
@@ -208,7 +198,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EFModelBAncoTiempoStoreContainer">
+        <EntityContainer Name="EFModelBancoTiempoStoreContainer">
           <EntitySet Name="Candidatura" EntityType="Self.Candidatura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidatura_Aceptada" EntityType="Self.Candidatura_Aceptada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidatura_Cancelada" EntityType="Self.Candidatura_Cancelada" Schema="dbo" store:Type="Tables" />
@@ -217,7 +207,6 @@
           <EntitySet Name="Categorias_Servicios" EntityType="Self.Categorias_Servicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorias_Usuarios" EntityType="Self.Categorias_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
             <End Role="Candidatura" EntitySet="Candidatura" />
@@ -256,10 +245,11 @@
             <End Role="Servicios" EntitySet="Servicios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EFModelBAncoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EFModelBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Candidatura">
           <Key>
             <PropertyRef Name="id" />
@@ -328,30 +318,20 @@
           <NavigationProperty Name="Usuarios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Servicios" ToRole="Usuarios" />
           <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Servicios" FromRole="Servicios" ToRole="Categorias" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="hasPassword" Type="Binary" MaxLength="256" FixedLength="false" />
+          <Property Name="hasPassword" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tiempoAcumulado" Type="Int32" />
-          <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
-          <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
           <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
+          <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
         </EntityType>
         <Association Name="FK_Candidatura_Aceptada_Candidatura">
           <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
@@ -421,14 +401,13 @@
           <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="EfBancoTiempo" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EFBancoTiempo" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Candidatura" EntityType="Self.Candidatura" />
           <EntitySet Name="Candidatura_Aceptada" EntityType="Self.Candidatura_Aceptada" />
           <EntitySet Name="Candidatura_Cancelada" EntityType="Self.Candidatura_Cancelada" />
           <EntitySet Name="Candidatura_Finalizada" EntityType="Self.Candidatura_Finalizada" />
           <EntitySet Name="Categorias" EntityType="Self.Categorias" />
           <EntitySet Name="Servicios" EntityType="Self.Servicios" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
             <End Role="Candidatura" EntitySet="Candidatura" />
@@ -464,9 +443,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EFModelBAncoTiempoStoreContainer" CdmEntityContainer="EfBancoTiempo">
+        <EntityContainerMapping StorageEntityContainer="EFModelBancoTiempoStoreContainer" CdmEntityContainer="EFBancoTiempo">
           <EntitySetMapping Name="Candidatura">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.Candidatura">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura">
               <MappingFragment StoreEntitySet="Candidatura">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idServicio" ColumnName="idServicio" />
@@ -478,7 +457,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Candidatura_Aceptada">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.Candidatura_Aceptada">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura_Aceptada">
               <MappingFragment StoreEntitySet="Candidatura_Aceptada">
                 <ScalarProperty Name="idCandidatura" ColumnName="idCandidatura" />
                 <ScalarProperty Name="fechaAceptacion" ColumnName="fechaAceptacion" />
@@ -488,7 +467,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Candidatura_Cancelada">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.Candidatura_Cancelada">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura_Cancelada">
               <MappingFragment StoreEntitySet="Candidatura_Cancelada">
                 <ScalarProperty Name="idCandidatura" ColumnName="idCandidatura" />
                 <ScalarProperty Name="fechaCancelacion" ColumnName="fechaCancelacion" />
@@ -498,7 +477,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Candidatura_Finalizada">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.Candidatura_Finalizada">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura_Finalizada">
               <MappingFragment StoreEntitySet="Candidatura_Finalizada">
                 <ScalarProperty Name="idCandidatura" ColumnName="idCandidatura" />
                 <ScalarProperty Name="valoracion" ColumnName="valoracion" />
@@ -508,7 +487,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categorias">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.Categorias">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Categorias">
               <MappingFragment StoreEntitySet="Categorias">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -516,7 +495,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Servicios">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.Servicios">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Servicios">
               <MappingFragment StoreEntitySet="Servicios">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idCreador" ColumnName="idCreador" />
@@ -527,32 +506,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="EFModelBAncoTiempo.Usuarios">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="hasPassword" ColumnName="hasPassword" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
                 <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
                 <ScalarProperty Name="tiempoAcumulado" ColumnName="tiempoAcumulado" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Categorias_Servicios" TypeName="EFModelBAncoTiempo.Categorias_Servicios" StoreEntitySet="Categorias_Servicios">
+          <AssociationSetMapping Name="Categorias_Servicios" TypeName="EFModelBancoTiempo.Categorias_Servicios" StoreEntitySet="Categorias_Servicios">
             <EndProperty Name="Categorias">
               <ScalarProperty Name="id" ColumnName="idUsuario" />
             </EndProperty>
@@ -560,7 +528,7 @@
               <ScalarProperty Name="id" ColumnName="idServicios" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Categorias_Usuarios" TypeName="EFModelBAncoTiempo.Categorias_Usuarios" StoreEntitySet="Categorias_Usuarios">
+          <AssociationSetMapping Name="Categorias_Usuarios" TypeName="EFModelBancoTiempo.Categorias_Usuarios" StoreEntitySet="Categorias_Usuarios">
             <EndProperty Name="Categorias">
               <ScalarProperty Name="id" ColumnName="idUsuarios" />
             </EndProperty>

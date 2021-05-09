@@ -13,10 +13,10 @@ namespace LyDataAcces.ORM
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EfBancoTiempo : DbContext
+    public partial class EFBancoTiempo : DbContext
     {
-        public EfBancoTiempo()
-            : base("name=EfBancoTiempo")
+        public EFBancoTiempo()
+            : base("name=EFBancoTiempo")
         {
         }
     
@@ -31,7 +31,6 @@ namespace LyDataAcces.ORM
         public virtual DbSet<Candidatura_Finalizada> Candidatura_Finalizada { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Servicios> Servicios { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

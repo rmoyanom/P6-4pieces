@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EFModelBAncoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="EFModelBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Candidatura">
     <Key>
       <PropertyRef Name="id" />
@@ -68,30 +68,20 @@
     <NavigationProperty Name="Usuarios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Servicios" ToRole="Usuarios" />
     <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Servicios" FromRole="Servicios" ToRole="Categorias" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="hasPassword" Type="Binary" MaxLength="256" FixedLength="false" />
+    <Property Name="hasPassword" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tiempoAcumulado" Type="Int32" />
-    <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
-    <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
     <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
+    <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
   </EntityType>
   <Association Name="FK_Candidatura_Aceptada_Candidatura">
     <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
@@ -161,14 +151,13 @@
     <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="EfBancoTiempo" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="EFBancoTiempo" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Candidatura" EntityType="Self.Candidatura" />
     <EntitySet Name="Candidatura_Aceptada" EntityType="Self.Candidatura_Aceptada" />
     <EntitySet Name="Candidatura_Cancelada" EntityType="Self.Candidatura_Cancelada" />
     <EntitySet Name="Candidatura_Finalizada" EntityType="Self.Candidatura_Finalizada" />
     <EntitySet Name="Categorias" EntityType="Self.Categorias" />
     <EntitySet Name="Servicios" EntityType="Self.Servicios" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
     <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
       <End Role="Candidatura" EntitySet="Candidatura" />

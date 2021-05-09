@@ -22,7 +22,7 @@ namespace LyDataAcces.ORM
         }
     
         public int id { get; set; }
-        public byte[] hasPassword { get; set; }
+        public string hasPassword { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
         public string nombreUsuario { get; set; }

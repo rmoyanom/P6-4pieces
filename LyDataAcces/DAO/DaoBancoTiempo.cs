@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,15 @@ namespace LyDataAcces.DAO
     public class DaoBancoTiempo
     {
         private Exception _Errores;
-        public Exception Errores { get => _Errores; set => _Errores = value; }
+        public Exception Errores {
+            get
+            {
+                Exception ex = _Errores;
+                _Errores = null;
+                return ex;
+            }
+            set => _Errores = value; 
+        }
 
 
         //1 Registro de un usuario.
@@ -23,24 +32,31 @@ namespace LyDataAcces.DAO
         {
             try
             {
-                using (ORM.EfBancoTiempo db = new ORM.EfBancoTiempo())
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
                     //Se realiza una busqueda del nombre en BD
-                    var usuario = from b in db.Usuarios
+                    var query = from b in db.Usuarios
                                   where b.nombreUsuario == datos.NombreUsuario
                                   select b;
 
-                    //Impeide registrar un usuario que ya existe.
-                    if(usuario != null)
+
+
+                    //Impide registrar un usuario que ya existe.
+                    Debug.Write(query.Count().ToString());
+
+                  
+                    if (query.Count() > 0)
                     {
                         throw new Exception("El usuario ya existe, escoja otro nombre");
                     }
                     
                     ORM.Usuarios nuevoUsuario = new ORM.Usuarios();
+                    nuevoUsuario.nombreUsuario = datos.NombreUsuario;
                     nuevoUsuario.nombre = datos.Nombre;
                     nuevoUsuario.apellidos = datos.Apellidos;
                     nuevoUsuario.correo = datos.Correo;
                     nuevoUsuario.telefono = datos.Telefono;
+                    nuevoUsuario.hasPassword = datos.HasContraseña;
                     db.Usuarios.Add(nuevoUsuario);
                     db.SaveChanges();
                     return true;
@@ -53,5 +69,53 @@ namespace LyDataAcces.DAO
             }
         }
 
+
+        public Usuario IniciarSesion(String usuario, String password)
+        {
+            Usuario userLogueado = new Usuario();
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    String hash = Usuario.CreateHash(usuario, password);
+                    ORM.Usuarios userEncontrado;
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from b in db.Usuarios
+                                  where b.hasPassword == hash
+                                select b;
+
+                  
+
+                    //Impeide registrar un usuario que ya existe.
+                    if (!(query.Count() > 0))
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        userEncontrado = (ORM.Usuarios)query.First();
+
+                        return new Usuario(userEncontrado.nombreUsuario,
+                                             userEncontrado.nombre,
+                                             userEncontrado.apellidos,
+                                             userEncontrado.tiempoAcumulado,
+                                             userEncontrado.telefono,
+                                             userEncontrado.correo);
+
+                    }
+                    
+                    
+
+ 
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+
+        }
     }
 }

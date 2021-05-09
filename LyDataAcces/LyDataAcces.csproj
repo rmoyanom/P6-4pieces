@@ -84,9 +84,6 @@
     <Compile Include="ORM\Servicios.cs">
       <DependentUpon>EFBancoTiempo.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORM\sysdiagrams.cs">
-      <DependentUpon>EFBancoTiempo.tt</DependentUpon>
-    </Compile>
     <Compile Include="ORM\Usuarios.cs">
       <DependentUpon>EFBancoTiempo.tt</DependentUpon>
     </Compile>
@@ -112,6 +109,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="ORM\EFBancoTiempo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EFBancoTiempo.Designer.cs</LastGenOutput>

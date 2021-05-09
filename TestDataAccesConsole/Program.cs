@@ -41,10 +41,24 @@ namespace TestDataAccesConsole
                                                                                     "correofalso@falso.com", 
                                                                                     Usuario.CreateHash("Usuario2","1234")));
 
-            VerificarOperacion(resultados, _Dao);
+            VerificarOperacion("RegistroUsuario",resultados, _Dao);
 
 
             //2.Iniciar Sesión
+            Usuario user = _Dao.IniciarSesion("Usuario2", "1234");
+            resultados = user != null;
+            VerificarOperacion("IniciarSesion",resultados, _Dao);
+
+            if(user != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Inicio de sesión correcta");
+                Console.ResetColor();
+            }else {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Fallo al iniciar sesión");
+                Console.ResetColor();
+            }
 
 
             #endregion
@@ -94,20 +108,22 @@ namespace TestDataAccesConsole
             Console.WriteLine("Pulse ENTER para finalizar...");
             Console.ReadLine();
         }
-        static void VerificarOperacion(bool resultados, LyDataAcces.DAO.DaoBancoTiempo dao)
+        static void VerificarOperacion(String funcion,bool resultados, LyDataAcces.DAO.DaoBancoTiempo dao)
         {
             if (resultados)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Registrado con Exito");
+                Console.WriteLine(funcion+" realizado con Exito");
                 Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Se ha producido un error:");
-                Console.ResetColor();
-                Console.WriteLine(dao.Errores.Message);
+            }else{
+                Exception error = dao.Errores;
+                if (error != null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error al procesar "+ funcion +":");
+                    Console.ResetColor();
+                    Console.WriteLine(error.Message);
+                }
             }
         }
 

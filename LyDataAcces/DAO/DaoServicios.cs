@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LyDataAcces.DAO
 {
-    class DaoServicios
+    class DaoServicios : IDao
     {
 
         private Exception _Errores;
-        public Exception Errores
+        Exception IDao.Errores
         {
             get
             {
@@ -20,7 +20,6 @@ namespace LyDataAcces.DAO
             }
             set => _Errores = value;
         }
-
 
         //Crear servicio
         //Listar N servicios

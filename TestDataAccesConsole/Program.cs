@@ -17,7 +17,7 @@ namespace TestDataAccesConsole
         static void Main(string[] args)
         {
             bool resultados = false;
-            LyDataAcces.DAO.DaoBancoTiempo _Dao = new LyDataAcces.DAO.DaoBancoTiempo();
+            LyDataAcces.DAO.DaoUsuario _DaoUsuario = new LyDataAcces.DAO.DaoUsuario();
             
             const int ESPACIOS_LINEAS = 45;
             //Inicio de Aplicación de test
@@ -34,20 +34,20 @@ namespace TestDataAccesConsole
             //1.Registrar Usuario
             Console.WriteLine("Registrando un nuevo usuario");
 
-            resultados = _Dao.RegistrarUsuario( new LyBussinesModel.DTO.DTOUsuario("Usuario2",
+            resultados = _DaoUsuario.RegistrarUsuario( new LyBussinesModel.DTO.DTOUsuario("Usuario2",
                                                                                     "nuevoUser", 
                                                                                     "prueba", 
                                                                                     "123456789", 
                                                                                     "correofalso@falso.com", 
                                                                                     Usuario.CreateHash("Usuario2","1234")));
 
-            VerificarOperacion("RegistroUsuario",resultados, _Dao);
+            VerificarOperacion("RegistroUsuario",resultados, _DaoUsuario);
 
 
             //2.Iniciar Sesión
-            Usuario user = _Dao.IniciarSesion("Usuario2", "1234");
+            Usuario user = _DaoUsuario.IniciarSesion("Usuario2", "1234");
             resultados = user != null;
-            VerificarOperacion("IniciarSesion",resultados, _Dao);
+            VerificarOperacion("IniciarSesion",resultados, _DaoUsuario);
 
             if(user != null)
             {
@@ -110,7 +110,7 @@ namespace TestDataAccesConsole
             Console.WriteLine("Pulse ENTER para finalizar...");
             Console.ReadLine();
         }
-        static void VerificarOperacion(String funcion,bool resultados, LyDataAcces.DAO.DaoBancoTiempo dao)
+        static void VerificarOperacion(String funcion,bool resultados, LyDataAcces.DAO.IDao dao)
         {
             if (resultados)
             {

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LyDataAcces.DAO
 {
-    class DaoCategoria
+    class DaoCategoria: IDao
     {
         private Exception _Errores;
-        public Exception Errores
+        Exception IDao.Errores
         {
             get
             {

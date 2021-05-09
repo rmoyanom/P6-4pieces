@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LyDataAcces.DAO
 {
-    class DaoCandidatura
+    class DaoCandidatura: IDao
     {
         private Exception _Errores;
-        public Exception Errores
+        Exception IDao.Errores
         {
             get
             {
@@ -22,6 +22,6 @@ namespace LyDataAcces.DAO
         //Crear candidatura
         //Cancelar candidatura
         //Aceptar candidatura
- 
+
     }
 }

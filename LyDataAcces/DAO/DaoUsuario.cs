@@ -8,10 +8,11 @@ using LyBussinesModel;
 
 namespace LyDataAcces.DAO
 {
-    public class DaoUsuario
+    public class DaoUsuario:IDao
     {
+
         private Exception _Errores;
-        public Exception Errores
+        Exception IDao.Errores
         {
             get
             {
@@ -22,7 +23,7 @@ namespace LyDataAcces.DAO
             set => _Errores = value;
         }
 
-        #region "Aplicación inicial"
+
         /// <summary>
         /// Registra un usuario en la base de datos
         /// </summary>
@@ -132,9 +133,72 @@ namespace LyDataAcces.DAO
             }
 
         }
-        #endregion
 
         //Modificar Datos usuario
+        public bool ModificarUsuario(LyBussinesModel.DTO.DTOUsuario editedUser)
+        {
+            try
+            {
+
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from b in db.Usuarios
+                                where b.id == editedUser.id
+                                select b;
+
+                    if (query.Count() > 0)
+                    {
+                        throw new Exception("El usuario no existe");
+                    }
+
+                    ORM.Usuarios usuario = query.First();
+
+                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0)
+                    {
+                        usuario.nombreUsuario = editedUser.Nombre;
+                    }
+
+                    if (editedUser.Apellidos != null && editedUser.Apellidos.Length > 0)
+                    {
+                        usuario.apellidos = editedUser.Apellidos;
+                    }
+
+                    if (editedUser.Correo != null && editedUser.Correo.Length > 0)
+                    {
+                        usuario.correo = editedUser.Correo;
+                    }
+
+                    if (editedUser.Telefono != null && editedUser.Telefono.Length > 0)
+                    {
+                        usuario.telefono = editedUser.Telefono;
+                    }
+
+                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0)
+                    {
+                        usuario.nombreUsuario = editedUser.Nombre;
+                    }
+
+                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0)
+                    {
+                        usuario.nombreUsuario = editedUser.Nombre;
+                    }
+
+                    if (editedUser.HasContraseña != null && editedUser.HasContraseña.Length > 0)
+                    {
+                        usuario.hasPassword = editedUser.HasContraseña;
+                    }
+
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return false;
+            }
+        }
 
     }
 }

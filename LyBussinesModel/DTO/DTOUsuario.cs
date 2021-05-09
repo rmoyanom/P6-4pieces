@@ -8,6 +8,7 @@ namespace LyBussinesModel.DTO
 {
     public class DTOUsuario
     {
+        public int id;
         public String NombreUsuario;
         public String Nombre;
         public String Apellidos;
@@ -18,6 +19,10 @@ namespace LyBussinesModel.DTO
         public DTOUsuario()
         {
 
+        }
+        public DTOUsuario(int id)
+        {
+            this.id = id;
         }
 
         public DTOUsuario(String nombreUsuario, String nombre,String apellidos,String telefono,String correo,String hasContraseña)

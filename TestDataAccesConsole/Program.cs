@@ -11,6 +11,9 @@ namespace TestDataAccesConsole
 {
     class Program
     {
+
+
+
         static void Main(string[] args)
         {
             bool resultados = false;
@@ -37,18 +40,8 @@ namespace TestDataAccesConsole
                                                                                                 "correofalso@falso.com", 
                                                                                                 "ninguna"));
 
-            if (resultados)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Registrado con Exito");
-                Console.ResetColor();
-            }else{
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Se ha producido un error:");
-                Console.ResetColor();
-                Console.WriteLine(_Dao.Errores.Message);
-            }
-        
+            VerificarOperacion(resultados, _Dao);
+
 
             //2.Iniciar Sesión
 
@@ -99,5 +92,22 @@ namespace TestDataAccesConsole
             Console.WriteLine("Pulse ENTER para finalizar...");
             Console.ReadLine();
         }
+        static void VerificarOperacion(bool resultados, LyDataAcces.DAO.DaoBancoTiempo dao)
+        {
+            if (resultados)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Registrado con Exito");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Se ha producido un error:");
+                Console.ResetColor();
+                Console.WriteLine(dao.Errores.Message);
+            }
+        }
+
     }
 }

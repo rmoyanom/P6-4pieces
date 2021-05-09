@@ -34,17 +34,18 @@ namespace TestDataAccesConsole
             //1.Registrar Usuario
             Console.WriteLine("Registrando un nuevo usuario");
 
-            resultados = _Dao.RegistrarUsuario( new LyBussinesModel.DTO.DTORegistroUsuario("Usuario1",
-                                                                                            "nuevoUser", 
-                                                                                                "prueba", 
-                                                                                                "123456789", 
-                                                                                                "correofalso@falso.com", 
-                                                                                                "ninguna"));
+            resultados = _Dao.RegistrarUsuario( new LyBussinesModel.DTO.DTOUsuario("Usuario2",
+                                                                                    "nuevoUser", 
+                                                                                    "prueba", 
+                                                                                    "123456789", 
+                                                                                    "correofalso@falso.com", 
+                                                                                    Usuario.CreateHash("Usuario2","1234")));
 
             VerificarOperacion(resultados, _Dao);
 
 
             //2.Iniciar Sesión
+
 
             #endregion
 

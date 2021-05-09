@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LyBussinesModel.DTO
 {
-    public class DTORegistroUsuario
+    public class DTOUsuario
     {
         public String NombreUsuario;
         public String Nombre;
@@ -15,12 +15,12 @@ namespace LyBussinesModel.DTO
         public String Correo;
         public String HasContraseña;
         
-        public DTORegistroUsuario()
+        public DTOUsuario()
         {
 
         }
 
-        public DTORegistroUsuario(String nombreUsuario, String nombre,String apellidos,String telefono,String correo,String hasContraseña)
+        public DTOUsuario(String nombreUsuario, String nombre,String apellidos,String telefono,String correo,String hasContraseña)
         {
             this.NombreUsuario = nombreUsuario;
             this.Nombre = nombre;

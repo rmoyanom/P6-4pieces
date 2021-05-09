@@ -18,38 +18,55 @@ namespace TestDataAccesConsole
         {
             bool resultados = false;
             LyDataAcces.DAO.DaoUsuario _DaoUsuario = new LyDataAcces.DAO.DaoUsuario();
-            
+            LyDataAcces.DAO.DaoCategoria _DaoCategoria = new LyDataAcces.DAO.DaoCategoria();
+   
+
             const int ESPACIOS_LINEAS = 45;
             //Inicio de Aplicación de test
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("*"+"Iniciando Test de Persistencia de datos".PadRight(ESPACIOS_LINEAS, '-')+"*");
             Console.ForegroundColor = ConsoleColor.White;
 
+            #region "Admin"
+            VerificarOperacion("Crear Categoría Informática",
+                _DaoCategoria.CrearCategoria("Informática"),
+                _DaoCategoria);
 
-            //Prueba..
+
+            VerificarOperacion("Crear Categoría Electricista",
+                _DaoCategoria.CrearCategoria("Electricista"),
+                _DaoCategoria);
 
 
+            VerificarOperacion("Crear Categoría Voluntariado",
+                _DaoCategoria.CrearCategoria("Voluntariado"),
+                _DaoCategoria);
+
+            #endregion
 
             #region "Aplicación inicial"
             //1.Registrar Usuario
             Console.WriteLine("Registrando un nuevo usuario");
 
+
+            
+
             resultados = _DaoUsuario.RegistrarUsuario( new LyBussinesModel.DTO.DTOUsuario("Usuario2",
-                                                                                    "nuevoUser", 
-                                                                                    "prueba", 
-                                                                                    "123456789", 
-                                                                                    "correofalso@falso.com", 
-                                                                                    Usuario.CreateHash("Usuario2","1234")));
+                                                                                            "nuevoUser", 
+                                                                                            "prueba", 
+                                                                                            "123456789", 
+                                                                                            "correofalso@falso.com", 
+                                                                                            Usuario.CreateHash("Usuario2","1234")));
 
             VerificarOperacion("RegistroUsuario",resultados, _DaoUsuario);
 
 
             //2.Iniciar Sesión
-            Usuario user = _DaoUsuario.IniciarSesion("Usuario2", "1234");
-            resultados = user != null;
+            int idUsuario = _DaoUsuario.IniciarSesion("Usuario2", "1234");
+            resultados = idUsuario > -1;
             VerificarOperacion("IniciarSesion",resultados, _DaoUsuario);
 
-            if(user != null)
+            if(resultados)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Inicio de sesión correcta");
@@ -61,13 +78,31 @@ namespace TestDataAccesConsole
             }
 
 
+
             #endregion
+
 
 
             #region "Mi Perfil"
             //3.Visualizar perfil de usuario.
+            Console.WriteLine("Visualizando perfil");
+            Usuario user = _DaoUsuario.GetPerfilUsuario(idUsuario);
+            VerificarOperacion("Visualizando perfil usuario", user != null, _DaoUsuario);
+
             //4.Modificar perfil de usuario.
+            Console.WriteLine("Modificando datos de usuario");
+            VerificarOperacion("Modificación datos",resultados, _DaoUsuario);
+
             //5.Asignar Categorias.
+            List<LyBussinesModel.DTO.DTOCategoria> categoriasApuntadas = new List<LyBussinesModel.DTO.DTOCategoria>();
+
+            //Se añaden las 2 primeras categorias
+            Console.WriteLine("Asignando categorias a usuario");
+            categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(1));
+            categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(2));
+
+            LyBussinesModel.DTO.DTOUsuario cambioUsuario = new LyBussinesModel.DTO.DTOUsuario(user.Id);
+            VerificarOperacion("Asignacion de categorias", _DaoUsuario.ModificarUsuario(cambioUsuario), _DaoUsuario);
             #endregion
 
             #region "Mi Cuenta"
@@ -128,6 +163,8 @@ namespace TestDataAccesConsole
                 }
             }
         }
+
+
 
     }
 }

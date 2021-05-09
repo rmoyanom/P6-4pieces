@@ -1,6 +1,6 @@
 C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Debug\LyBussinesModel.dll
 C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Debug\LyBussinesModel.pdb
-C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.csprojAssemblyReference.cache
 C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.csproj.CoreCompileInputs.cache
 C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.dll
 C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.csprojAssemblyReference.cache

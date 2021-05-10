@@ -22,7 +22,11 @@ namespace LyDataAcces.DAO
         }
 
 
-        //Mostrar Categorias
+        
+        /// <summary>
+        /// Lista de todas las categorías disponibles
+        /// </summary>
+        /// <returns></returns>
         public List<Categoria> GetAllCategorias() 
         { 
             try
@@ -53,7 +57,11 @@ namespace LyDataAcces.DAO
 
         }
 
-        //Cargar Categorias en un usuario 
+        /// <summary>
+        /// Carga en el objeto de usuario las categorias que tiene activada
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>Boleano indicando si la operación se completo con exito.</returns>
         public bool LoadCategoriaUsuario(Usuario usuario)
         {
 
@@ -106,7 +114,11 @@ namespace LyDataAcces.DAO
 
         }
 
-        //Cargar Categorias en un Servicio
+        /// <summary>
+        /// Carga en el objeto de sercio las categorías que tiene activada
+        /// </summary>
+        /// <param name="servicio"></param>
+        /// <returns>Boleano indicando si la operación se ha realizado correctamente</returns>
         public bool LoadCategoriaServicio(Servicio servicio)
         {
 
@@ -164,7 +176,11 @@ namespace LyDataAcces.DAO
 
         }
 
-        //Crear Categoria
+        /// <summary>
+        /// Crea una nueva categoría
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>True se se a registrado, false indica un error con la bd, o  que la categoría ya existe.</returns>
         public bool CrearCategoria(String nombre)
         {
             try
@@ -198,7 +214,11 @@ namespace LyDataAcces.DAO
             }
         }
 
-        //Eliminar Categoria
+        /// <summary>
+        /// Elimina una categoría
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns>booleano indicando exito en la operación</returns>
         public bool EliminarCategoria(Categoria categoria)
         {
             try

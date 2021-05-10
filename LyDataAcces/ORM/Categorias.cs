@@ -29,9 +29,6 @@ namespace LyDataAcces.ORM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuarios> Usuarios { get; set; }
 
-        public static explicit operator Categorias(Categorias v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

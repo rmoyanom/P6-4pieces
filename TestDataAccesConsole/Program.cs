@@ -42,6 +42,22 @@ namespace TestDataAccesConsole
                 _DaoCategoria.CrearCategoria("Voluntariado"),
                 _DaoCategoria);
 
+
+            List<Categoria> categorias = new List<Categoria>();
+            categorias=_DaoCategoria.GetAllCategorias();
+
+            VerificarOperacion("Descarga todas las Categorías",
+               categorias.Count() > 0,
+               _DaoCategoria);
+
+            if(categorias.Count() > 0)
+                VerificarOperacion("Eliminar Categoría Voluntariado",
+               _DaoCategoria.EliminarCategoria(categorias[categorias.Count()-1]),
+               _DaoCategoria);
+ 
+            VerificarOperacion("Obtener todos los usuarios",
+                _DaoUsuario.GetAllUsuarios().Count>0,
+                _DaoCategoria);
             #endregion
 
             #region "Aplicación inicial"
@@ -68,12 +84,12 @@ namespace TestDataAccesConsole
 
             if(resultados)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Inicio de sesión correcta");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\t"+"Inicio de sesión correcta");
                 Console.ResetColor();
             }else {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Fallo al iniciar sesión");
+                Console.WriteLine("\t"+"Fallo al iniciar sesión");
                 Console.ResetColor();
             }
             #endregion
@@ -82,19 +98,21 @@ namespace TestDataAccesConsole
 
             #region "Mi Perfil"
             //3.Visualizar perfil de usuario.
-            Console.WriteLine("Visualizando perfil");
+            Console.WriteLine("Visualizando perfil:");
             Usuario user = _DaoUsuario.GetPerfilUsuario(idUsuario);
             VerificarOperacion("Visualizando perfil usuario", user != null, _DaoUsuario);
 
             //4.Modificar perfil de usuario.
-            Console.WriteLine("Modificando datos de usuario");
+            Console.WriteLine("Modificando datos de usuario:");
             VerificarOperacion("Modificación datos",resultados, _DaoUsuario);
+
+            VerificarOperacion("Descargando Categorias de Usuario",_DaoCategoria.LoadCategoriaUsuario(user),_DaoUsuario);
 
             //5.Asignar Categorias.
             List<LyBussinesModel.DTO.DTOCategoria> categoriasApuntadas = new List<LyBussinesModel.DTO.DTOCategoria>();
 
             //Se añaden las 2 primeras categorias
-            Console.WriteLine("Asignando categorias a usuario");
+            Console.WriteLine("Modificando categorías del usuario:");
             categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(1));
             categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(2));
 
@@ -147,16 +165,15 @@ namespace TestDataAccesConsole
             if (resultados)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(funcion+" realizado con Exito");
+                Console.WriteLine("\t"+funcion+" realizado con Exito");
                 Console.ResetColor();
             }else{
                 Exception error = dao.Errores;
                 if (error != null)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Error al procesar "+ funcion +":");
+                    Console.WriteLine("\t"+"Error al procesar " + funcion +":"+ error.Message);
                     Console.ResetColor();
-                    Console.WriteLine(error.Message);
                 }
             }
         }

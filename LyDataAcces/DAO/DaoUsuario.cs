@@ -8,7 +8,7 @@ using LyBussinesModel;
 
 namespace LyDataAcces.DAO
 {
-    public class DaoUsuario:IDao
+    public class DaoUsuario : IDao
     {
 
         private Exception _Errores;
@@ -48,7 +48,8 @@ namespace LyDataAcces.DAO
 
                     if (query.Count() > 0)
                     {
-                        throw new Exception("El usuario ya existe, escoja otro nombre");
+                        _Errores = new Exception("El usuario ya existe, escoja otro nombre");
+                        return false;
                     }
 
                     ORM.Usuarios nuevoUsuario = new ORM.Usuarios();
@@ -76,8 +77,8 @@ namespace LyDataAcces.DAO
         /// </summary>
         /// <param name="usuario">Usuario.</param>
         /// <param name="password"> Clave en texto claro</param>
-        /// <returns>Devuelve Usuario, que coincida con la clave introducida, en el caso de que sea erroneo el acceso, la funcion devuelve null</returns>
-        public Usuario IniciarSesion(String usuario, String password)
+        /// <returns>Devuelve la ide del usuario encontrado, si no encuentra ninguno devuelve 11</returns>
+        public int IniciarSesion(String usuario, String password)
         {
             Usuario userLogueado = new Usuario();
             try
@@ -89,40 +90,144 @@ namespace LyDataAcces.DAO
                     //Se realiza una busqueda del nombre en BD
                     var query = from b in db.Usuarios
                                 where b.hasPassword == hash
-                                select b;
+                                select b.id;
 
-
-
-                    //Impide registrar un usuario que ya existe.
+                    //Se comprueba si existe algun resultado
                     if (!(query.Count() > 0))
                     {
-                        return null;
+                        return -1;
                     }
                     else
                     {
-                        userEncontrado = (ORM.Usuarios)query.First();
+                        return query.First();
+                    }
+                }
 
-                        if (userEncontrado != null)
-                        {
-                            return new Usuario(userEncontrado.id,
-                                            userEncontrado.nombreUsuario,
-                                             userEncontrado.nombre,
-                                             userEncontrado.apellidos,
-                                             userEncontrado.tiempoAcumulado,
-                                             userEncontrado.telefono,
-                                             userEncontrado.correo);
-                        }
-                        else
-                        {
-                            return null;
-                        }
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return -1;
+            }
 
+        }
 
+        /// <summary>
+        /// Modifica un usuario
+        /// </summary>
+        /// <param name="editedUser"></param>
+        /// <returns>Si no se especifica un id en el dto retorna un error</returns>
+        public bool ModificarUsuario(LyBussinesModel.DTO.DTOUsuario editedUser)
+        {
+            try
+            {
+                if (!(editedUser.id > 0))
+                {
+                    throw new Exception("No se ha proporcinado un id valido para modificar");
+                }
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from b in db.Usuarios
+                                where b.id == editedUser.id
+                                select b;
+
+                    if (!(query.Count() > 0))
+                    {
+                        _Errores = new Exception("El usuario no existe");
+                        return false;
                     }
 
 
 
+                    ORM.Usuarios usuarioBD = query.First();
 
+                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0 && usuarioBD.nombreUsuario != editedUser.Nombre)
+                        usuarioBD.nombreUsuario = editedUser.Nombre;
+
+                    if (editedUser.Apellidos != null && editedUser.Apellidos.Length > 0 && usuarioBD.apellidos != editedUser.Apellidos)
+                        usuarioBD.apellidos = editedUser.Apellidos;
+
+                    if (editedUser.Correo != null && editedUser.Correo.Length > 0 && usuarioBD.correo != editedUser.Correo)
+                        usuarioBD.correo = editedUser.Correo;
+
+                    if (editedUser.Telefono != null && editedUser.Telefono.Length > 0 && usuarioBD.telefono != editedUser.Telefono)
+                        usuarioBD.telefono = editedUser.Telefono;
+
+                    if (editedUser.HasContraseña != null && editedUser.HasContraseña.Length > 0 && usuarioBD.hasPassword != editedUser.HasContraseña)
+                        usuarioBD.hasPassword = editedUser.HasContraseña;
+
+                    //Edición de las categorias
+                    if (editedUser.Categorias != null)
+                    {
+                        if (editedUser.Categorias.Count > 0)
+                        {
+                            var queryCategorias = from b in db.Categorias select b;
+
+                            ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                            //elimna todos las categorias que no esten marcadas
+                            foreach (LyBussinesModel.DTO.DTOCategoria categoria in editedUser.Categorias)
+                            {
+                                ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                                categoriaSeleccionada.Usuarios.Add(usuarioBD);
+                                if (categoriaSeleccionada != null)
+                                {
+                                    nuevasCategorias.Add(categoriaSeleccionada);
+                                }
+
+                            }
+                            usuarioBD.Categorias = nuevasCategorias;
+                        }
+                    }
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Consultar todos los usuarios.
+        /// </summary>
+        /// <returns>Devuelve una lista con todos los usuarios en el sistema</returns>
+        public List<Usuario> GetAllUsuarios()
+        {
+            try
+            {
+                List<Usuario> allUsers = new List<Usuario>();
+
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from b in db.Usuarios select b;
+
+
+
+                    foreach (ORM.Usuarios dbuser in query.ToList<ORM.Usuarios>())
+                    {
+                        Usuario user = new Usuario(dbuser.id,
+                                              dbuser.nombreUsuario,
+                                              dbuser.nombre,
+                                              dbuser.apellidos,
+                                              dbuser.tiempoAcumulado,
+                                              dbuser.telefono,
+                                              dbuser.correo);
+                        //Recogida de las categorias
+                        user.Categorias = new List<Categoria>();
+                        foreach (ORM.Categorias categoria in dbuser.Categorias)
+                        {
+                            user.Categorias.Add(new Categoria(categoria.id, categoria.nombre));
+                        }
+
+                        allUsers.Add(user);
+                    }
+
+
+                    return allUsers;
                 }
 
             }
@@ -134,70 +239,74 @@ namespace LyDataAcces.DAO
 
         }
 
-        //Modificar Datos usuario
-        public bool ModificarUsuario(LyBussinesModel.DTO.DTOUsuario editedUser)
+        /// <summary>
+        /// Devuelve los datos de un usuario 
+        /// </summary>
+        /// <param name="idUsuario"> id del usuario</param>
+        /// <returns>Usuario</returns>
+        public Usuario GetPerfilUsuario(int idUsuario)
         {
+
+            if (idUsuario <= 0)
+            {
+                _Errores = new Exception("Error de id introducida");
+                return null;
+            }
+
+            Usuario perfil = new Usuario();
             try
             {
-
                 using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
+                    ORM.Usuarios userEncontrado;
                     //Se realiza una busqueda del nombre en BD
                     var query = from b in db.Usuarios
-                                where b.id == editedUser.id
+                                where b.id == idUsuario
                                 select b;
 
-                    if (query.Count() > 0)
+
+                    if (!(query.Count() > 0))
                     {
-                        throw new Exception("El usuario no existe");
+                        _Errores = new Exception("No se ha encontrado al usuario");
+                        return null;
                     }
-
-                    ORM.Usuarios usuario = query.First();
-
-                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0)
+                    else
                     {
-                        usuario.nombreUsuario = editedUser.Nombre;
-                    }
+                        userEncontrado = (ORM.Usuarios)query.First();
 
-                    if (editedUser.Apellidos != null && editedUser.Apellidos.Length > 0)
-                    {
-                        usuario.apellidos = editedUser.Apellidos;
-                    }
+                        if (userEncontrado != null)
+                        {
 
-                    if (editedUser.Correo != null && editedUser.Correo.Length > 0)
-                    {
-                        usuario.correo = editedUser.Correo;
-                    }
+                            perfil = new Usuario(userEncontrado.id,
+                                                userEncontrado.nombreUsuario,
+                                                userEncontrado.nombre,
+                                                userEncontrado.apellidos,
+                                                userEncontrado.tiempoAcumulado,
+                                                userEncontrado.telefono,
+                                                userEncontrado.correo);
 
-                    if (editedUser.Telefono != null && editedUser.Telefono.Length > 0)
-                    {
-                        usuario.telefono = editedUser.Telefono;
+                            //Recogida de las categorias
+                            perfil.Categorias = new List<Categoria>();
+                            foreach (ORM.Categorias categoria in userEncontrado.Categorias)
+                            {
+                                perfil.Categorias.Add(new Categoria(categoria.id, categoria.nombre));
+                            }
+                            return perfil;
+                        }
+                        else
+                        {
+                            return null;
+                        }
                     }
-
-                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0)
-                    {
-                        usuario.nombreUsuario = editedUser.Nombre;
-                    }
-
-                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0)
-                    {
-                        usuario.nombreUsuario = editedUser.Nombre;
-                    }
-
-                    if (editedUser.HasContraseña != null && editedUser.HasContraseña.Length > 0)
-                    {
-                        usuario.hasPassword = editedUser.HasContraseña;
-                    }
-
-                    db.SaveChanges();
-                    return true;
                 }
+
             }
             catch (Exception ex)
             {
                 _Errores = ex;
-                return false;
+                return null;
             }
+
         }
 
     }

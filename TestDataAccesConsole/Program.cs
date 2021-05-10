@@ -19,7 +19,7 @@ namespace TestDataAccesConsole
             bool resultados = false;
             LyDataAcces.DAO.DaoUsuario _DaoUsuario = new LyDataAcces.DAO.DaoUsuario();
             LyDataAcces.DAO.DaoCategoria _DaoCategoria = new LyDataAcces.DAO.DaoCategoria();
-   
+            LyDataAcces.XML.DaoXmlRead _DaoXml = new LyDataAcces.XML.DaoXmlRead();
 
             const int ESPACIOS_LINEAS = 45;
             //Inicio de Aplicación de test
@@ -151,6 +151,23 @@ namespace TestDataAccesConsole
             //20 visualizar numero de candidatos.
             //21 Enviar Consulta.
             //22 Anular candadatura
+            #endregion
+
+
+            #region "XML"
+            String data= "<conexion><host>localhost\\SQLEXPRESS</host><user>sa</user><password>prueba</password></conexion>";
+            LyDataAcces.XML.DaoXmlRead.DatosConexion? datosConexion = _DaoXml.ObtenerDatosServidorSql(data);
+            resultados = datosConexion != null;
+            VerificarOperacion("Leer Datos XML", resultados, _DaoUsuario);
+            if(resultados)
+            {
+                LyDataAcces.XML.DaoXmlRead.DatosConexion conexion = (LyDataAcces.XML.DaoXmlRead.DatosConexion)datosConexion;
+                Console.WriteLine("Host:"+conexion.Host);
+                Console.WriteLine("User:" + conexion.User);
+                Console.WriteLine("Password:" + conexion.Password);
+            }
+
+
             #endregion
 
             //Fin de aplicació, para no salir y permitir que se lean los datos.

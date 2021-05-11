@@ -44,6 +44,7 @@
     <Compile Include="Candidatura.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="DTO\DTOCategoria.cs" />
+    <Compile Include="DTO\DTOCandidatura.cs" />
     <Compile Include="DTO\DTOUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio.cs" />

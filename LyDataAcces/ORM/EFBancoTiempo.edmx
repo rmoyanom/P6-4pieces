@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EFModeloBancoTiempo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EFModelBancoTiempo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Candidatura">
           <Key>
             <PropertyRef Name="id" />
@@ -12,7 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idServicio" Type="int" />
           <Property Name="idUsuario" Type="int" />
-          <Property Name="estado" Type="varchar" MaxLength="50" />
+          <Property Name="estado" Type="int" />
           <Property Name="fechaInscripcion" Type="datetime" />
           <Property Name="horasRequeridas" Type="int" />
         </EntityType>
@@ -23,7 +23,7 @@
           <Property Name="idCandidatura" Type="int" Nullable="false" />
           <Property Name="fechaAceptacion" Type="datetime" />
           <Property Name="fechaAcordadaServicio" Type="datetime" />
-          <Property Name="horasAcordadas" Type="datetime" />
+          <Property Name="horasAcordadas" Type="int" />
         </EntityType>
         <EntityType Name="Candidatura_Cancelada">
           <Key>
@@ -33,6 +33,7 @@
           <Property Name="fechaCancelacion" Type="datetime" />
           <Property Name="comentario" Type="varchar" MaxLength="50" />
           <Property Name="motivoCancelacion" Type="varchar" MaxLength="50" />
+          <Property Name="autorCancelado" Type="int" />
         </EntityType>
         <EntityType Name="Candidatura_Finalizada">
           <Key>
@@ -52,11 +53,11 @@
         </EntityType>
         <EntityType Name="Categorias_Servicios">
           <Key>
-            <PropertyRef Name="idUsuario" />
-            <PropertyRef Name="idServicios" />
+            <PropertyRef Name="idServicio" />
+            <PropertyRef Name="idCategoria" />
           </Key>
-          <Property Name="idUsuario" Type="int" Nullable="false" />
-          <Property Name="idServicios" Type="int" Nullable="false" />
+          <Property Name="idServicio" Type="int" Nullable="false" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Categorias_Usuarios">
           <Key>
@@ -76,16 +77,6 @@
           <Property Name="descripcion" Type="varchar" MaxLength="50" />
           <Property Name="fechaCreacion" Type="datetime" />
           <Property Name="finalizado" Type="bit" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -160,7 +151,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Categorias_Servicios_Categorias">
+        <Association Name="FK_Categorias_Servicios_Categorias1">
           <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
           <End Role="Categorias_Servicios" Type="Self.Categorias_Servicios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,11 +159,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Categorias_Servicios">
-              <PropertyRef Name="idUsuario" />
+              <PropertyRef Name="idCategoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Categorias_Servicios_Servicios">
+        <Association Name="FK_Categorias_Servicios_Servicios1">
           <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
           <End Role="Categorias_Servicios" Type="Self.Categorias_Servicios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,11 +171,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Categorias_Servicios">
-              <PropertyRef Name="idServicios" />
+              <PropertyRef Name="idServicio" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Categorias_Usuarios_Categorias">
+        <Association Name="FK_Categorias_Usuarios_Categorias1">
           <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
           <End Role="Categorias_Usuarios" Type="Self.Categorias_Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,11 +183,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Categorias_Usuarios">
-              <PropertyRef Name="idUsuarios" />
+              <PropertyRef Name="idCategoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Categorias_Usuarios_Usuarios">
+        <Association Name="FK_Categorias_Usuarios_Usuarios1">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="Categorias_Usuarios" Type="Self.Categorias_Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +195,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Categorias_Usuarios">
-              <PropertyRef Name="idCategoria" />
+              <PropertyRef Name="idUsuarios" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -220,7 +211,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EFModeloBancoTiempoStoreContainer">
+        <EntityContainer Name="EFModelBancoTiempoStoreContainer">
           <EntitySet Name="Candidatura" EntityType="Self.Candidatura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidatura_Aceptada" EntityType="Self.Candidatura_Aceptada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidatura_Cancelada" EntityType="Self.Candidatura_Cancelada" Schema="dbo" store:Type="Tables" />
@@ -229,7 +220,6 @@
           <EntitySet Name="Categorias_Servicios" EntityType="Self.Categorias_Servicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorias_Usuarios" EntityType="Self.Categorias_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
             <End Role="Candidatura" EntitySet="Candidatura" />
@@ -251,19 +241,19 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Candidatura" EntitySet="Candidatura" />
           </AssociationSet>
-          <AssociationSet Name="FK_Categorias_Servicios_Categorias" Association="Self.FK_Categorias_Servicios_Categorias">
+          <AssociationSet Name="FK_Categorias_Servicios_Categorias1" Association="Self.FK_Categorias_Servicios_Categorias1">
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Categorias_Servicios" EntitySet="Categorias_Servicios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Categorias_Servicios_Servicios" Association="Self.FK_Categorias_Servicios_Servicios">
+          <AssociationSet Name="FK_Categorias_Servicios_Servicios1" Association="Self.FK_Categorias_Servicios_Servicios1">
             <End Role="Servicios" EntitySet="Servicios" />
             <End Role="Categorias_Servicios" EntitySet="Categorias_Servicios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Categorias_Usuarios_Categorias" Association="Self.FK_Categorias_Usuarios_Categorias">
+          <AssociationSet Name="FK_Categorias_Usuarios_Categorias1" Association="Self.FK_Categorias_Usuarios_Categorias1">
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Categorias_Usuarios" EntitySet="Categorias_Usuarios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Categorias_Usuarios_Usuarios" Association="Self.FK_Categorias_Usuarios_Usuarios">
+          <AssociationSet Name="FK_Categorias_Usuarios_Usuarios1" Association="Self.FK_Categorias_Usuarios_Usuarios1">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Categorias_Usuarios" EntitySet="Categorias_Usuarios" />
           </AssociationSet>
@@ -276,7 +266,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EFModeloBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EFModelBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Candidatura">
           <Key>
             <PropertyRef Name="id" />
@@ -284,7 +274,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idServicio" Type="Int32" />
           <Property Name="idUsuario" Type="Int32" />
-          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
           <Property Name="fechaInscripcion" Type="DateTime" Precision="3" />
           <Property Name="horasRequeridas" Type="Int32" />
           <NavigationProperty Name="Candidatura_Aceptada" Relationship="Self.FK_Candidatura_Aceptada_Candidatura" FromRole="Candidatura" ToRole="Candidatura_Aceptada" />
@@ -300,7 +290,7 @@
           <Property Name="idCandidatura" Type="Int32" Nullable="false" />
           <Property Name="fechaAceptacion" Type="DateTime" Precision="3" />
           <Property Name="fechaAcordadaServicio" Type="DateTime" Precision="3" />
-          <Property Name="horasAcordadas" Type="DateTime" Precision="3" />
+          <Property Name="horasAcordadas" Type="Int32" />
           <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Aceptada_Candidatura" FromRole="Candidatura_Aceptada" ToRole="Candidatura" />
         </EntityType>
         <EntityType Name="Candidatura_Cancelada">
@@ -311,6 +301,7 @@
           <Property Name="fechaCancelacion" Type="DateTime" Precision="3" />
           <Property Name="comentario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="motivoCancelacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="autorCancelado" Type="Int32" />
           <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Cancelada_Candidatura" FromRole="Candidatura_Cancelada" ToRole="Candidatura" />
         </EntityType>
         <EntityType Name="Candidatura_Finalizada">
@@ -345,16 +336,6 @@
           <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Servicios" FromRole="Servicios" ToRole="Candidatura" />
           <NavigationProperty Name="Usuarios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Servicios" ToRole="Usuarios" />
           <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Servicios" FromRole="Servicios" ToRole="Categorias" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -459,7 +440,6 @@
           <EntitySet Name="Candidatura_Finalizada" EntityType="Self.Candidatura_Finalizada" />
           <EntitySet Name="Categorias" EntityType="Self.Categorias" />
           <EntitySet Name="Servicios" EntityType="Self.Servicios" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
             <End Role="Candidatura" EntitySet="Candidatura" />
@@ -499,9 +479,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EFModeloBancoTiempoStoreContainer" CdmEntityContainer="EFBancoTiempo">
+        <EntityContainerMapping StorageEntityContainer="EFModelBancoTiempoStoreContainer" CdmEntityContainer="EFBancoTiempo">
           <EntitySetMapping Name="Candidatura">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.Candidatura">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura">
               <MappingFragment StoreEntitySet="Candidatura">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idServicio" ColumnName="idServicio" />
@@ -513,7 +493,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Candidatura_Aceptada">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.Candidatura_Aceptada">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura_Aceptada">
               <MappingFragment StoreEntitySet="Candidatura_Aceptada">
                 <ScalarProperty Name="idCandidatura" ColumnName="idCandidatura" />
                 <ScalarProperty Name="fechaAceptacion" ColumnName="fechaAceptacion" />
@@ -523,17 +503,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Candidatura_Cancelada">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.Candidatura_Cancelada">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura_Cancelada">
               <MappingFragment StoreEntitySet="Candidatura_Cancelada">
                 <ScalarProperty Name="idCandidatura" ColumnName="idCandidatura" />
                 <ScalarProperty Name="fechaCancelacion" ColumnName="fechaCancelacion" />
                 <ScalarProperty Name="comentario" ColumnName="comentario" />
                 <ScalarProperty Name="motivoCancelacion" ColumnName="motivoCancelacion" />
+                <ScalarProperty Name="autorCancelado" ColumnName="autorCancelado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Candidatura_Finalizada">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.Candidatura_Finalizada">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Candidatura_Finalizada">
               <MappingFragment StoreEntitySet="Candidatura_Finalizada">
                 <ScalarProperty Name="idCandidatura" ColumnName="idCandidatura" />
                 <ScalarProperty Name="valoracion" ColumnName="valoracion" />
@@ -543,7 +524,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categorias">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.Categorias">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Categorias">
               <MappingFragment StoreEntitySet="Categorias">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -551,7 +532,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Servicios">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.Servicios">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Servicios">
               <MappingFragment StoreEntitySet="Servicios">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idCreador" ColumnName="idCreador" />
@@ -562,19 +543,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="EFModeloBancoTiempo.Usuarios">
+            <EntityTypeMapping TypeName="EFModelBancoTiempo.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="hasPassword" ColumnName="hasPassword" />
@@ -587,20 +557,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Categorias_Servicios" TypeName="EFModeloBancoTiempo.Categorias_Servicios" StoreEntitySet="Categorias_Servicios">
+          <AssociationSetMapping Name="Categorias_Servicios" TypeName="EFModelBancoTiempo.Categorias_Servicios" StoreEntitySet="Categorias_Servicios">
             <EndProperty Name="Categorias">
-              <ScalarProperty Name="id" ColumnName="idUsuario" />
+              <ScalarProperty Name="id" ColumnName="idCategoria" />
             </EndProperty>
             <EndProperty Name="Servicios">
-              <ScalarProperty Name="id" ColumnName="idServicios" />
+              <ScalarProperty Name="id" ColumnName="idServicio" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Categorias_Usuarios" TypeName="EFModeloBancoTiempo.Categorias_Usuarios" StoreEntitySet="Categorias_Usuarios">
+          <AssociationSetMapping Name="Categorias_Usuarios" TypeName="EFModelBancoTiempo.Categorias_Usuarios" StoreEntitySet="Categorias_Usuarios">
             <EndProperty Name="Categorias">
-              <ScalarProperty Name="id" ColumnName="idUsuarios" />
+              <ScalarProperty Name="id" ColumnName="idCategoria" />
             </EndProperty>
             <EndProperty Name="Usuarios">
-              <ScalarProperty Name="id" ColumnName="idCategoria" />
+              <ScalarProperty Name="id" ColumnName="idUsuarios" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

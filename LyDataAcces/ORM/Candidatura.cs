@@ -17,7 +17,7 @@ namespace LyDataAcces.ORM
         public int id { get; set; }
         public Nullable<int> idServicio { get; set; }
         public Nullable<int> idUsuario { get; set; }
-        public string estado { get; set; }
+        public Nullable<int> estado { get; set; }
         public Nullable<System.DateTime> fechaInscripcion { get; set; }
         public Nullable<int> horasRequeridas { get; set; }
     

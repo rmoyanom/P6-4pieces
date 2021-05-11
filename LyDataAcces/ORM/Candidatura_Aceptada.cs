@@ -17,7 +17,7 @@ namespace LyDataAcces.ORM
         public int idCandidatura { get; set; }
         public Nullable<System.DateTime> fechaAceptacion { get; set; }
         public Nullable<System.DateTime> fechaAcordadaServicio { get; set; }
-        public Nullable<System.DateTime> horasAcordadas { get; set; }
+        public Nullable<int> horasAcordadas { get; set; }
     
         public virtual Candidatura Candidatura { get; set; }
     }

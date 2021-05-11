@@ -29,7 +29,7 @@ namespace LyDataAcces.DAO
         /// </summary>
         /// <param name="candidatura"></param>
         /// <returns></returns>
-        public bool Crearcandidatura(LyBussinesModel.DTO.DTOCandidatura candidatura)
+        public bool Crearcandidatura(Candidatura candidatura)
         {
 
             try

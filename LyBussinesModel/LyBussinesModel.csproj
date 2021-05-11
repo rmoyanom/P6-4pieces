@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Candidatura.cs" />
+    <Compile Include="..\..\..\..\Desktop\Candidatura.cs">
+      <Link>Candidatura.cs</Link>
+    </Compile>
     <Compile Include="Categoria.cs" />
     <Compile Include="DTO\DTOCategoria.cs" />
     <Compile Include="DTO\DTOCandidatura.cs" />

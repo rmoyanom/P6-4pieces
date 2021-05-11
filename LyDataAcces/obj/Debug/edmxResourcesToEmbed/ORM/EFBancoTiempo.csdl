@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EFModeloBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="EFModelBancoTiempo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Candidatura">
     <Key>
       <PropertyRef Name="id" />
@@ -7,7 +7,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idServicio" Type="Int32" />
     <Property Name="idUsuario" Type="Int32" />
-    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
     <Property Name="fechaInscripcion" Type="DateTime" Precision="3" />
     <Property Name="horasRequeridas" Type="Int32" />
     <NavigationProperty Name="Candidatura_Aceptada" Relationship="Self.FK_Candidatura_Aceptada_Candidatura" FromRole="Candidatura" ToRole="Candidatura_Aceptada" />
@@ -23,7 +23,7 @@
     <Property Name="idCandidatura" Type="Int32" Nullable="false" />
     <Property Name="fechaAceptacion" Type="DateTime" Precision="3" />
     <Property Name="fechaAcordadaServicio" Type="DateTime" Precision="3" />
-    <Property Name="horasAcordadas" Type="DateTime" Precision="3" />
+    <Property Name="horasAcordadas" Type="Int32" />
     <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Aceptada_Candidatura" FromRole="Candidatura_Aceptada" ToRole="Candidatura" />
   </EntityType>
   <EntityType Name="Candidatura_Cancelada">
@@ -34,6 +34,7 @@
     <Property Name="fechaCancelacion" Type="DateTime" Precision="3" />
     <Property Name="comentario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="motivoCancelacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="autorCancelado" Type="Int32" />
     <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Cancelada_Candidatura" FromRole="Candidatura_Cancelada" ToRole="Candidatura" />
   </EntityType>
   <EntityType Name="Candidatura_Finalizada">
@@ -68,16 +69,6 @@
     <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Servicios" FromRole="Servicios" ToRole="Candidatura" />
     <NavigationProperty Name="Usuarios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Servicios" ToRole="Usuarios" />
     <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Servicios" FromRole="Servicios" ToRole="Categorias" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Usuarios">
     <Key>
@@ -182,7 +173,6 @@
     <EntitySet Name="Candidatura_Finalizada" EntityType="Self.Candidatura_Finalizada" />
     <EntitySet Name="Categorias" EntityType="Self.Categorias" />
     <EntitySet Name="Servicios" EntityType="Self.Servicios" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
     <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
       <End Role="Candidatura" EntitySet="Candidatura" />
@@ -216,5 +206,16 @@
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="EFModelBancoTiempo.sysdiagrams" />
   </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

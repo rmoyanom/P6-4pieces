@@ -28,7 +28,5 @@ namespace LyDataAcces.ORM
         public virtual ICollection<Servicios> Servicios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuarios> Usuarios { get; set; }
-
-
     }
 }

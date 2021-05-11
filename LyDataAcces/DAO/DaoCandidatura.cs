@@ -20,8 +20,13 @@ namespace LyDataAcces.DAO
             }
             set => _Errores = value;
         }
-        //Crear candidatura
 
+
+        /// <summary>
+        /// Crear candidatura
+        /// </summary>
+        /// <param name="candicatura"></param>
+        /// <returns></returns>
         public bool CrearCandicatura(LyBussinesModel.DTO.DTOCandidatura candicatura)
         {
 
@@ -29,23 +34,8 @@ namespace LyDataAcces.DAO
             {
                 using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
-                    //Se realiza una busqueda del nombre en BD
-                    var query = from b in db.Usuarios
-                                where b.id == candicatura.Id
-                                select b;
 
-
-
-                    //Impide registrar un usuario que ya existe.
-                    Debug.Write(query.Count().ToString());
-
-
-                    if (query.Count() > 0)
-                    {
-                        throw new Exception("La candicatura ya existe");
-                    }
-
-        ORM.Candidatura newcandicatura = new ORM.Candidatura();
+                    ORM.Candidatura newcandicatura = new ORM.Candidatura();
                     //esta puesto como un string estado en la base de datos y no int
                     newcandicatura.estado = candicatura.Estado;
                     newcandicatura.fechaInscripcion = candicatura.FechaInscripcion;
@@ -79,7 +69,64 @@ namespace LyDataAcces.DAO
 
         }
         //Cancelar candidatura
+
+        public bool cancelcandicatura(LyBussinesModel.DTO.DTOCandidatura candicatura)
+        {
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from b in db.Candidatura
+                                where b.id == candicatura.Id
+                                select b;
+
+
+
+
+
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return false;
+            }
+            
+        }
+
         //Aceptar candidatura
+
+        public bool aceptcandicatura(LyBussinesModel.DTO.DTOCandidatura candicatura)
+        {
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from b in db.Candidatura
+                                    where b.id == candicatura.Id
+                                select b;
+
+                    ORM.Candidatura aceptcandicatura = new ORM.Candidatura();
+                    aceptcandicatura.idUsuario = candicatura.Candidato.Id;
+                    aceptcandicatura.estado = "ADJUDICADA";
+                    aceptcandicatura.Candidatura_Aceptada.fechaAceptacion = DateTime.Now;
+
+
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return false;
+            }
+
+        }
 
     }
 }

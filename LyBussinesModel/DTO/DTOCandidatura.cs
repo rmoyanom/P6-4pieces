@@ -10,8 +10,8 @@ namespace LyBussinesModel.DTO
     public class DTOCandidatura
     {
         public int Id;
-        public Usuario Candidato;
-        public Servicio Servicio;
+        public int IdUsuario;
+        public int IdServicio;
         public EstadoCandidatura Estado;
 
         public DateTime FechaInscripcion;
@@ -42,10 +42,33 @@ namespace LyBussinesModel.DTO
             Id = id;
         }
 
-        public DTOCandidatura(int id, Usuario candidato, Servicio servicio, EstadoCandidatura estado, DateTime fechaInscripcion, int horasRequeridas, int valoracion, string comentarios, int horasGanadas, DateTime fechaAceptacion, DateTime fechaAcordadaServicio, int horasAcordadas, DateTime fechaDeCancelacion, string motivoCancelacíon, CanceladoPor autorCancelado) : this(id)
+        public DTOCandidatura(int idUsuario,int idServicio,int horasRequeridas, DateTime fechaInscripcion)
         {
-            Candidato = candidato;
-            Servicio = servicio;
+            IdUsuario = idUsuario;
+            IdServicio = idServicio;
+            this.HorasRequeridas= horasRequeridas;
+            this.FechaInscripcion = fechaInscripcion;
+        }
+
+        public DTOCandidatura(int id, 
+                                int idUsuario, 
+                                int idServicio, 
+                                EstadoCandidatura 
+                                estado, 
+                                DateTime fechaInscripcion, 
+                                int horasRequeridas, 
+                                int valoracion, 
+                                string comentarios, 
+                                int horasGanadas, 
+                                DateTime fechaAceptacion, 
+                                DateTime fechaAcordadaServicio, 
+                                int horasAcordadas, 
+                                DateTime fechaDeCancelacion, 
+                                string motivoCancelacíon, 
+                                CanceladoPor autorCancelado) : this(id)
+        {
+            IdUsuario = idUsuario;
+            IdServicio = idServicio;
             Estado = estado;
             FechaInscripcion = fechaInscripcion;
             HorasRequeridas = horasRequeridas;

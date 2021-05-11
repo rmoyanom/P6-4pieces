@@ -167,7 +167,6 @@ namespace LyDataAcces.DAO
                             foreach (LyBussinesModel.DTO.DTOCategoria categoria in editedUser.Categorias)
                             {
                                 ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
-                                categoriaSeleccionada.Usuarios.Add(usuarioBD);
                                 if (categoriaSeleccionada != null)
                                 {
                                     nuevasCategorias.Add(categoriaSeleccionada);

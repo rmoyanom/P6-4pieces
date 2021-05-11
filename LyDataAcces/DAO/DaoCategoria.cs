@@ -153,11 +153,11 @@ namespace LyDataAcces.DAO
 
                             //Recogida de las categorias
                             //hay que poner publica la variable
-                            //servicioEncontrado.Categorias = new List<Categoria>();
-                            //foreach (ORM.Categorias categoria in servicioEncontrado.Categorias)
-                            //{
-                            //    servicio.Categorias.Add(new Categoria(categoria.id, categoria.nombre));
-                            //}
+                            servicio.Categorias= new List<Categoria>();
+                            foreach (ORM.Categorias categoria in servicioEncontrado.Categorias)
+                            {
+                                servicio.Categorias.Add(new Categoria(categoria.id, categoria.nombre));
+                            }
                             return true;
                         }
                         else

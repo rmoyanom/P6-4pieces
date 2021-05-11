@@ -38,6 +38,16 @@ namespace LyBussinesModel
         private String _MotivoCancelacíon;
         private CanceladoPor _AutorCancelado;
 
+        public Candidatura(int id, Usuario candidato, Servicio servicio, EstadoCandidatura estado, DateTime fechaInscripcion, int horasRequeridas)
+        {
+            _Id = id;
+            _Candidato = candidato;
+            _Servicio = servicio;
+            _Estado = estado;
+            _FechaInscripcion = fechaInscripcion;
+            _HorasRequeridas = horasRequeridas;
+        }
+
         public int Id { get => _Id; set => _Id = value; }
         public Usuario Candidato { get => _Candidato; set => _Candidato = value; }
         public Servicio Servicio { get => _Servicio; set => _Servicio = value; }

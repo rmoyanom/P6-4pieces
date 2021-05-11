@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using LyBussinesModel;
 
 namespace LyDataAcces.DAO
 {
-    class DaoServicios : IDao
+    public class DaoServicios : IDao
     {
 
         private Exception _Errores;
@@ -72,8 +73,9 @@ namespace LyDataAcces.DAO
                     {
                         return peticionListado(queryServicios.ToList());
 
+                    }else {
+                        return null; 
                     }
-                    else { return null; }
 
                 }
 
@@ -173,32 +175,20 @@ namespace LyDataAcces.DAO
                     Usuario user = _DaoUsuario.GetPerfilUsuario((int)dbservicios.idCreador);
 
                     Servicio servicio = new Servicio(dbservicios.titulo,
-                        dbservicios.descripcion,
-                        dbservicios.fechaCreacion,
-                        dbservicios.id,
-                        user,
-                        (bool)dbservicios.finalizado);
+                                                            dbservicios.descripcion,
+                                                            dbservicios.fechaCreacion,
+                                                            dbservicios.id,
+                                                            user,
+                                                            (bool)dbservicios.finalizado
+                                                    );
                     
 
                     //Recogida de las categorias
-                    /*
-                     * # Categorias no tiene el método correcto para devolver el listado de categorias de un servicio.
+                   
+                    //* # Categorias no tiene el método correcto para devolver el listado de categorias de un servicio.
                     servicio.Categorias = new List<Categoria>();
-                    List<Categoria> categorias = _DaoCategoria.LoadCategoriaServicio(servicio);
-                    foreach (Categoria categoria in categorias)
-                    {
-                        servicio.Categorias.Add(categoria);
-                    }
-                    // Faltan CANDIDATURAS
-                    * ## No se ha desarrollado el DAO Candidaturas
+                    _DaoCategoria.LoadCategoriaServicio(servicio);
 
-                    servicio.Candidaturas = new List<Candidatura>();
-                    List<Candidatura> candidaturas = _DaoCandidatura.LoadCandidaturasServicio(servicio);
-                    foreach (List<Candidatura> candidatura in candidaturas)
-                    {
-                        servicio.Candidaturas.Add(candidatura);
-                    }
-                     */
                     allServicios.Add(servicio);
                 }
 

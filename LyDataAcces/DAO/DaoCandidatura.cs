@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LyDataAcces.DAO
 {
-    class DaoCandidatura: IDao
+    public class DaoCandidatura: IDao
     {
 
         private Exception _Errores;
@@ -29,7 +29,7 @@ namespace LyDataAcces.DAO
         /// </summary>
         /// <param name="candidatura"></param>
         /// <returns></returns>
-        public bool Crearcandidatura(Candidatura candidatura)
+        public bool Crearcandidatura(LyBussinesModel.DTO.DTOCandidatura candidatura)
         {
 
             try
@@ -38,22 +38,25 @@ namespace LyDataAcces.DAO
                 {
                     
                     ORM.Candidatura newcandidatura = new ORM.Candidatura();
+
                     newcandidatura.estado = (int?)LyBussinesModel.Candidatura.EstadoCandidatura.PENDIENTE;
                     newcandidatura.fechaInscripcion = candidatura.FechaInscripcion;
-                    newcandidatura.idServicio = candidatura.Servicio.Id;
-                    newcandidatura.idUsuario = candidatura.Candidato.Id;
+                    newcandidatura.idServicio = candidatura.IdServicio;
+                    newcandidatura.idUsuario = candidatura.IdUsuario;
                     newcandidatura.horasRequeridas = candidatura.HorasRequeridas;
-                    newcandidatura.fechaInscripcion = candidatura.FechaInscripcion;
+/*
                     newcandidatura.Candidatura_Finalizada.valoracion = candidatura.Valoracion;
                     newcandidatura.Candidatura_Finalizada.comentarios = candidatura.Comentarios;
                     newcandidatura.Candidatura_Finalizada.horasGanadas = candidatura.HorasGanadas;
+
                     newcandidatura.Candidatura_Aceptada.fechaAceptacion = candidatura.FechaAceptacion;
                     newcandidatura.Candidatura_Aceptada.fechaAcordadaServicio = candidatura.FechaAcordadaServicio;
                     newcandidatura.Candidatura_Aceptada.horasAcordadas = candidatura.HorasAcordadas;
+
                     newcandidatura.Candidatura_Cancelada.fechaCancelacion = candidatura.FechaDeCancelacion;
                     newcandidatura.Candidatura_Cancelada.motivoCancelacion = candidatura.MotivoCancelacíon;
                     newcandidatura.Candidatura_Cancelada.autorCancelado = (int?)candidatura.AutorCancelado;
-
+*/
                     db.Candidatura.Add(newcandidatura);
                     db.SaveChanges();
                     return true;

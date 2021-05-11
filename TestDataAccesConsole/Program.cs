@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LyDataAcces;
 using LyBussinesModel;
-
+using System.Data.Entity.Validation;
 
 namespace TestDataAccesConsole
 {
@@ -19,7 +19,10 @@ namespace TestDataAccesConsole
             bool resultados = false;
             LyDataAcces.DAO.DaoUsuario _DaoUsuario = new LyDataAcces.DAO.DaoUsuario();
             LyDataAcces.DAO.DaoCategoria _DaoCategoria = new LyDataAcces.DAO.DaoCategoria();
+            LyDataAcces.DAO.DaoServicios _DaoServicio = new LyDataAcces.DAO.DaoServicios();
+            LyDataAcces.DAO.DaoCandidatura _Daocandidatura = new LyDataAcces.DAO.DaoCandidatura();
             LyDataAcces.XML.DaoXmlRead _DaoXml = new LyDataAcces.XML.DaoXmlRead();
+
 
             const int ESPACIOS_LINEAS = 45;
             //Inicio de Aplicación de test
@@ -61,8 +64,9 @@ namespace TestDataAccesConsole
             #endregion
 
             #region "Aplicación inicial"
+
             //1.Registrar Usuario
-            Console.WriteLine("Registrando un nuevo usuario");
+            Console.WriteLine("Aplicación inicial");
 
 
             
@@ -94,36 +98,65 @@ namespace TestDataAccesConsole
             }
             #endregion
 
-
-
             #region "Mi Perfil"
+            Console.WriteLine("Mi perfil");
             //3.Visualizar perfil de usuario.
-            Console.WriteLine("Visualizando perfil:");
             Usuario user = _DaoUsuario.GetPerfilUsuario(idUsuario);
             VerificarOperacion("Visualizando perfil usuario", user != null, _DaoUsuario);
 
             //4.Modificar perfil de usuario.
-            Console.WriteLine("Modificando datos de usuario:");
             VerificarOperacion("Modificación datos",resultados, _DaoUsuario);
-
             VerificarOperacion("Descargando Categorias de Usuario",_DaoCategoria.LoadCategoriaUsuario(user),_DaoUsuario);
+
+
+            List<Categoria> listaCategorias = _DaoCategoria.GetAllCategorias();
+            VerificarOperacion("Descarga de todas las categorias", listaCategorias.Count > 0, _DaoCategoria);
 
             //5.Asignar Categorias.
             List<LyBussinesModel.DTO.DTOCategoria> categoriasApuntadas = new List<LyBussinesModel.DTO.DTOCategoria>();
-
             //Se añaden las 2 primeras categorias
-            Console.WriteLine("Modificando categorías del usuario:");
-            categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(1));
-            categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(2));
+            categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(listaCategorias[0].Id));
+            categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(listaCategorias[1].Id));
 
             LyBussinesModel.DTO.DTOUsuario cambioUsuario = new LyBussinesModel.DTO.DTOUsuario(user.Id);
+            cambioUsuario.Categorias = categoriasApuntadas;
             VerificarOperacion("Asignacion de categorias", _DaoUsuario.ModificarUsuario(cambioUsuario), _DaoUsuario);
             #endregion
+
+            #region "Tablón de anuncios"
+            Console.WriteLine("Tablon de anuncios");
+
+
+            //11. Publicar un Servicio.
+            resultados = _DaoServicio.RegistrarServicio(new LyBussinesModel.DTO.DTOServicios(idUsuario,
+                                                                                "Se buscan programadores",
+                                                                                "Se requieren conocimientos de c#", true, DateTime.Now));
+            VerificarOperacion("Creando Un anuncio", resultados, _DaoServicio);
+            //12. Anular un servicio.
+            //10. Visualizar todos los anuncios
+            List<Servicio> listaAnuncios = _DaoServicio.ListadoServicios();
+            
+            if(listaAnuncios!= null)
+            {
+                resultados = listaAnuncios.Count() > 0; 
+            }else{
+                resultados = false;
+            }
+            VerificarOperacion("Mostrando lista Anuncios", resultados, _DaoServicio);
+
+
+            resultados = _Daocandidatura.Crearcandidatura(new LyBussinesModel.DTO.DTOCandidatura(idUsuario, listaAnuncios[0].Id, 3, DateTime.Now));
+            VerificarOperacion("Registrando a un usuario en un Anuncio", resultados, _Daocandidatura);
+            #endregion
+
 
             #region "Mi Cuenta"
             //6.Visualizar historial de Operaciones.
             //7.Visualizar detalles de operaciones
-            //8.Visualizar Saldo.
+
+
+            //8.Visualizar Saldo.--> desde Usuario
+
             //9.Acceder a Anuncios propios
             //9.1 Visualizar
 
@@ -131,13 +164,10 @@ namespace TestDataAccesConsole
             //9.2 Modificar
             #endregion
 
-            #region "Tablón de anuncios"
-            //10. Visualizar todos los anuncios
-            //11. Publicar un Servicio.
-            //12. Anular un servicio.
-            #endregion
+
 
             #region "Anuncios activos"
+            Console.WriteLine("Gestión de Anuncios");
             //13 Editar anuncio
             //14 Visualizar perfil de candidatos.
             //15 Selección candidatura
@@ -153,8 +183,9 @@ namespace TestDataAccesConsole
             //22 Anular candadatura
             #endregion
 
-
             #region "XML"
+
+            Console.WriteLine("Verificando lectura de xml:");
             String data= "<conexion><host>localhost\\SQLEXPRESS</host><user>sa</user><password>prueba</password></conexion>";
             LyDataAcces.XML.DaoXmlRead.DatosConexion? datosConexion = _DaoXml.ObtenerDatosServidorSql(data);
             resultados = datosConexion != null;
@@ -191,6 +222,23 @@ namespace TestDataAccesConsole
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\t"+"Error al procesar " + funcion +":"+ error.Message);
                     Console.ResetColor();
+                    //if(error.GetHashCode == DbEntityValidationException)
+                    //{
+                    //    DbEntityValidationException e = (DbEntityValidationException)error;
+                    //    foreach (var eve in e.EntityValidationErrors)
+                    //    {
+                    //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                    //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    //        foreach (var ve in eve.ValidationErrors)
+                    //        {
+                    //            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                    //                ve.PropertyName, ve.ErrorMessage);
+                    //        }
+                    //    }
+                    //}
+
+
+
                 }
             }
         }

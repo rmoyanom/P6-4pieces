@@ -18,6 +18,7 @@ namespace LyDataAcces.ORM
         public Nullable<System.DateTime> fechaCancelacion { get; set; }
         public string comentario { get; set; }
         public string motivoCancelacion { get; set; }
+        public Nullable<int> autorCancelado { get; set; }
     
         public virtual Candidatura Candidatura { get; set; }
     }

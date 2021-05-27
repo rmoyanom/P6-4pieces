@@ -6,7 +6,7 @@ Public Class FrmInicioSesion
             FrmMain.Show()
             Me.Hide()
         Else
-            MsgBox("Error producido: " + Main.MensajeError)
+            MsgBox("Error producido: " + Main.MensajeError, MsgBoxStyle.Critical, "Error inicio de sesión")
         End If
     End Sub
 

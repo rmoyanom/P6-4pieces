@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormMain
+Partial Class FrmMain
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -22,18 +22,22 @@ Partial Class FormMain
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.BtnMiCuenta = New System.Windows.Forms.Button()
+        Me.BtnMiServicios = New System.Windows.Forms.Button()
+        Me.BtnMisAnuncios = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.PtcLogo = New System.Windows.Forms.PictureBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -41,9 +45,9 @@ Partial Class FormMain
         Me.TableLayoutPanel1.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button2, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button3, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.BtnMiCuenta, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.BtnMiServicios, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.BtnMisAnuncios, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel3, 0, 5)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
@@ -51,53 +55,54 @@ Partial Class FormMain
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 6
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 128.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 495)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'Button1
+        'BtnMiCuenta
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(3, 26)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(214, 144)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Mi Cuenta"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BtnMiCuenta.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnMiCuenta.Location = New System.Drawing.Point(3, 96)
+        Me.BtnMiCuenta.Name = "BtnMiCuenta"
+        Me.BtnMiCuenta.Size = New System.Drawing.Size(214, 122)
+        Me.BtnMiCuenta.TabIndex = 0
+        Me.BtnMiCuenta.Text = "Mi Cuenta"
+        Me.BtnMiCuenta.UseVisualStyleBackColor = True
         '
-        'Button2
+        'BtnMiServicios
         '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button2.Location = New System.Drawing.Point(3, 176)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(214, 144)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Mis Servicios"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BtnMiServicios.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnMiServicios.Location = New System.Drawing.Point(3, 224)
+        Me.BtnMiServicios.Name = "BtnMiServicios"
+        Me.BtnMiServicios.Size = New System.Drawing.Size(214, 124)
+        Me.BtnMiServicios.TabIndex = 1
+        Me.BtnMiServicios.Text = "Mis Servicios"
+        Me.BtnMiServicios.UseVisualStyleBackColor = True
         '
-        'Button3
+        'BtnMisAnuncios
         '
-        Me.Button3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button3.Location = New System.Drawing.Point(3, 326)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(214, 144)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Mis Anuncios"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.BtnMisAnuncios.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnMisAnuncios.Location = New System.Drawing.Point(3, 354)
+        Me.BtnMisAnuncios.Name = "BtnMisAnuncios"
+        Me.BtnMisAnuncios.Size = New System.Drawing.Size(214, 116)
+        Me.BtnMisAnuncios.TabIndex = 2
+        Me.BtnMisAnuncios.Text = "Mis Anuncios"
+        Me.BtnMisAnuncios.UseVisualStyleBackColor = True
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Azure
+        Me.Panel2.Controls.Add(Me.PtcLogo)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(220, 23)
+        Me.Panel2.Size = New System.Drawing.Size(220, 93)
         Me.Panel2.TabIndex = 5
         '
         'Panel3
@@ -113,6 +118,7 @@ Partial Class FormMain
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.LightGray
+        Me.Panel1.Controls.Add(Me.Panel4)
         Me.Panel1.Controls.Add(Me.TableLayoutPanel2)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -130,25 +136,45 @@ Partial Class FormMain
         Me.TableLayoutPanel2.ColumnCount = 2
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.29749!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.70251!))
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 56)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 87)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 2
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.46789!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.53211!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(558, 436)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(558, 384)
         Me.TableLayoutPanel2.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 3)
+        Me.Label1.Location = New System.Drawing.Point(6, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(462, 55)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Tablón de anuncios"
         '
-        'FormMain
+        'PtcLogo
+        '
+        Me.PtcLogo.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PtcLogo.Image = Global.LyUserInterface.My.Resources.Resources.image
+        Me.PtcLogo.Location = New System.Drawing.Point(0, 0)
+        Me.PtcLogo.Name = "PtcLogo"
+        Me.PtcLogo.Size = New System.Drawing.Size(220, 93)
+        Me.PtcLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PtcLogo.TabIndex = 3
+        Me.PtcLogo.TabStop = False
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.Azure
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel4.Location = New System.Drawing.Point(0, 474)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(564, 21)
+        Me.Panel4.TabIndex = 2
+        '
+        'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -158,22 +184,27 @@ Partial Class FormMain
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(800, 534)
-        Me.Name = "FormMain"
+        Me.Name = "FrmMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Banco del tiempo"
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents BtnMiCuenta As Button
+    Friend WithEvents BtnMiServicios As Button
+    Friend WithEvents BtnMisAnuncios As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents Label1 As Label
+    Friend WithEvents PtcLogo As PictureBox
+    Friend WithEvents Panel4 As Panel
 End Class

@@ -73,43 +73,50 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormInicioSesion.vb">
+    <Compile Include="FrmInicioSesion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInicioSesion.Designer.vb">
-      <DependentUpon>FormInicioSesion.vb</DependentUpon>
+    <Compile Include="FrmInicioSesion.Designer.vb">
+      <DependentUpon>FrmInicioSesion.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.vb">
-      <DependentUpon>FormMain.vb</DependentUpon>
+    <Compile Include="FrmMain.Designer.vb">
+      <DependentUpon>FrmMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.vb">
+    <Compile Include="FrmMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMiCuenta.Designer.vb">
-      <DependentUpon>FormMiCuenta.vb</DependentUpon>
+    <Compile Include="FrmMiCuenta.Designer.vb">
+      <DependentUpon>FrmMiCuenta.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormMiCuenta.vb">
+    <Compile Include="FrmMiCuenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMisServicios.Designer.vb">
-      <DependentUpon>FormMisServicios.vb</DependentUpon>
+    <Compile Include="FrmMisServicios.Designer.vb">
+      <DependentUpon>FrmMisServicios.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormMisServicios.vb">
+    <Compile Include="FrmMisServicios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRegistro.Designer.vb">
-      <DependentUpon>FormRegistro.vb</DependentUpon>
+    <Compile Include="FrmMisAnuncios.Designer.vb">
+      <DependentUpon>FrmMisAnuncios.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormRegistro.vb">
+    <Compile Include="FrmMisAnuncios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormServicios.Designer.vb">
-      <DependentUpon>FormServicios.vb</DependentUpon>
+    <Compile Include="FrmRegistroUsuario.Designer.vb">
+      <DependentUpon>FrmRegistroUsuario.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormServicios.vb">
+    <Compile Include="FrmRegistroUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmServicios.Designer.vb">
+      <DependentUpon>FrmServicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmServicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -128,17 +135,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FormInicioSesion.resx">
-      <DependentUpon>FormInicioSesion.vb</DependentUpon>
+    <EmbeddedResource Include="FrmInicioSesion.resx">
+      <DependentUpon>FrmInicioSesion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.vb</DependentUpon>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMisServicios.resx">
-      <DependentUpon>FormMisServicios.vb</DependentUpon>
+    <EmbeddedResource Include="FrmMiCuenta.resx">
+      <DependentUpon>FrmMiCuenta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRegistro.resx">
-      <DependentUpon>FormRegistro.vb</DependentUpon>
+    <EmbeddedResource Include="FrmMisServicios.resx">
+      <DependentUpon>FrmMisServicios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMisAnuncios.resx">
+      <DependentUpon>FrmMisAnuncios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegistroUsuario.resx">
+      <DependentUpon>FrmRegistroUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmServicios.resx">
+      <DependentUpon>FrmServicios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -168,6 +184,9 @@
       <Project>{17bde2d7-6b1d-4124-a1ee-536ac92a7cf7}</Project>
       <Name>LyDataAcces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -10,9 +10,6 @@ C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\LyDataAcces.pdb
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\LyDataAcces.dll.config
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\EntityFramework.xml
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.vbprojAssemblyReference.cache
-C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FormInicioSesion.resources
-C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FormMain.resources
-C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FormRegistro.resources
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.Resources.resources
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.vbproj.GenerateResource.cache
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.vbproj.CoreCompileInputs.cache
@@ -20,4 +17,10 @@ C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.exe
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.xml
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.pdb
-C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FormMisServicios.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmInicioSesion.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmMain.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmMiCuenta.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmMisServicios.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmMisAnuncios.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmServicios.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmRegistroUsuario.resources

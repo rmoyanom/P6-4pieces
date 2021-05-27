@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.LyUserInterface.FormMain
+            Me.MainForm = Global.LyUserInterface.FrmInicioSesion
         End Sub
     End Class
 End Namespace

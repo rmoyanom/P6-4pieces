@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormRegistro
+Partial Class FrmRegistroUsuario
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -24,13 +24,14 @@ Partial Class FormRegistro
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'FormRegistro
+        'FrmRegistroUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1067, 570)
-        Me.Name = "FormRegistro"
-        Me.Text = "FormNuevoUsuario"
+        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Name = "FrmRegistroUsuario"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "FrmRegistroUsuario"
         Me.ResumeLayout(False)
 
     End Sub

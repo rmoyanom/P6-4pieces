@@ -26,10 +26,10 @@ Partial Class FrmInicioSesion
         Me.LblUsuario = New System.Windows.Forms.Label()
         Me.BtnIniciarSesion = New System.Windows.Forms.Button()
         Me.LblContraseña = New System.Windows.Forms.Label()
-        Me.PtcLogo = New System.Windows.Forms.PictureBox()
         Me.TxtUsuario = New System.Windows.Forms.TextBox()
         Me.TxtContraseña = New System.Windows.Forms.TextBox()
         Me.LkLblRegistraUsuario = New System.Windows.Forms.LinkLabel()
+        Me.PtcLogo = New System.Windows.Forms.PictureBox()
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -49,7 +49,7 @@ Partial Class FrmInicioSesion
         Me.BtnIniciarSesion.Location = New System.Drawing.Point(12, 214)
         Me.BtnIniciarSesion.Name = "BtnIniciarSesion"
         Me.BtnIniciarSesion.Size = New System.Drawing.Size(366, 59)
-        Me.BtnIniciarSesion.TabIndex = 1
+        Me.BtnIniciarSesion.TabIndex = 3
         Me.BtnIniciarSesion.Text = "Iniciar Sesión"
         Me.BtnIniciarSesion.UseVisualStyleBackColor = True
         '
@@ -63,23 +63,13 @@ Partial Class FrmInicioSesion
         Me.LblContraseña.TabIndex = 0
         Me.LblContraseña.Text = "Contraseña:"
         '
-        'PtcLogo
-        '
-        Me.PtcLogo.Image = Global.LyUserInterface.My.Resources.Resources.image
-        Me.PtcLogo.Location = New System.Drawing.Point(-1, -16)
-        Me.PtcLogo.Name = "PtcLogo"
-        Me.PtcLogo.Size = New System.Drawing.Size(386, 105)
-        Me.PtcLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PtcLogo.TabIndex = 2
-        Me.PtcLogo.TabStop = False
-        '
         'TxtUsuario
         '
         Me.TxtUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtUsuario.Location = New System.Drawing.Point(156, 99)
         Me.TxtUsuario.Name = "TxtUsuario"
         Me.TxtUsuario.Size = New System.Drawing.Size(221, 35)
-        Me.TxtUsuario.TabIndex = 3
+        Me.TxtUsuario.TabIndex = 1
         '
         'TxtContraseña
         '
@@ -87,7 +77,7 @@ Partial Class FrmInicioSesion
         Me.TxtContraseña.Location = New System.Drawing.Point(156, 140)
         Me.TxtContraseña.Name = "TxtContraseña"
         Me.TxtContraseña.Size = New System.Drawing.Size(221, 35)
-        Me.TxtContraseña.TabIndex = 3
+        Me.TxtContraseña.TabIndex = 2
         Me.TxtContraseña.UseSystemPasswordChar = True
         '
         'LkLblRegistraUsuario
@@ -100,6 +90,16 @@ Partial Class FrmInicioSesion
         Me.LkLblRegistraUsuario.TabIndex = 4
         Me.LkLblRegistraUsuario.TabStop = True
         Me.LkLblRegistraUsuario.Text = "Crear un nuevo usuario"
+        '
+        'PtcLogo
+        '
+        Me.PtcLogo.Image = Global.LyUserInterface.My.Resources.Resources.image
+        Me.PtcLogo.Location = New System.Drawing.Point(-1, -16)
+        Me.PtcLogo.Name = "PtcLogo"
+        Me.PtcLogo.Size = New System.Drawing.Size(386, 105)
+        Me.PtcLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PtcLogo.TabIndex = 2
+        Me.PtcLogo.TabStop = False
         '
         'FrmInicioSesion
         '

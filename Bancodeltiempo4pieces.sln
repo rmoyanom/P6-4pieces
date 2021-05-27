@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyDataAcces", "LyDataAcces\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDataAccesConsole", "TestDataAccesConsole\TestDataAccesConsole.csproj", "{9873D35A-6AB8-4DCC-8051-905D2FCD8BCE}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LyUserInterface", "LyUserInterface\LyUserInterface.vbproj", "{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9873D35A-6AB8-4DCC-8051-905D2FCD8BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9873D35A-6AB8-4DCC-8051-905D2FCD8BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9873D35A-6AB8-4DCC-8051-905D2FCD8BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

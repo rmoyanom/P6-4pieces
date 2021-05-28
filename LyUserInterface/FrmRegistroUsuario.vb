@@ -1,7 +1,9 @@
 ﻿Imports LyBussinesModel
 Imports LyDataAcces
 Public Class FrmRegistroUsuario
-
+    Private Sub FrmRegistroUsuario_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        FrmInicioSesion.Show()
+    End Sub
     Private Sub BtnRegistrarUsuario_Click(sender As Object, e As EventArgs) Handles BtnRegistrar.Click
 
         Dim nuevoUsuario = New DTO.DTOUsuario(

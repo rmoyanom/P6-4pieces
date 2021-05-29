@@ -15,5 +15,16 @@ namespace LyBussinesModel.DTO
         {
             idCategoria = id;
         }
+
+        public DTOCategoria(string nombre)
+        {
+            this.nombre = nombre;
+        }
+
+        public DTOCategoria(int idCategoria, string nombre)
+        {
+            this.idCategoria = idCategoria;
+            this.nombre = nombre;
+        }
     }
 }

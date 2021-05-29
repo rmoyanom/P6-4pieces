@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LyBussinesModel;
+using LyBussinesModel.DTO;
 
 namespace LyDataAcces.DAO
 {
@@ -34,13 +35,15 @@ namespace LyDataAcces.DAO
             {
                 using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
-                    
-                    ORM.Servicios nuevoServicio = new ORM.Servicios();
-                    nuevoServicio.idCreador = datos.idCreador;
-                    nuevoServicio.titulo = datos.titulo;
-                    nuevoServicio.descripcion = datos.descripcion;
-                    nuevoServicio.fechaCreacion = DateTime.Now;
-                    nuevoServicio.finalizado = false;
+
+                    ORM.Servicios nuevoServicio = new ORM.Servicios
+                    {
+                        idCreador = datos.idCreador,
+                        titulo = datos.titulo,
+                        descripcion = datos.descripcion,
+                        fechaCreacion = DateTime.Now,
+                        finalizado = false
+                    };
                     db.Servicios.Add(nuevoServicio);
                     db.SaveChanges();
                     return true;
@@ -71,7 +74,7 @@ namespace LyDataAcces.DAO
 
                     if(queryServicios.Count() > 0)
                     {
-                        return peticionListado(queryServicios.ToList());
+                        return PeticionListado(queryServicios.ToList());
 
                     }else {
                         return null; 
@@ -86,6 +89,8 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+
+
 
         //Listar N servicios (sólo activos)
         /// <summary>
@@ -111,7 +116,7 @@ namespace LyDataAcces.DAO
                         int page = p == null || p < 0 ? 0 : (int) p - 1;
                         var queryResult = page == 0 ? queryServicios.Take(n).ToList() : queryServicios.Skip(n * page).Take(n).ToList();
 
-                        return peticionListado(queryResult);
+                        return PeticionListado(queryResult);
                     }
                     else { return null; }
 
@@ -141,7 +146,7 @@ namespace LyDataAcces.DAO
 
                     if (queryServicios.Count() > 0)
                     {
-                        return peticionListado(queryServicios.ToList());
+                        return PeticionListado(queryServicios.ToList());
                     }
                     else { return null; }
 
@@ -155,12 +160,50 @@ namespace LyDataAcces.DAO
             }
         }
 
+        public DTOServiciosDetalles GetServiciosDetalles(int idServicio)
+        {
+            try
+            {
+                List<Servicio> allServicios = new List<Servicio>();
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    DTOServiciosDetalles resultados = null;
+
+                    var queryServicios = from b in db.Servicios where b.id == idServicio select b;
+
+                    if (queryServicios.Count() > 0)
+                    {
+                        ORM.Servicios sv = queryServicios.FirstOrDefault();
+                        resultados = new DTOServiciosDetalles
+                        {
+                            Id = sv.id,
+                            Titulo = sv.titulo,
+                            Descripcion = sv.descripcion
+                        };
+
+
+                        return resultados;
+                    }else{ 
+                        return null; 
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+        }
+
+
         /// <summary>
         /// Método para realizar la petición del listado que se repite en los métodos para listar todos o listar de user
         /// </summary>
         /// <param name="queryServicios"></param>
         /// <returns></returns>
-        internal List<Servicio> peticionListado(List<ORM.Servicios> queryResult)
+        private List<Servicio> PeticionListado(List<ORM.Servicios> queryResult)
         {
             List<Servicio> allServicios = new List<Servicio>();
             DaoUsuario _DaoUsuario = new DaoUsuario();
@@ -201,6 +244,9 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+       
+        
+        
         //Modificar un servicio
         //Dar de baja un servicio (Finalizar)
     }

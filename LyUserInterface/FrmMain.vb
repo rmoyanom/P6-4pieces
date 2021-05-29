@@ -36,7 +36,7 @@
         Dim dao As New LyDataAcces.DAO.DaoServicios
         Dim listaServicios As List(Of LyBussinesModel.Servicio)
         listaServicios = dao.ListadoServicios()
-        If Not listaServicios Is Nothing Then
+        If listaServicios IsNot Nothing Then
             If listaServicios.Count > 0 Then
                 UcListaAnuncios.ConstruirDatos(listaServicios)
             End If
@@ -44,6 +44,8 @@
     End Sub
 
     Private Sub VisualizarServicio(id As Integer) Handles UcListaAnuncios.OnClickButton
-        MsgBox(id.ToString)
+
     End Sub
+
+
 End Class

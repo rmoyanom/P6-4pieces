@@ -129,6 +129,12 @@
     <Compile Include="FrmServicios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmVisualizarAnuncio.Designer.vb">
+      <DependentUpon>FrmVisualizarAnuncio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVisualizarAnuncio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -172,6 +178,9 @@
     <EmbeddedResource Include="FrmServicios.resx">
       <DependentUpon>FrmServicios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmVisualizarAnuncio.resx">
+      <DependentUpon>FrmVisualizarAnuncio.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -204,6 +213,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajustes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servicios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publicaciones.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

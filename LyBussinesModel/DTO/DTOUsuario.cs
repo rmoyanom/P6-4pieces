@@ -15,6 +15,7 @@ namespace LyBussinesModel.DTO
         public String Telefono;
         public String Correo;
         public String HasContraseña;
+        public int HorasAcumuladas;
         public List<DTOCategoria> Categorias;
 
         public DTOUsuario()
@@ -26,23 +27,44 @@ namespace LyBussinesModel.DTO
             this.id = id;
         }
 
-        public DTOUsuario(String nombreUsuario, String nombre,String apellidos,String telefono,String correo,String hasContraseña)
+
+        public DTOUsuario(String nombreUsuario, String nombre, String apellidos, String telefono, String correo)
         {
             this.NombreUsuario = nombreUsuario;
             this.Nombre = nombre;
             this.Apellidos = apellidos;
             this.Telefono = telefono;
             this.Correo = correo;
-            this.HasContraseña = hasContraseña;
         }
 
-        public DTOUsuario(String nombreUsuario, String nombre, String apellidos, String telefono, String correo, String hasContraseña,List<DTOCategoria> categorias)
+        public DTOUsuario(String nombreUsuario,
+            String nombre,
+            String apellidos,
+            String telefono,
+            String correo,
+            String hasContraseña) : this(nombreUsuario, nombre, apellidos, telefono, correo)
         {
-            this.NombreUsuario = nombreUsuario;
-            this.Nombre = nombre;
-            this.Apellidos = apellidos;
-            this.Telefono = telefono;
-            this.Correo = correo;
+            this.HasContraseña = hasContraseña;
+        }
+        public DTOUsuario(String nombreUsuario, 
+            String nombre,
+            String apellidos,
+            String telefono,
+            String correo,
+            int horasAcumulaas) : this(nombreUsuario, nombre, apellidos, telefono, correo)
+        {
+            this.HorasAcumuladas = horasAcumulaas;
+        }
+
+        public DTOUsuario(String nombreUsuario, 
+            String nombre, 
+            String apellidos, 
+            String telefono, 
+            String correo, 
+            String hasContraseña,
+            List<DTOCategoria> categorias) : this(nombreUsuario, nombre, apellidos, telefono, correo, hasContraseña)
+        {
+            
             this.HasContraseña = hasContraseña;
             this.Categorias = categorias;
         }

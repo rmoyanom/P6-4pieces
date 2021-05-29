@@ -22,7 +22,22 @@ LyUserInterface
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="P:LyUserInterface.My.Resources.Resources.ajustes">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:LyUserInterface.My.Resources.Resources.image">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.publicaciones">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.servicios">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

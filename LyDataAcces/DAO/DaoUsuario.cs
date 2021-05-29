@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LyBussinesModel;
+using LyBussinesModel.DTO;
 
 namespace LyDataAcces.DAO
 {
-    public class DaoUsuario:IDao
+    public class DaoUsuario : IDao
     {
 
         private Exception _Errores;
@@ -96,7 +97,9 @@ namespace LyDataAcces.DAO
                     if (!(query.Count() > 0))
                     {
                         return -1;
-                    }else{
+                    }
+                    else
+                    {
                         return query.First();
                     }
                 }
@@ -119,7 +122,7 @@ namespace LyDataAcces.DAO
         {
             try
             {
-                if(!(editedUser.id > 0))
+                if (!(editedUser.id > 0))
                 {
                     throw new Exception("No se ha proporcinado un id valido para modificar");
                 }
@@ -135,7 +138,7 @@ namespace LyDataAcces.DAO
                         _Errores = new Exception("El usuario no existe");
                         return false;
                     }
-                        
+
 
 
                     ORM.Usuarios usuarioBD = query.First();
@@ -191,7 +194,8 @@ namespace LyDataAcces.DAO
         /// Consultar todos los usuarios.
         /// </summary>
         /// <returns>Devuelve una lista con todos los usuarios en el sistema</returns>
-        public List<Usuario> GetAllUsuarios() {
+        public List<Usuario> GetAllUsuarios()
+        {
             try
             {
                 List<Usuario> allUsers = new List<Usuario>();
@@ -203,7 +207,7 @@ namespace LyDataAcces.DAO
 
 
 
-                     foreach(ORM.Usuarios dbuser in query.ToList<ORM.Usuarios>())
+                    foreach (ORM.Usuarios dbuser in query.ToList<ORM.Usuarios>())
                     {
                         Usuario user = new Usuario(dbuser.id,
                                               dbuser.nombreUsuario,
@@ -243,7 +247,7 @@ namespace LyDataAcces.DAO
         public Usuario GetPerfilUsuario(int idUsuario)
         {
 
-            if(idUsuario <= 0)
+            if (idUsuario <= 0)
             {
                 _Errores = new Exception("Error de id introducida");
                 return null;
@@ -260,12 +264,14 @@ namespace LyDataAcces.DAO
                                 where b.id == idUsuario
                                 select b;
 
- 
+
                     if (!(query.Count() > 0))
                     {
                         _Errores = new Exception("No se ha encontrado al usuario");
                         return null;
-                    }else{
+                    }
+                    else
+                    {
                         userEncontrado = (ORM.Usuarios)query.First();
 
                         if (userEncontrado != null)
@@ -281,12 +287,14 @@ namespace LyDataAcces.DAO
 
                             //Recogida de las categorias
                             perfil.Categorias = new List<Categoria>();
-                            foreach(ORM.Categorias categoria in userEncontrado.Categorias)
+                            foreach (ORM.Categorias categoria in userEncontrado.Categorias)
                             {
                                 perfil.Categorias.Add(new Categoria(categoria.id, categoria.nombre));
                             }
                             return perfil;
-                        }else{
+                        }
+                        else
+                        {
                             return null;
                         }
                     }
@@ -300,6 +308,68 @@ namespace LyDataAcces.DAO
             }
 
         }
-        
+
+        public DTOUsuario GetDetellaUsuario(int idUsuario)
+        {
+
+            if (idUsuario <= 0)
+            {
+                _Errores = new Exception("Error de id introducida");
+                return null;
+            }
+
+            DTOUsuario perfil = new DTOUsuario();
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    ORM.Usuarios userEncontrado;
+                    //Se realiza una busqueda del nombre en BD
+                    var query = from b in db.Usuarios
+                                where b.id == idUsuario
+                                select b;
+
+
+                    if (!(query.Count() > 0))
+                    {
+                        _Errores = new Exception("No se ha encontrado al usuario");
+                        return null;
+                    }
+                    else
+                    {
+                        userEncontrado = (ORM.Usuarios)query.First();
+
+                        if (userEncontrado != null)
+                        {
+
+                            perfil = new DTOUsuario(userEncontrado.nombreUsuario,
+                                                userEncontrado.nombre,
+                                                userEncontrado.apellidos,
+                                                userEncontrado.telefono,
+                                                userEncontrado.correo,
+                                                (int)userEncontrado.tiempoAcumulado);
+
+                            //Recogida de las categorias
+                            perfil.Categorias = new List<DTOCategoria>();
+                            foreach (ORM.Categorias categoria in userEncontrado.Categorias)
+                            {
+                                perfil.Categorias.Add(new DTOCategoria(categoria.id, categoria.nombre));
+                            }
+                            return perfil;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace LyDataAcces.DAO
             set => _Errores = value;
         }
 
-
+        public String getError() { return _Errores.Message; }
         /// <summary>
         /// Registra un usuario en la base de datos
         /// </summary>

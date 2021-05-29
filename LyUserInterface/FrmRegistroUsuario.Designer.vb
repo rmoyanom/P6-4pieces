@@ -22,7 +22,6 @@ Partial Class FrmRegistroUsuario
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmRegistroUsuario))
         Me.LblTitulo = New System.Windows.Forms.Label()
         Me.LblNombreUsuario = New System.Windows.Forms.Label()
         Me.TxtNombreUsuario = New System.Windows.Forms.TextBox()
@@ -177,9 +176,8 @@ Partial Class FrmRegistroUsuario
         Me.LblError.ForeColor = System.Drawing.Color.Red
         Me.LblError.Location = New System.Drawing.Point(20, 300)
         Me.LblError.Name = "LblError"
-        Me.LblError.Size = New System.Drawing.Size(232, 20)
+        Me.LblError.Size = New System.Drawing.Size(0, 20)
         Me.LblError.TabIndex = 14
-        Me.LblError.Text = ""
         '
         'BtnCancelar
         '
@@ -228,7 +226,6 @@ Partial Class FrmRegistroUsuario
         Me.Controls.Add(Me.BtnRegistrar)
         Me.Name = "FrmRegistroUsuario"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Icon = CType(Resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Text = "FrmRegistroUsuario"
         Me.ResumeLayout(False)
         Me.PerformLayout()

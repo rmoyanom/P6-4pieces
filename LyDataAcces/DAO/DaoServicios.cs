@@ -173,14 +173,53 @@ namespace LyDataAcces.DAO
 
                     if (queryServicios.Count() > 0)
                     {
+
+                        DaoUsuario daoUser = new DaoUsuario();
+                        DTOUsuario creador = null;
+
+                        int idCreador = -1;
+
                         ORM.Servicios sv = queryServicios.FirstOrDefault();
+                        if(sv.idCreador != null)
+                        {
+                            idCreador = (int)sv.idCreador;
+                            creador = daoUser.GetDetellaUsuario(idCreador);
+                        }
+                        
+                        int cantidadServicios = 0;
+                        if(sv.Candidatura != null && sv.Candidatura.Count() > 0)
+                        {
+                            sv.Candidatura.Count();
+                            //TODO si tiene candidaturas, se recorren las que esten con estado finalizada y se obtiene
+                            //La puntuación para realizar media
+
+                        }
+                        
                         resultados = new DTOServiciosDetalles
                         {
-                            Id = sv.id,
+                            id = sv.id,
                             Titulo = sv.titulo,
-                            Descripcion = sv.descripcion
+                            Descripcion = sv.descripcion,
+                            CantidadSolicitudes = cantidadServicios,
+                            FechaDeInicio = sv.fechaCreacion,
+
                         };
 
+                        if(idCreador > 0)
+                        {
+                            resultados.Creador = creador;
+                        }
+
+                        resultados.Categorias = new List<DTOCategoria>();
+
+                        if(sv.Categorias != null  && sv.Categorias.Count() > 0)
+                        {
+                            foreach (ORM.Categorias categoria in sv.Categorias)
+                            {
+                                resultados.Categorias.Add(new DTOCategoria(categoria.id, categoria.nombre));
+                            }
+
+                        }
 
                         return resultados;
                     }else{ 
@@ -223,13 +262,15 @@ namespace LyDataAcces.DAO
                                                             dbservicios.id,
                                                             user,
                                                             (bool)dbservicios.finalizado
-                                                    );
-                    
+                                                    )
+                    {
 
-                    //Recogida de las categorias
-                   
-                    //* # Categorias no tiene el método correcto para devolver el listado de categorias de un servicio.
-                    servicio.Categorias = new List<Categoria>();
+
+                        //Recogida de las categorias
+
+                        //* # Categorias no tiene el método correcto para devolver el listado de categorias de un servicio.
+                        Categorias = new List<Categoria>()
+                    };
                     _DaoCategoria.LoadCategoriaServicio(servicio);
 
                     allServicios.Add(servicio);

@@ -24,20 +24,20 @@ Partial Class FrmMain
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.BtnMiCuenta = New System.Windows.Forms.Button()
+        Me.BtnMiServicios = New System.Windows.Forms.Button()
+        Me.BtnMisAnuncios = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PtcLogo = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.UcListaAnuncios = New LyUserInterface.UcListaAnuncios()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.BtnMiCuenta = New System.Windows.Forms.Button()
-        Me.BtnMiServicios = New System.Windows.Forms.Button()
-        Me.BtnMisAnuncios = New System.Windows.Forms.Button()
-        Me.PtcLogo = New System.Windows.Forms.PictureBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -64,6 +64,45 @@ Partial Class FrmMain
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 495)
         Me.TableLayoutPanel1.TabIndex = 0
         '
+        'BtnMiCuenta
+        '
+        Me.BtnMiCuenta.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnMiCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnMiCuenta.Image = Global.LyUserInterface.My.Resources.Resources.ajustes
+        Me.BtnMiCuenta.Location = New System.Drawing.Point(3, 96)
+        Me.BtnMiCuenta.Name = "BtnMiCuenta"
+        Me.BtnMiCuenta.Size = New System.Drawing.Size(214, 122)
+        Me.BtnMiCuenta.TabIndex = 0
+        Me.BtnMiCuenta.Text = "Mi Cuenta"
+        Me.BtnMiCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.BtnMiCuenta.UseVisualStyleBackColor = True
+        '
+        'BtnMiServicios
+        '
+        Me.BtnMiServicios.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnMiServicios.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnMiServicios.Image = Global.LyUserInterface.My.Resources.Resources.servicios
+        Me.BtnMiServicios.Location = New System.Drawing.Point(3, 224)
+        Me.BtnMiServicios.Name = "BtnMiServicios"
+        Me.BtnMiServicios.Size = New System.Drawing.Size(214, 124)
+        Me.BtnMiServicios.TabIndex = 1
+        Me.BtnMiServicios.Text = "Mis Servicios"
+        Me.BtnMiServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.BtnMiServicios.UseVisualStyleBackColor = True
+        '
+        'BtnMisAnuncios
+        '
+        Me.BtnMisAnuncios.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnMisAnuncios.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnMisAnuncios.Image = Global.LyUserInterface.My.Resources.Resources.publicaciones
+        Me.BtnMisAnuncios.Location = New System.Drawing.Point(3, 354)
+        Me.BtnMisAnuncios.Name = "BtnMisAnuncios"
+        Me.BtnMisAnuncios.Size = New System.Drawing.Size(214, 116)
+        Me.BtnMisAnuncios.TabIndex = 2
+        Me.BtnMisAnuncios.Text = "Mis Anuncios"
+        Me.BtnMisAnuncios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.BtnMisAnuncios.UseVisualStyleBackColor = True
+        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Azure
@@ -74,6 +113,17 @@ Partial Class FrmMain
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(220, 93)
         Me.Panel2.TabIndex = 5
+        '
+        'PtcLogo
+        '
+        Me.PtcLogo.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PtcLogo.Image = Global.LyUserInterface.My.Resources.Resources.image
+        Me.PtcLogo.Location = New System.Drawing.Point(0, 0)
+        Me.PtcLogo.Name = "PtcLogo"
+        Me.PtcLogo.Size = New System.Drawing.Size(220, 93)
+        Me.PtcLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PtcLogo.TabIndex = 3
+        Me.PtcLogo.TabStop = False
         '
         'Panel3
         '
@@ -128,56 +178,6 @@ Partial Class FrmMain
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Tablón de anuncios"
         '
-        'BtnMiCuenta
-        '
-        Me.BtnMiCuenta.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BtnMiCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnMiCuenta.Image = Global.LyUserInterface.My.Resources.Resources.ajustes
-        Me.BtnMiCuenta.Location = New System.Drawing.Point(3, 96)
-        Me.BtnMiCuenta.Name = "BtnMiCuenta"
-        Me.BtnMiCuenta.Size = New System.Drawing.Size(214, 122)
-        Me.BtnMiCuenta.TabIndex = 0
-        Me.BtnMiCuenta.Text = "Mi Cuenta"
-        Me.BtnMiCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.BtnMiCuenta.UseVisualStyleBackColor = True
-        '
-        'BtnMiServicios
-        '
-        Me.BtnMiServicios.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BtnMiServicios.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnMiServicios.Image = Global.LyUserInterface.My.Resources.Resources.servicios
-        Me.BtnMiServicios.Location = New System.Drawing.Point(3, 224)
-        Me.BtnMiServicios.Name = "BtnMiServicios"
-        Me.BtnMiServicios.Size = New System.Drawing.Size(214, 124)
-        Me.BtnMiServicios.TabIndex = 1
-        Me.BtnMiServicios.Text = "Mis Servicios"
-        Me.BtnMiServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.BtnMiServicios.UseVisualStyleBackColor = True
-        '
-        'BtnMisAnuncios
-        '
-        Me.BtnMisAnuncios.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BtnMisAnuncios.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnMisAnuncios.Image = Global.LyUserInterface.My.Resources.Resources.publicaciones
-        Me.BtnMisAnuncios.Location = New System.Drawing.Point(3, 354)
-        Me.BtnMisAnuncios.Name = "BtnMisAnuncios"
-        Me.BtnMisAnuncios.Size = New System.Drawing.Size(214, 116)
-        Me.BtnMisAnuncios.TabIndex = 2
-        Me.BtnMisAnuncios.Text = "Mis Anuncios"
-        Me.BtnMisAnuncios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.BtnMisAnuncios.UseVisualStyleBackColor = True
-        '
-        'PtcLogo
-        '
-        Me.PtcLogo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PtcLogo.Image = Global.LyUserInterface.My.Resources.Resources.image
-        Me.PtcLogo.Location = New System.Drawing.Point(0, 0)
-        Me.PtcLogo.Name = "PtcLogo"
-        Me.PtcLogo.Size = New System.Drawing.Size(220, 93)
-        Me.PtcLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PtcLogo.TabIndex = 3
-        Me.PtcLogo.TabStop = False
-        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -193,9 +193,9 @@ Partial Class FrmMain
         Me.Text = "Banco del tiempo"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
+        CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

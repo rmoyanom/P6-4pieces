@@ -223,5 +223,8 @@
   <ItemGroup>
     <None Include="Resources\publicaciones.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

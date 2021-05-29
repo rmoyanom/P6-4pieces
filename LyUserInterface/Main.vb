@@ -90,13 +90,11 @@ Module Main
         _MensajeError = mensaje
 
         Dim readError As Exception = dao.Errores
-        If Not readError Is Nothing Then
+        If readError IsNot Nothing Then
             _MensajeError = readError.Message.ToString
         End If
 
     End Sub
-
-
 
 #End Region
 End Module

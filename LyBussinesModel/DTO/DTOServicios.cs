@@ -19,6 +19,7 @@ namespace LyBussinesModel.DTO
         {
 
         }
+
         public DTOServicios(int id)
         {
             this.id = id;

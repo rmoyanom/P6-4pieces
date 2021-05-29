@@ -24,7 +24,7 @@ Public Class FrmRegistroUsuario
             Me.Hide()
 
         Else
-            LblError.Text = daoUsuario.getError()
+            LblError.Text = DirectCast(daoUsuario, LyDataAcces.DAO.IDao).Errores.Message
             MsgBox("Error producido: " + LblError.Text, MsgBoxStyle.Critical, "Error registrando usuario")
 
         End If
@@ -34,4 +34,7 @@ Public Class FrmRegistroUsuario
         Me.Hide()
     End Sub
 
+    Private Sub FrmRegistroUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

@@ -24,7 +24,7 @@ namespace LyDataAcces.DAO
             set => _Errores = value;
         }
 
-        public String getError() { return _Errores.Message; }
+       
         /// <summary>
         /// Registra un usuario en la base de datos
         /// </summary>
@@ -53,13 +53,15 @@ namespace LyDataAcces.DAO
                         return false;
                     }
 
-                    ORM.Usuarios nuevoUsuario = new ORM.Usuarios();
-                    nuevoUsuario.nombreUsuario = datos.NombreUsuario;
-                    nuevoUsuario.nombre = datos.Nombre;
-                    nuevoUsuario.apellidos = datos.Apellidos;
-                    nuevoUsuario.correo = datos.Correo;
-                    nuevoUsuario.telefono = datos.Telefono;
-                    nuevoUsuario.hasPassword = datos.HasContraseña;
+                    ORM.Usuarios nuevoUsuario = new ORM.Usuarios
+                    {
+                        nombreUsuario = datos.NombreUsuario,
+                        nombre = datos.Nombre,
+                        apellidos = datos.Apellidos,
+                        correo = datos.Correo,
+                        telefono = datos.Telefono,
+                        hasPassword = datos.HasContraseña
+                    };
                     db.Usuarios.Add(nuevoUsuario);
                     db.SaveChanges();
                     return true;
@@ -87,7 +89,6 @@ namespace LyDataAcces.DAO
                 using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
                     String hash = Usuario.CreateHash(usuario, password);
-                    ORM.Usuarios userEncontrado;
                     //Se realiza una busqueda del nombre en BD
                     var query = from b in db.Usuarios
                                 where b.hasPassword == hash
@@ -345,13 +346,20 @@ namespace LyDataAcces.DAO
 
                         if (userEncontrado != null)
                         {
+                            int tiempoAcumulado = 0;
+
+
+                            if(userEncontrado.tiempoAcumulado != null)
+                            {
+                                tiempoAcumulado = (int)userEncontrado.tiempoAcumulado;
+                            }
 
                             perfil = new DTOUsuario(userEncontrado.nombreUsuario,
                                                 userEncontrado.nombre,
                                                 userEncontrado.apellidos,
                                                 userEncontrado.telefono,
                                                 userEncontrado.correo,
-                                                (int)userEncontrado.tiempoAcumulado)
+                                                (int)tiempoAcumulado)
                             {
 
                                 //Recogida de las categorias

@@ -44,8 +44,8 @@
     End Sub
 
     Private Sub VisualizarServicio(id As Integer) Handles UcListaAnuncios.OnClickButton
-
+        FrmVisualizarAnuncio.CargarAnuncio(id)
+        FrmVisualizarAnuncio.ShowDialog()
     End Sub
-
 
 End Class

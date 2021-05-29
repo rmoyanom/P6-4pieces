@@ -8,9 +8,7 @@ Public Class UcListaAnuncios
         Dim count As Integer = 0
         PnPrincipal.Controls.Clear()
 
-
-
-        If Not items Is Nothing Then
+        If items IsNot Nothing Then
             For Each elemento As LyBussinesModel.Servicio In items
                 Dim nuevoPanel As New Panel
                 Dim posicion As Point = PnDefault.Location

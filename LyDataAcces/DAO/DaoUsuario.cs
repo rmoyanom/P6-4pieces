@@ -215,9 +215,11 @@ namespace LyDataAcces.DAO
                                               dbuser.apellidos,
                                               dbuser.tiempoAcumulado,
                                               dbuser.telefono,
-                                              dbuser.correo);
-                        //Recogida de las categorias
-                        user.Categorias = new List<Categoria>();
+                                              dbuser.correo)
+                        {
+                            //Recogida de las categorias
+                            Categorias = new List<Categoria>()
+                        };
                         foreach (ORM.Categorias categoria in dbuser.Categorias)
                         {
                             user.Categorias.Add(new Categoria(categoria.id, categoria.nombre));
@@ -283,10 +285,12 @@ namespace LyDataAcces.DAO
                                                 userEncontrado.apellidos,
                                                 userEncontrado.tiempoAcumulado,
                                                 userEncontrado.telefono,
-                                                userEncontrado.correo);
+                                                userEncontrado.correo)
+                            {
 
-                            //Recogida de las categorias
-                            perfil.Categorias = new List<Categoria>();
+                                //Recogida de las categorias
+                                Categorias = new List<Categoria>()
+                            };
                             foreach (ORM.Categorias categoria in userEncontrado.Categorias)
                             {
                                 perfil.Categorias.Add(new Categoria(categoria.id, categoria.nombre));
@@ -347,10 +351,12 @@ namespace LyDataAcces.DAO
                                                 userEncontrado.apellidos,
                                                 userEncontrado.telefono,
                                                 userEncontrado.correo,
-                                                (int)userEncontrado.tiempoAcumulado);
+                                                (int)userEncontrado.tiempoAcumulado)
+                            {
 
-                            //Recogida de las categorias
-                            perfil.Categorias = new List<DTOCategoria>();
+                                //Recogida de las categorias
+                                Categorias = new List<DTOCategoria>()
+                            };
                             foreach (ORM.Categorias categoria in userEncontrado.Categorias)
                             {
                                 perfil.Categorias.Add(new DTOCategoria(categoria.id, categoria.nombre));

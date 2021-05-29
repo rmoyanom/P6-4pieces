@@ -164,7 +164,7 @@ namespace LyDataAcces.DAO
         {
             try
             {
-                List<Servicio> allServicios = new List<Servicio>();
+       
                 using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
                     DTOServiciosDetalles resultados = null;

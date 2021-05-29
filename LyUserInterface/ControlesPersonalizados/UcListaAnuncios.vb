@@ -131,4 +131,6 @@ Public Class UcListaAnuncios
     Private Sub BtnDefaultVisualizar_Click(sender As Object, e As EventArgs)
         RaiseEvent OnClickButton(DirectCast(sender, Button).Tag)
     End Sub
+
+
 End Class

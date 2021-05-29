@@ -172,6 +172,9 @@
     <EmbeddedResource Include="FrmMisAnuncios.resx">
       <DependentUpon>FrmMisAnuncios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegistroUsuario.es.resx">
+      <DependentUpon>FrmRegistroUsuario.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistroUsuario.resx">
       <DependentUpon>FrmRegistroUsuario.vb</DependentUpon>
     </EmbeddedResource>

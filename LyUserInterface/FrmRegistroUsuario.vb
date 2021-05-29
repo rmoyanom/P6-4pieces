@@ -1,8 +1,20 @@
-﻿Imports LyBussinesModel
+﻿Imports System.Text.RegularExpressions
+Imports LyBussinesModel
 Imports LyDataAcces
 Public Class FrmRegistroUsuario
     Private Sub FrmRegistroUsuario_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
         FrmInicioSesion.Show()
+    End Sub
+
+    Private Sub TxtNombreUsuario_TextChanged(sender As Object, e As EventArgs) Handles TxtNombreUsuario.TextChanged
+        'Expresión regular, solo se permite texto.
+        If Regex.IsMatch(TxtNombreUsuario.Text, "^[a-zA-Z ]*$") Then
+            BtnRegistrar.Enabled = True
+            LblError.Text = ""
+        Else
+            BtnRegistrar.Enabled = False
+            LblError.Text = "Nombre de usuario no válido"
+        End If
     End Sub
     Private Sub BtnRegistrarUsuario_Click(sender As Object, e As EventArgs) Handles BtnRegistrar.Click
 
@@ -24,7 +36,7 @@ Public Class FrmRegistroUsuario
             Me.Hide()
 
         Else
-            LblError.Text = daoUsuario.getError()
+            LblError.Text = DirectCast(daoUsuario, DAO.IDao).Errores.Message
             MsgBox("Error producido: " + LblError.Text, MsgBoxStyle.Critical, "Error registrando usuario")
 
         End If

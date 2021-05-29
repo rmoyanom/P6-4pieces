@@ -3,6 +3,8 @@
 Module Main
     Private _MensajeError As String
 
+
+
     Public ReadOnly Property MensajeError As String
         Get
             Dim aux As String = _MensajeError
@@ -84,8 +86,6 @@ Module Main
         End If
 
     End Function
-
-
     Private Sub PrepararMesajeError(mensaje As String, dao As LyDataAcces.DAO.IDao)
         _MensajeError = mensaje
 
@@ -95,5 +95,8 @@ Module Main
         End If
 
     End Sub
+
+
+
 #End Region
 End Module

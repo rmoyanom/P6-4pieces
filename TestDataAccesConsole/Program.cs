@@ -71,12 +71,12 @@ namespace TestDataAccesConsole
 
             
 
-            resultados = _DaoUsuario.RegistrarUsuario( new LyBussinesModel.DTO.DTOUsuario("Usuario2",
-                                                                                            "nuevoUser", 
-                                                                                            "prueba", 
-                                                                                            "123456789", 
+            resultados = _DaoUsuario.RegistrarUsuario( new LyBussinesModel.DTO.DTOUsuario("prueba",
+                                                                                            "prueba",
+                                                                                            "prueba",
+                                                                                            "aprueba", 
                                                                                             "correofalso@falso.com", 
-                                                                                            Usuario.CreateHash("Usuario2","1234")));
+                                                                                            Usuario.CreateHash("a","a")));
 
             VerificarOperacion("RegistroUsuario",resultados, _DaoUsuario);
 

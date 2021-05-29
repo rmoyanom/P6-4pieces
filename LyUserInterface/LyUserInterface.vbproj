@@ -80,6 +80,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlesPersonalizados\UcListaAnuncios.Designer.vb">
+      <DependentUpon>UcListaAnuncios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\UcListaAnuncios.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FrmInicioSesion.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ControlesPersonalizados\UcListaAnuncios.resx">
+      <DependentUpon>UcListaAnuncios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInicioSesion.resx">
       <DependentUpon>FrmInicioSesion.vb</DependentUpon>
     </EmbeddedResource>

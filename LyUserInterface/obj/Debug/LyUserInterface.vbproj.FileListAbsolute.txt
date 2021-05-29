@@ -26,3 +26,4 @@ C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmRegistroUsuario.resources
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.UcListaAnuncios.resources

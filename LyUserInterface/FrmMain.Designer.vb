@@ -30,10 +30,10 @@ Partial Class FrmMain
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PtcLogo = New System.Windows.Forms.PictureBox()
-        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.UcListaAnuncios = New LyUserInterface.UcListaAnuncios()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -118,8 +118,8 @@ Partial Class FrmMain
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.LightGray
+        Me.Panel1.Controls.Add(Me.UcListaAnuncios)
         Me.Panel1.Controls.Add(Me.Panel4)
-        Me.Panel1.Controls.Add(Me.TableLayoutPanel2)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(220, 0)
@@ -127,22 +127,14 @@ Partial Class FrmMain
         Me.Panel1.Size = New System.Drawing.Size(564, 495)
         Me.Panel1.TabIndex = 1
         '
-        'TableLayoutPanel2
+        'Panel4
         '
-        Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.BackColor = System.Drawing.Color.Silver
-        Me.TableLayoutPanel2.ColumnCount = 2
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.29749!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.70251!))
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 87)
-        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 2
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.46789!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.53211!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(558, 384)
-        Me.TableLayoutPanel2.TabIndex = 1
+        Me.Panel4.BackColor = System.Drawing.Color.Azure
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel4.Location = New System.Drawing.Point(0, 474)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(564, 21)
+        Me.Panel4.TabIndex = 2
         '
         'Label1
         '
@@ -165,14 +157,17 @@ Partial Class FrmMain
         Me.PtcLogo.TabIndex = 3
         Me.PtcLogo.TabStop = False
         '
-        'Panel4
+        'UcListaAnuncios
         '
-        Me.Panel4.BackColor = System.Drawing.Color.Azure
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel4.Location = New System.Drawing.Point(0, 474)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(564, 21)
-        Me.Panel4.TabIndex = 2
+        Me.UcListaAnuncios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcListaAnuncios.AutoScroll = True
+        Me.UcListaAnuncios.BackColor = System.Drawing.Color.Khaki
+        Me.UcListaAnuncios.Location = New System.Drawing.Point(3, 92)
+        Me.UcListaAnuncios.Name = "UcListaAnuncios"
+        Me.UcListaAnuncios.Size = New System.Drawing.Size(558, 376)
+        Me.UcListaAnuncios.TabIndex = 3
         '
         'FrmMain
         '
@@ -203,8 +198,8 @@ Partial Class FrmMain
     Friend WithEvents BtnMisAnuncios As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents Label1 As Label
     Friend WithEvents PtcLogo As PictureBox
     Friend WithEvents Panel4 As Panel
+    Friend WithEvents UcListaAnuncios As UcListaAnuncios
 End Class

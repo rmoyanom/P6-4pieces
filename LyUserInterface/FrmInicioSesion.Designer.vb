@@ -45,6 +45,7 @@ Partial Class FrmInicioSesion
         '
         'BtnIniciarSesion
         '
+        Me.BtnIniciarSesion.Enabled = False
         Me.BtnIniciarSesion.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnIniciarSesion.Location = New System.Drawing.Point(12, 214)
         Me.BtnIniciarSesion.Name = "BtnIniciarSesion"

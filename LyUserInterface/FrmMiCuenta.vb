@@ -1,4 +1,5 @@
 ﻿Public Class FrmMiCuenta
+
     Private Sub IniciarVentana_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Main.AbribVentana(Me)
     End Sub

@@ -11,9 +11,16 @@
             Return
         End If
 #End If
-
+        Main.ObtenerEstadoFormulario(Me)
         LoadServicios()
     End Sub
+
+    Private Sub BtnMiCuenta_VisibleChanged(sender As Object, e As EventArgs) Handles BtnMiCuenta.VisibleChanged
+        If Me.Visible = True Then
+            Main.AbribVentana(Me)
+        End If
+    End Sub
+
 
     Private Sub BtnMiCuenta_Click(sender As Object, e As EventArgs) Handles BtnMiCuenta.Click
         Main.AbrirApartado(Me, FrmMiCuenta)
@@ -32,11 +39,12 @@
         FrmInicioSesion.Show()
     End Sub
 
-    Private Sub LoadServicios()
+    Public Sub LoadServicios()
         Dim dao As New LyDataAcces.DAO.DaoServicios
-        Dim listaServicios As List(Of LyBussinesModel.Servicio)
-        listaServicios = dao.ListadoServicios()
+        Dim listaServicios As List(Of LyBussinesModel.DTO.DTOServicios)
+        listaServicios = dao.GetListServicios()
         If listaServicios IsNot Nothing Then
+
             If listaServicios.Count > 0 Then
                 UcListaAnuncios.ConstruirDatos(listaServicios)
             End If
@@ -47,5 +55,12 @@
         FrmVisualizarAnuncio.CargarAnuncio(id)
         FrmVisualizarAnuncio.ShowDialog()
     End Sub
+
+    Private Sub BtnAddAnuncio_Click(sender As Object, e As EventArgs) Handles BtnAddAnuncio.Click
+        FrmCrearAnuncio.ClearText()
+        FrmCrearAnuncio.ShowDialog()
+        LoadServicios()
+    End Sub
+
 
 End Class

@@ -23,6 +23,7 @@ Partial Class UcListaAnuncios
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PnDefault = New System.Windows.Forms.Panel()
+        Me.LblDefaultTags = New System.Windows.Forms.Label()
         Me.pnDefaultLateral = New System.Windows.Forms.Panel()
         Me.btnDefaultVisualizar = New System.Windows.Forms.Button()
         Me.lblDefaultTituloPublico = New System.Windows.Forms.Label()
@@ -32,7 +33,6 @@ Partial Class UcListaAnuncios
         Me.LblDdefaultDescripcion = New System.Windows.Forms.Label()
         Me.LbldefaultTitle = New System.Windows.Forms.Label()
         Me.PnPrincipal = New System.Windows.Forms.Panel()
-        Me.LblDefaultTags = New System.Windows.Forms.Label()
         Me.LblNoData = New System.Windows.Forms.Label()
         Me.PnDefault.SuspendLayout()
         Me.pnDefaultLateral.SuspendLayout()
@@ -53,6 +53,18 @@ Partial Class UcListaAnuncios
         Me.PnDefault.Size = New System.Drawing.Size(469, 164)
         Me.PnDefault.TabIndex = 0
         Me.PnDefault.Visible = False
+        '
+        'LblDefaultTags
+        '
+        Me.LblDefaultTags.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblDefaultTags.BackColor = System.Drawing.Color.Azure
+        Me.LblDefaultTags.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDefaultTags.Location = New System.Drawing.Point(5, 143)
+        Me.LblDefaultTags.Name = "LblDefaultTags"
+        Me.LblDefaultTags.Size = New System.Drawing.Size(306, 16)
+        Me.LblDefaultTags.TabIndex = 5
+        Me.LblDefaultTags.Text = "Label1"
         '
         'pnDefaultLateral
         '
@@ -161,18 +173,7 @@ Partial Class UcListaAnuncios
         Me.PnPrincipal.Name = "PnPrincipal"
         Me.PnPrincipal.Size = New System.Drawing.Size(496, 376)
         Me.PnPrincipal.TabIndex = 1
-        '
-        'LblDefaultTags
-        '
-        Me.LblDefaultTags.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LblDefaultTags.BackColor = System.Drawing.Color.Azure
-        Me.LblDefaultTags.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDefaultTags.Location = New System.Drawing.Point(5, 143)
-        Me.LblDefaultTags.Name = "LblDefaultTags"
-        Me.LblDefaultTags.Size = New System.Drawing.Size(306, 16)
-        Me.LblDefaultTags.TabIndex = 5
-        Me.LblDefaultTags.Text = "Label1"
+        Me.PnPrincipal.Visible = False
         '
         'LblNoData
         '
@@ -190,7 +191,7 @@ Partial Class UcListaAnuncios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Khaki
+        Me.BackColor = System.Drawing.Color.FloralWhite
         Me.Controls.Add(Me.PnDefault)
         Me.Controls.Add(Me.PnPrincipal)
         Me.Controls.Add(Me.LblNoData)

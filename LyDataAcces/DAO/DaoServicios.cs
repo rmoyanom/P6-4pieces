@@ -46,6 +46,28 @@ namespace LyDataAcces.DAO
                         fechaCreacion = DateTime.Now,
                         finalizado = false
                     };
+
+                    //Creación de las categorias
+                    if (datos.Categorias != null)
+                    {
+                        if (datos.Categorias.Count > 0)
+                        {
+                            var queryCategorias = from b in db.Categorias select b;
+
+                            ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                            //elimna todos las categorias que no esten marcadas
+                            foreach (LyBussinesModel.DTO.DTOCategoria categoria in datos.Categorias)
+                            {
+                                ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                                if (categoriaSeleccionada != null)
+                                {
+                                    nuevasCategorias.Add(categoriaSeleccionada);
+                                }
+
+                            }
+                            nuevoServicio.Categorias = nuevasCategorias;
+                        }
+                    }
                     db.Servicios.Add(nuevoServicio);
                     db.SaveChanges();
                     return true;
@@ -91,9 +113,6 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
-
-
-
         //Listar N servicios (sólo activos)
         /// <summary>
         /// Devuelve N Servicios. Si p != null devuelve N servicios a partir de la página p
@@ -130,7 +149,7 @@ namespace LyDataAcces.DAO
                 _Errores = ex;
                 return null;
             }
-        }
+        }        
         //Listar servicios de un usuario (Todos)
         /// <summary>
         /// Listado de Servicios de un usuario.
@@ -161,7 +180,162 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+        /// <summary>
+        /// Método para realizar la petición del listado que se repite en los métodos para listar todos o listar de user
+        /// </summary>
+        /// <param name="queryServicios"></param>
+        /// <returns></returns>
+        private List<Servicio> PeticionListado(List<ORM.Servicios> queryResult)
+        {
+            List<Servicio> allServicios = new List<Servicio>();
+            DaoUsuario _DaoUsuario = new DaoUsuario();
+            DaoCategoria _DaoCategoria = new DaoCategoria();
+            // Faltan CATEGORIAS
+            //DaoCandidaturas _DaoCandidatura = new DaoCandidaturas();
+            try
+            {
 
+                foreach (ORM.Servicios dbservicios in queryResult)
+                {
+                    Usuario user = _DaoUsuario.GetPerfilUsuario((int)dbservicios.idCreador);
+
+                    Servicio servicio = new Servicio(dbservicios.titulo,
+                                                            dbservicios.descripcion,
+                                                            dbservicios.fechaCreacion,
+                                                            dbservicios.id,
+                                                            user,
+                                                            (bool)dbservicios.finalizado
+                                                    )
+                    {
+
+
+                        //Recogida de las categorias
+
+                        //* # Categorias no tiene el método correcto para devolver el listado de categorias de un servicio.
+                        Categorias = new List<Categoria>()
+                    };
+                    _DaoCategoria.LoadCategoriaServicio(servicio);
+
+                    allServicios.Add(servicio);
+                }
+
+                return allServicios;
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+        }
+
+       
+
+        public List<DTOServicios> GetListServicios(int idUsuario, Boolean finalizados)
+        {
+            try
+            {
+                List<DTOServicios> allServicios = new List<DTOServicios>();
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    var queryServicios = from b in db.Servicios where b.idCreador == idUsuario && b.finalizado == finalizados select b;
+
+                    if (queryServicios.Count() > 0)
+                    {
+                        foreach (ORM.Servicios servicio in queryServicios)
+                        {
+                            DTOServicios nuevoSErvicio = new DTOServicios()
+                            {
+                                id = servicio.id,
+                                descripcion = servicio.descripcion,
+                                titulo = servicio.titulo,
+                                fechaCreacion = servicio.fechaCreacion,
+                                nombreCreador = servicio.Usuarios.nombre
+                            };
+
+                            nuevoSErvicio.Categorias = new List<DTOCategoria>();
+
+                            if (servicio.Categorias != null && servicio.Categorias.Count() > 0)
+                            {
+                                foreach (ORM.Categorias categoria in servicio.Categorias)
+                                {
+                                    nuevoSErvicio.Categorias.Add(new DTOCategoria(categoria.id, categoria.nombre));
+                                }
+
+                            }
+                            allServicios.Add(nuevoSErvicio);
+                        }
+
+                        return allServicios;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+        }
+        public List<DTOServicios> GetListServicios()
+        {
+            try
+            {
+                List<DTOServicios> allServicios = new List<DTOServicios>();
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    var queryServicios = from b in db.Servicios 
+                                         where  b.finalizado == false
+                                         orderby b.id descending
+                                         select b ;
+
+                    if (queryServicios.Count() > 0)
+                    {
+                        foreach (ORM.Servicios servicio in queryServicios)
+                        {
+                            DTOServicios nuevoSErvicio = new DTOServicios()
+                            {
+                                id = servicio.id,
+                                descripcion = servicio.descripcion,
+                                titulo = servicio.titulo,
+                                fechaCreacion = servicio.fechaCreacion,
+                                nombreCreador = servicio.Usuarios.nombre
+                            };
+
+                            nuevoSErvicio.Categorias = new List<DTOCategoria>();
+
+                            if (servicio.Categorias != null && servicio.Categorias.Count() > 0)
+                            {
+                                foreach (ORM.Categorias categoria in servicio.Categorias)
+                                {
+                                    nuevoSErvicio.Categorias.Add(new DTOCategoria(categoria.id, categoria.nombre));
+                                }
+
+                            }
+                            allServicios.Add(nuevoSErvicio);
+                        }
+
+                        return allServicios;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+        }
         public DTOServiciosDetalles GetServiciosDetalles(int idServicio, int idUsuarioQueQuiereSolicitarla = -1)
         {
             try
@@ -259,59 +433,10 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
-
-
-        /// <summary>
-        /// Método para realizar la petición del listado que se repite en los métodos para listar todos o listar de user
-        /// </summary>
-        /// <param name="queryServicios"></param>
-        /// <returns></returns>
-        private List<Servicio> PeticionListado(List<ORM.Servicios> queryResult)
-        {
-            List<Servicio> allServicios = new List<Servicio>();
-            DaoUsuario _DaoUsuario = new DaoUsuario();
-            DaoCategoria _DaoCategoria = new DaoCategoria();
-            // Faltan CATEGORIAS
-            //DaoCandidaturas _DaoCandidatura = new DaoCandidaturas();
-            try
-            {
-
-                foreach (ORM.Servicios dbservicios in queryResult)
-                {
-                    Usuario user = _DaoUsuario.GetPerfilUsuario((int)dbservicios.idCreador);
-
-                    Servicio servicio = new Servicio(dbservicios.titulo,
-                                                            dbservicios.descripcion,
-                                                            dbservicios.fechaCreacion,
-                                                            dbservicios.id,
-                                                            user,
-                                                            (bool)dbservicios.finalizado
-                                                    )
-                    {
-
-
-                        //Recogida de las categorias
-
-                        //* # Categorias no tiene el método correcto para devolver el listado de categorias de un servicio.
-                        Categorias = new List<Categoria>()
-                    };
-                    _DaoCategoria.LoadCategoriaServicio(servicio);
-
-                    allServicios.Add(servicio);
-                }
-
-                return allServicios;
-
-            }
-            catch (Exception ex)
-            {
-                _Errores = ex;
-                return null;
-            }
-        }
        
-        
-        
+
+
+    
         //Modificar un servicio
         //Dar de baja un servicio (Finalizar)
     }

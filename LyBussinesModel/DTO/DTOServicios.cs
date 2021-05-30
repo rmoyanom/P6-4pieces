@@ -12,8 +12,10 @@ namespace LyBussinesModel.DTO
         public int idCreador;
         public String titulo;
         public String descripcion;
-        public DateTime fechaCreacion;
+        public DateTime? fechaCreacion;
         public bool finalizado;
+        public String nombreCreador;
+        public List<DTOCategoria> Categorias;
 
         public DTOServicios()
         {

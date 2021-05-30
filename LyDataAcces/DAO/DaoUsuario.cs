@@ -62,6 +62,30 @@ namespace LyDataAcces.DAO
                         telefono = datos.Telefono,
                         hasPassword = datos.HasContraseña
                     };
+
+
+                    //Creación de las categorias
+                    if (datos.Categorias != null)
+                    {
+                        if (datos.Categorias.Count > 0)
+                        {
+                            var queryCategorias = from b in db.Categorias select b;
+
+                            ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                            //elimna todos las categorias que no esten marcadas
+                            foreach (LyBussinesModel.DTO.DTOCategoria categoria in datos.Categorias)
+                            {
+                                ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                                if (categoriaSeleccionada != null)
+                                {
+                                    nuevasCategorias.Add(categoriaSeleccionada);
+                                }
+
+                            }
+                            nuevoUsuario.Categorias = nuevasCategorias;
+                        }
+                    }
+
                     db.Usuarios.Add(nuevoUsuario);
                     db.SaveChanges();
                     return true;

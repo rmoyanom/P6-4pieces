@@ -1,4 +1,5 @@
-﻿Imports LyBussinesModel.DTO
+﻿Imports System.ComponentModel
+Imports LyBussinesModel.DTO
 
 Public Class FrmVisualizarAnuncio
     Private _Servicio As LyBussinesModel.DTO.DTOServiciosDetalles
@@ -49,6 +50,7 @@ Public Class FrmVisualizarAnuncio
             'LANZAR ACCION PARA IR A GESTION DE ANUNCIOS
         Else
             PnEnvioSolicitud.Visible = True
+            PnEnvioSolicitud.BringToFront()
         End If
     End Sub
 
@@ -92,5 +94,17 @@ Public Class FrmVisualizarAnuncio
         End Select
     End Sub
 
-
+    Private Sub FrmVisualizarAnuncio_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        LblUsuario.Text = ""
+        LblTitulo.Text = ""
+        LblDescripcion.Text = ""
+        LblCantidadSolicitudes.Text = ""
+        LblFechaCreacion.Text = ""
+        LblHorasUser.Text = ""
+        LblPuntuacion.Text = ""
+        LblTags.Text = ""
+        BtnCrearSolicitud.Text = ""
+        BtnCrearSolicitud.Enabled = False
+        PnEnvioSolicitud.Visible = False
+    End Sub
 End Class

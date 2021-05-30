@@ -8,7 +8,8 @@ Public Class UcListaAnuncios
         Dim count As Integer = 0
         PnPrincipal.Controls.Clear()
 
-        If items IsNot Nothing Then
+        If items IsNot Nothing And items.Count > 0 Then
+            PnPrincipal.Visible = True
             For Each elemento As LyBussinesModel.Servicio In items
                 Dim nuevoPanel As New Panel
                 Dim posicion As Point = PnDefault.Location
@@ -22,6 +23,8 @@ Public Class UcListaAnuncios
                 Dim fecha As New Label
                 Dim pnLateral As New Panel
                 Dim bntVisualizar As New Button
+                Dim tags As New Label
+
 
                 posicion.Y += count * PnDefault.Size.Height
                 posicion.Y += MARGEN * count
@@ -53,6 +56,9 @@ Public Class UcListaAnuncios
                     .FlatStyle = btnDefaultVisualizar.FlatStyle
                 End With
 
+
+
+
                 ClonarLabel("LblTitle" + count.ToString,
                             titulo,
                             LbldefaultTitle, elemento.Titulo)
@@ -77,6 +83,9 @@ Public Class UcListaAnuncios
                             fecha, lblDefaultFecha,
                             elemento.FechaDeInicio.ToString)
 
+                ClonarLabel("lblTags" + count.ToString, tags,
+                            LblDefaultTags, String.Join("   ",
+                                                        elemento.Categorias.Select(Function(x) "#" + x.Nombre)))
 
                 pnLateral.Controls.Add(tituloCreador)
                 pnLateral.Controls.Add(creador)
@@ -89,7 +98,7 @@ Public Class UcListaAnuncios
 
                 nuevoPanel.Controls.Add(titulo)
                 nuevoPanel.Controls.Add(descripcion)
-
+                nuevoPanel.Controls.Add(tags)
 
                 PnPrincipal.Controls.Add(nuevoPanel)
 
@@ -103,6 +112,8 @@ Public Class UcListaAnuncios
                 End If
 
             Next
+        Else
+            PnPrincipal.Visible = False
         End If
     End Sub
 

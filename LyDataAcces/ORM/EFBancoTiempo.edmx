@@ -100,6 +100,7 @@
           <Property Name="tiempoAcumulado" Type="int" />
           <Property Name="telefono" Type="varchar" MaxLength="50" />
           <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="horasAcumuladas" Type="int" />
         </EntityType>
         <Association Name="FK_Candidatura_Aceptada_Candidatura">
           <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
@@ -362,6 +363,7 @@
           <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Usuarios" FromRole="Usuarios" ToRole="Candidatura" />
           <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
           <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
+          <Property Name="horasAcumuladas" Type="Int32" />
         </EntityType>
         <Association Name="FK_Candidatura_Aceptada_Candidatura">
           <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />
@@ -567,6 +569,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="EFModelBancoTiempo.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="horasAcumuladas" ColumnName="horasAcumuladas" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="hasPassword" ColumnName="hasPassword" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />

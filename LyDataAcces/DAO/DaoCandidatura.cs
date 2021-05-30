@@ -39,7 +39,7 @@ namespace LyDataAcces.DAO
                     
                     ORM.Candidatura newcandidatura = new ORM.Candidatura();
 
-                    newcandidatura.estado = (int?)LyBussinesModel.Candidatura.EstadoCandidatura.PENDIENTE;
+                    newcandidatura.estado = (int?)EstadoCandidatura.PENDIENTE;
                     newcandidatura.fechaInscripcion = candidatura.FechaInscripcion;
                     newcandidatura.idServicio = candidatura.IdServicio;
                     newcandidatura.idUsuario = candidatura.IdUsuario;
@@ -76,7 +76,7 @@ namespace LyDataAcces.DAO
         /// </summary>
         /// <param name="idCandidatura"></param>
         /// <returns></returns>
-        public bool CancelarCandidatura(int idCandidatura,Candidatura.CanceladoPor canceladopor,String motivo)
+        public bool CancelarCandidatura(int idCandidatura,EstadoCandidatura canceladopor,String motivo)
         {
             try
             {
@@ -92,16 +92,16 @@ namespace LyDataAcces.DAO
                     }
 
                     //para cancelar la candidatura no puede estar finalizada
-                    Candidatura.EstadoCandidatura estadoAnterior = (Candidatura.EstadoCandidatura)query.estado;
-                    if (estadoAnterior == Candidatura.EstadoCandidatura.ACEPTADA || 
-                        estadoAnterior == Candidatura.EstadoCandidatura.PENDIENTE)
+                    EstadoCandidatura estadoAnterior = (EstadoCandidatura)query.estado;
+                    if (estadoAnterior == EstadoCandidatura.ACEPTADA || 
+                        estadoAnterior == EstadoCandidatura.PENDIENTE)
                     {
                         _Errores = new Exception("La candidatura se encuentra "+ estadoAnterior.ToString());
                         return false;
                     }
 
                     ORM.Candidatura_Cancelada cancelacion = new ORM.Candidatura_Cancelada();
-                    query.estado = (int?)Candidatura.EstadoCandidatura.CANCELADA;
+                    query.estado = (int?)EstadoCandidatura.CANCELADA;
                     query.Candidatura_Cancelada = cancelacion;
                     db.SaveChanges();
                     return true;
@@ -137,8 +137,8 @@ namespace LyDataAcces.DAO
                         return false;
                     }
 
-                    Candidatura.EstadoCandidatura estadoAnterior = (Candidatura.EstadoCandidatura)query.estado;
-                    if (estadoAnterior != Candidatura.EstadoCandidatura.PENDIENTE)
+                    EstadoCandidatura estadoAnterior = (EstadoCandidatura)query.estado;
+                    if (estadoAnterior != EstadoCandidatura.PENDIENTE)
                     {
                         _Errores = new Exception("La candidatura se encuentra " + estadoAnterior.ToString());
                         return false;
@@ -147,7 +147,7 @@ namespace LyDataAcces.DAO
                     ORM.Candidatura aceptcandidatura = new ORM.Candidatura();
                     ORM.Candidatura_Aceptada aceptada = new ORM.Candidatura_Aceptada();
                     aceptcandidatura.idUsuario = idCandidatura;
-                    aceptcandidatura.estado = (int?)Candidatura.EstadoCandidatura.FINALIZADA;
+                    aceptcandidatura.estado = (int?)EstadoCandidatura.FINALIZADA;
                     aceptada.fechaAceptacion = DateTime.Now;
                     aceptada.horasAcordadas = horascaordadas;
                     aceptada.fechaAcordadaServicio = fechacordada;
@@ -180,8 +180,8 @@ namespace LyDataAcces.DAO
                         return false;
                     }
 
-                    Candidatura.EstadoCandidatura estadoAnterior = (Candidatura.EstadoCandidatura)query.estado;
-                    if (estadoAnterior != Candidatura.EstadoCandidatura.ACEPTADA)
+                   EstadoCandidatura estadoAnterior = (EstadoCandidatura)query.estado;
+                    if (estadoAnterior != EstadoCandidatura.ACEPTADA)
                     {
                         _Errores = new Exception("La candidatura se encuentra " + estadoAnterior.ToString());
                         return false;
@@ -190,7 +190,7 @@ namespace LyDataAcces.DAO
 
                     ORM.Candidatura candidaturafinalizada = new ORM.Candidatura();
                     ORM.Candidatura_Finalizada finalizada = new ORM.Candidatura_Finalizada();
-                    candidaturafinalizada.estado = (int)Candidatura.EstadoCandidatura.FINALIZADA;
+                    candidaturafinalizada.estado = (int)EstadoCandidatura.FINALIZADA;
                     finalizada.valoracion = valoracion;
                     finalizada.comentarios = comentarios;
                     finalizada.horasGanadas = horasGanadas;

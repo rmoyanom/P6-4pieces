@@ -216,7 +216,8 @@ namespace LyDataAcces.DAO
                                               dbuser.apellidos,
                                               dbuser.tiempoAcumulado,
                                               dbuser.telefono,
-                                              dbuser.correo)
+                                              dbuser.correo,
+                                              Convert.ToInt32(dbuser.horasAcumuladas))
                         {
                             //Recogida de las categorias
                             Categorias = new List<Categoria>()
@@ -286,7 +287,8 @@ namespace LyDataAcces.DAO
                                                 userEncontrado.apellidos,
                                                 userEncontrado.tiempoAcumulado,
                                                 userEncontrado.telefono,
-                                                userEncontrado.correo)
+                                                userEncontrado.correo,
+                                                Convert.ToInt32(userEncontrado.horasAcumuladas))
                             {
 
                                 //Recogida de las categorias
@@ -346,20 +348,14 @@ namespace LyDataAcces.DAO
 
                         if (userEncontrado != null)
                         {
-                            int tiempoAcumulado = 0;
 
-
-                            if(userEncontrado.tiempoAcumulado != null)
-                            {
-                                tiempoAcumulado = (int)userEncontrado.tiempoAcumulado;
-                            }
 
                             perfil = new DTOUsuario(userEncontrado.nombreUsuario,
                                                 userEncontrado.nombre,
                                                 userEncontrado.apellidos,
                                                 userEncontrado.telefono,
                                                 userEncontrado.correo,
-                                                (int)tiempoAcumulado)
+                                                Convert.ToInt32(userEncontrado.horasAcumuladas))
                             {
 
                                 //Recogida de las categorias

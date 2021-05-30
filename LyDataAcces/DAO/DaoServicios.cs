@@ -9,6 +9,8 @@ using LyBussinesModel.DTO;
 
 namespace LyDataAcces.DAO
 {
+
+
     public class DaoServicios : IDao
     {
 
@@ -160,7 +162,7 @@ namespace LyDataAcces.DAO
             }
         }
 
-        public DTOServiciosDetalles GetServiciosDetalles(int idServicio)
+        public DTOServiciosDetalles GetServiciosDetalles(int idServicio, int idUsuarioQueQuiereSolicitarla = -1)
         {
             try
             {
@@ -187,13 +189,35 @@ namespace LyDataAcces.DAO
                         }
                         
                         int cantidadServicios = 0;
+                        ResultadoDetalleServicioPuedeSolicitarse puedeSolicitarse =ResultadoDetalleServicioPuedeSolicitarse.PUEDE;
+
+
                         if(sv.Candidatura != null && sv.Candidatura.Count() > 0)
                         {
                             sv.Candidatura.Count();
                             //TODO si tiene candidaturas, se recorren las que esten con estado finalizada y se obtiene
                             //La puntuación para realizar media
 
+                            var candidaturas = sv.Candidatura.Where(x => x.idUsuario == idUsuarioQueQuiereSolicitarla);
+                            //Si la función recibe la id de usuario que quiere solicitar se verifica si ya esta solicitada
+                            foreach (ORM.Candidatura candidatura in candidaturas)
+                            {
+                                if((candidatura.estado == (int)EstadoCandidatura.PENDIENTE
+                                    ||  candidatura.estado == (int)EstadoCandidatura.ACEPTADA ))
+                                {
+                                    puedeSolicitarse = ResultadoDetalleServicioPuedeSolicitarse.YA_SOLICITADA;
+                                    break;
+                                }
+
+                            }
+
                         }
+                        
+                        if(creador.HorasAcumuladas <= 0)
+                        {
+                            puedeSolicitarse = ResultadoDetalleServicioPuedeSolicitarse.HORAS_INSUFICIENTES;
+                        }
+
                         
                         resultados = new DTOServiciosDetalles
                         {
@@ -202,7 +226,7 @@ namespace LyDataAcces.DAO
                             Descripcion = sv.descripcion,
                             CantidadSolicitudes = cantidadServicios,
                             FechaDeInicio = sv.fechaCreacion,
-
+                            SePuedeSolicitar = puedeSolicitarse
                         };
 
                         if(idCreador > 0)

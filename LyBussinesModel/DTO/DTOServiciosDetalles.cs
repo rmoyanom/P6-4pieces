@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace LyBussinesModel.DTO
 {
+    public enum ResultadoDetalleServicioPuedeSolicitarse : int
+    {
+        PUEDE, HORAS_INSUFICIENTES, YA_SOLICITADA
+    }
+
     public class DTOServiciosDetalles
     {
         public int id;
@@ -18,6 +23,7 @@ namespace LyBussinesModel.DTO
         public int Puntuacion;
         public int HorasEstimadas;
         public List<DTOCategoria> Categorias;
+        public ResultadoDetalleServicioPuedeSolicitarse SePuedeSolicitar; 
 
         public DTOServiciosDetalles()
         {

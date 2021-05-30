@@ -95,6 +95,7 @@
     <Property Name="tiempoAcumulado" Type="int" />
     <Property Name="telefono" Type="varchar" MaxLength="50" />
     <Property Name="correo" Type="varchar" MaxLength="50" />
+    <Property Name="horasAcumuladas" Type="int" />
   </EntityType>
   <Association Name="FK_Candidatura_Aceptada_Candidatura">
     <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />

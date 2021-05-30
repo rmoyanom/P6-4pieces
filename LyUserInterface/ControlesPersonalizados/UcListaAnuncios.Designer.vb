@@ -32,6 +32,8 @@ Partial Class UcListaAnuncios
         Me.LblDdefaultDescripcion = New System.Windows.Forms.Label()
         Me.LbldefaultTitle = New System.Windows.Forms.Label()
         Me.PnPrincipal = New System.Windows.Forms.Panel()
+        Me.LblDefaultTags = New System.Windows.Forms.Label()
+        Me.LblNoData = New System.Windows.Forms.Label()
         Me.PnDefault.SuspendLayout()
         Me.pnDefaultLateral.SuspendLayout()
         Me.SuspendLayout()
@@ -41,6 +43,7 @@ Partial Class UcListaAnuncios
         Me.PnDefault.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PnDefault.BackColor = System.Drawing.Color.SteelBlue
+        Me.PnDefault.Controls.Add(Me.LblDefaultTags)
         Me.PnDefault.Controls.Add(Me.pnDefaultLateral)
         Me.PnDefault.Controls.Add(Me.LblDdefaultDescripcion)
         Me.PnDefault.Controls.Add(Me.LbldefaultTitle)
@@ -135,7 +138,7 @@ Partial Class UcListaAnuncios
         Me.LblDdefaultDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDdefaultDescripcion.Location = New System.Drawing.Point(5, 37)
         Me.LblDdefaultDescripcion.Name = "LblDdefaultDescripcion"
-        Me.LblDdefaultDescripcion.Size = New System.Drawing.Size(306, 122)
+        Me.LblDdefaultDescripcion.Size = New System.Drawing.Size(306, 104)
         Me.LblDdefaultDescripcion.TabIndex = 1
         Me.LblDdefaultDescripcion.Text = "Label1"
         '
@@ -159,6 +162,30 @@ Partial Class UcListaAnuncios
         Me.PnPrincipal.Size = New System.Drawing.Size(496, 376)
         Me.PnPrincipal.TabIndex = 1
         '
+        'LblDefaultTags
+        '
+        Me.LblDefaultTags.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblDefaultTags.BackColor = System.Drawing.Color.Azure
+        Me.LblDefaultTags.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDefaultTags.Location = New System.Drawing.Point(5, 143)
+        Me.LblDefaultTags.Name = "LblDefaultTags"
+        Me.LblDefaultTags.Size = New System.Drawing.Size(306, 16)
+        Me.LblDefaultTags.TabIndex = 5
+        Me.LblDefaultTags.Text = "Label1"
+        '
+        'LblNoData
+        '
+        Me.LblNoData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblNoData.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNoData.Location = New System.Drawing.Point(3, 9)
+        Me.LblNoData.Name = "LblNoData"
+        Me.LblNoData.Size = New System.Drawing.Size(493, 31)
+        Me.LblNoData.TabIndex = 2
+        Me.LblNoData.Text = "Aun no hay anuncios"
+        Me.LblNoData.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
         'UcListaAnuncios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -166,6 +193,7 @@ Partial Class UcListaAnuncios
         Me.BackColor = System.Drawing.Color.Khaki
         Me.Controls.Add(Me.PnDefault)
         Me.Controls.Add(Me.PnPrincipal)
+        Me.Controls.Add(Me.LblNoData)
         Me.Name = "UcListaAnuncios"
         Me.Size = New System.Drawing.Size(496, 376)
         Me.PnDefault.ResumeLayout(False)
@@ -183,4 +211,6 @@ Partial Class UcListaAnuncios
     Friend WithEvents btnDefaultVisualizar As Button
     Friend WithEvents PnPrincipal As Panel
     Friend WithEvents pnDefaultLateral As Panel
+    Friend WithEvents LblDefaultTags As Label
+    Friend WithEvents LblNoData As Label
 End Class

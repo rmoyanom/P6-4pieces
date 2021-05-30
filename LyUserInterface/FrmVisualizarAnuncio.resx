@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Label6.Text" xml:space="preserve">
+    <value>Va a crear una solicitud para realizar el trabajo anunciado en la publicación, una vez cree la solicitud compartiremos su datos de contacto con el anunciante para que se comunique con usted en el caso de que acepte su solicitud</value>
+  </data>
 </root>

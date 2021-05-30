@@ -22,6 +22,7 @@ Partial Class FrmVisualizarAnuncio
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmVisualizarAnuncio))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -40,10 +41,23 @@ Partial Class FrmVisualizarAnuncio
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.LblTags = New System.Windows.Forms.Label()
         Me.LblPuntuacion = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.BtnCrearSolicitud = New System.Windows.Forms.Button()
+        Me.PnEnvioSolicitud = New System.Windows.Forms.Panel()
+        Me.NudHorasRequeridas = New System.Windows.Forms.NumericUpDown()
+        Me.LblTituloNhoras = New System.Windows.Forms.Label()
+        Me.BtnCancel = New System.Windows.Forms.Button()
+        Me.BtnGenerarSolicitud = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
+        Me.PnEnvioSolicitud.SuspendLayout()
+        CType(Me.NudHorasRequeridas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -60,7 +74,7 @@ Partial Class FrmVisualizarAnuncio
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 2, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.LblTags, 1, 6)
         Me.TableLayoutPanel1.Controls.Add(Me.LblPuntuacion, 1, 8)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 2, 6)
+        Me.TableLayoutPanel1.Controls.Add(Me.Panel3, 2, 6)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -291,17 +305,119 @@ Partial Class FrmVisualizarAnuncio
         Me.LblPuntuacion.Text = "5"
         Me.LblPuntuacion.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'Button1
+        'Panel3
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(580, 309)
-        Me.Button1.Name = "Button1"
-        Me.TableLayoutPanel1.SetRowSpan(Me.Button1, 3)
-        Me.Button1.Size = New System.Drawing.Size(201, 183)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "ENVÍAR SOLICITUD"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Panel3.Controls.Add(Me.BtnCrearSolicitud)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(580, 309)
+        Me.Panel3.Name = "Panel3"
+        Me.TableLayoutPanel1.SetRowSpan(Me.Panel3, 3)
+        Me.Panel3.Size = New System.Drawing.Size(201, 183)
+        Me.Panel3.TabIndex = 11
+        '
+        'BtnCrearSolicitud
+        '
+        Me.BtnCrearSolicitud.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnCrearSolicitud.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCrearSolicitud.Location = New System.Drawing.Point(0, 0)
+        Me.BtnCrearSolicitud.Name = "BtnCrearSolicitud"
+        Me.BtnCrearSolicitud.Size = New System.Drawing.Size(201, 183)
+        Me.BtnCrearSolicitud.TabIndex = 10
+        Me.BtnCrearSolicitud.Text = "ENVÍAR SOLICITUD"
+        Me.BtnCrearSolicitud.UseVisualStyleBackColor = True
+        '
+        'PnEnvioSolicitud
+        '
+        Me.PnEnvioSolicitud.Controls.Add(Me.NudHorasRequeridas)
+        Me.PnEnvioSolicitud.Controls.Add(Me.LblTituloNhoras)
+        Me.PnEnvioSolicitud.Controls.Add(Me.BtnCancel)
+        Me.PnEnvioSolicitud.Controls.Add(Me.BtnGenerarSolicitud)
+        Me.PnEnvioSolicitud.Controls.Add(Me.Label10)
+        Me.PnEnvioSolicitud.Controls.Add(Me.Label6)
+        Me.PnEnvioSolicitud.Controls.Add(Me.Label8)
+        Me.PnEnvioSolicitud.Controls.Add(Me.Label4)
+        Me.PnEnvioSolicitud.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PnEnvioSolicitud.Location = New System.Drawing.Point(0, 0)
+        Me.PnEnvioSolicitud.Name = "PnEnvioSolicitud"
+        Me.PnEnvioSolicitud.Size = New System.Drawing.Size(784, 495)
+        Me.PnEnvioSolicitud.TabIndex = 1
+        '
+        'NudHorasRequeridas
+        '
+        Me.NudHorasRequeridas.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NudHorasRequeridas.Location = New System.Drawing.Point(310, 288)
+        Me.NudHorasRequeridas.Name = "NudHorasRequeridas"
+        Me.NudHorasRequeridas.Size = New System.Drawing.Size(211, 40)
+        Me.NudHorasRequeridas.TabIndex = 4
+        '
+        'LblTituloNhoras
+        '
+        Me.LblTituloNhoras.AutoSize = True
+        Me.LblTituloNhoras.Location = New System.Drawing.Point(49, 260)
+        Me.LblTituloNhoras.Name = "LblTituloNhoras"
+        Me.LblTituloNhoras.Size = New System.Drawing.Size(0, 13)
+        Me.LblTituloNhoras.TabIndex = 3
+        '
+        'BtnCancel
+        '
+        Me.BtnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCancel.Location = New System.Drawing.Point(30, 380)
+        Me.BtnCancel.Name = "BtnCancel"
+        Me.BtnCancel.Size = New System.Drawing.Size(215, 80)
+        Me.BtnCancel.TabIndex = 2
+        Me.BtnCancel.Text = "CANCELAR"
+        Me.BtnCancel.UseVisualStyleBackColor = True
+        '
+        'BtnGenerarSolicitud
+        '
+        Me.BtnGenerarSolicitud.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGenerarSolicitud.Location = New System.Drawing.Point(372, 380)
+        Me.BtnGenerarSolicitud.Name = "BtnGenerarSolicitud"
+        Me.BtnGenerarSolicitud.Size = New System.Drawing.Size(381, 80)
+        Me.BtnGenerarSolicitud.TabIndex = 2
+        Me.BtnGenerarSolicitud.Text = "ACEPTO QUE SE COMPARTA MI INFORMACIÓN"
+        Me.BtnGenerarSolicitud.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(89, 207)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(630, 75)
+        Me.Label10.TabIndex = 1
+        Me.Label10.Text = "Puede requerirle al anunciante un minimo de horas por el desarrollo de este traba" &
+    "jo que posteriormente si se pone acepta su solicitud podrá negociar"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label6
+        '
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(89, 49)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(630, 102)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = resources.GetString("Label6.Text")
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(260, 167)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(317, 37)
+        Me.Label8.TabIndex = 0
+        Me.Label8.Text = "REQUERIR HORAS"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(188, 9)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(435, 37)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "CREACIÓN DE SULICITUD"
         '
         'FrmVisualizarAnuncio
         '
@@ -309,37 +425,53 @@ Partial Class FrmVisualizarAnuncio
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 495)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.PnEnvioSolicitud)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(800, 534)
         Me.MinimumSize = New System.Drawing.Size(800, 534)
         Me.Name = "FrmVisualizarAnuncio"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Detalles del anuncio"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.PnEnvioSolicitud.ResumeLayout(False)
+        Me.PnEnvioSolicitud.PerformLayout()
+        CType(Me.NudHorasRequeridas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label9 As Label
     Friend WithEvents LblTitulo As Label
     Friend WithEvents LblDescripcion As Label
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents LblUsuario As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LblHorasUser As Label
     Friend WithEvents LblCantidadSolicitudes As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents LblFechaCreacion As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents LblUsuario As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LblTags As Label
-    Friend WithEvents Label9 As Label
     Friend WithEvents LblPuntuacion As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Label1 As Label
+    Friend WithEvents PnEnvioSolicitud As Panel
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents BtnGenerarSolicitud As Button
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents BtnCrearSolicitud As Button
+    Friend WithEvents BtnCancel As Button
+    Friend WithEvents NudHorasRequeridas As NumericUpDown
+    Friend WithEvents LblTituloNhoras As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label8 As Label
 End Class

@@ -164,23 +164,22 @@ namespace LyDataAcces.DAO
                     //Edición de las categorias
                     if (editedUser.Categorias != null)
                     {
-                        if (editedUser.Categorias.Count > 0)
+                        
+                        var queryCategorias = from b in db.Categorias select b;
+                        usuarioBD.Categorias.Clear();
+                        ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                        //elimna todos las categorias que no esten marcadas
+                        foreach (LyBussinesModel.DTO.DTOCategoria categoria in editedUser.Categorias)
                         {
-                            var queryCategorias = from b in db.Categorias select b;
-
-                            ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
-                            //elimna todos las categorias que no esten marcadas
-                            foreach (LyBussinesModel.DTO.DTOCategoria categoria in editedUser.Categorias)
+                            ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                            if (categoriaSeleccionada != null)
                             {
-                                ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
-                                if (categoriaSeleccionada != null)
-                                {
-                                    nuevasCategorias.Add(categoriaSeleccionada);
-                                }
-
+                                nuevasCategorias.Add(categoriaSeleccionada);
                             }
-                            usuarioBD.Categorias = nuevasCategorias;
+
                         }
+                        usuarioBD.Categorias = nuevasCategorias;
+                        
                     }
                     db.SaveChanges();
                     return true;
@@ -381,123 +380,6 @@ namespace LyDataAcces.DAO
             {
                 _Errores = ex;
                 return null;
-            }
-        }
-
-        /// <summary>
-        /// Modificamos sólo el usuario, ignoramos las Categorías que se actualizan en otra ventana
-        /// </summary>
-        /// <param name="editedUser"></param>
-        /// <returns></returns>
-        public bool ModificarUsuarioSolo(LyBussinesModel.DTO.DTOUsuario editedUser)
-        {
-            try
-            {
-                if (!(editedUser.id > 0))
-                {
-                    throw new Exception("No se ha proporcinado un id valido para modificar");
-                }
-                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
-                {
-                    //Se realiza una busqueda del nombre en BD
-                    var query = from b in db.Usuarios
-                                where b.id == editedUser.id
-                                select b;
-
-                    if (!(query.Count() > 0))
-                    {
-                        _Errores = new Exception("El usuario no existe");
-                        return false;
-                    }
-
-
-
-                    ORM.Usuarios usuarioBD = query.First();
-
-                    if (editedUser.NombreUsuario != null && editedUser.NombreUsuario.Length > 0 && usuarioBD.nombreUsuario != editedUser.NombreUsuario)
-                        usuarioBD.nombreUsuario = editedUser.NombreUsuario;
-
-                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0 && usuarioBD.nombre != editedUser.Nombre)
-                        usuarioBD.nombre = editedUser.Nombre;
-
-                    if (editedUser.Apellidos != null && editedUser.Apellidos.Length > 0 && usuarioBD.apellidos != editedUser.Apellidos)
-                        usuarioBD.apellidos = editedUser.Apellidos;
-
-                    if (editedUser.Correo != null && editedUser.Correo.Length > 0 && usuarioBD.correo != editedUser.Correo)
-                        usuarioBD.correo = editedUser.Correo;
-
-                    if (editedUser.Telefono != null && editedUser.Telefono.Length > 0 && usuarioBD.telefono != editedUser.Telefono)
-                        usuarioBD.telefono = editedUser.Telefono;
-
-                    if (editedUser.HasContraseña != null && editedUser.HasContraseña.Length > 0 && usuarioBD.hasPassword != editedUser.HasContraseña)
-                        usuarioBD.hasPassword = editedUser.HasContraseña;
-
-                   
-                    db.SaveChanges();
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                _Errores = ex;
-                return false;
-            }
-        }
-
-        public bool ModificarUsuarioCategorias(LyBussinesModel.DTO.DTOUsuario editedUser)
-        {
-            try
-            {
-                if (!(editedUser.id > 0))
-                {
-                    throw new Exception("No se ha proporcinado un id valido para modificar");
-                }
-                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
-                {
-                    //Se realiza una busqueda del nombre en BD
-                    var query = from b in db.Usuarios
-                                where b.id == editedUser.id
-                                select b;
-
-                    if (!(query.Count() > 0))
-                    {
-                        _Errores = new Exception("El usuario no existe");
-                        return false;
-                    }
-
-
-
-                    ORM.Usuarios usuarioBD = query.First();
-
-                    //Edición de las categorias
-                    if (editedUser.Categorias != null)
-                    {
-                        if (editedUser.Categorias.Count > 0)
-                        {
-                            var queryCategorias = from b in db.Categorias select b;
-
-                            ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
-                            //elimna todos las categorias que no esten marcadas
-                            foreach (LyBussinesModel.DTO.DTOCategoria categoria in editedUser.Categorias)
-                            {
-                                ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
-                                if (categoriaSeleccionada != null)
-                                {
-                                    nuevasCategorias.Add(categoriaSeleccionada);
-                                }
-
-                            }
-                            usuarioBD.Categorias = nuevasCategorias;
-                        }
-                    }
-                    db.SaveChanges();
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                _Errores = ex;
-                return false;
             }
         }
 

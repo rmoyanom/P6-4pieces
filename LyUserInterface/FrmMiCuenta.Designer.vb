@@ -30,6 +30,10 @@ Partial Class FrmMiCuenta
         Me.PtcLogo = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PanelContenidos = New System.Windows.Forms.Panel()
+        Me.PnlMiCartera = New System.Windows.Forms.Panel()
+        Me.LblSaldo = New System.Windows.Forms.Label()
+        Me.LblTitleSaldo = New System.Windows.Forms.Label()
+        Me.LblTitleCartera = New System.Windows.Forms.Label()
         Me.PanelErrores = New System.Windows.Forms.Panel()
         Me.LblError = New System.Windows.Forms.Label()
         Me.LblTitleMiPerfil = New System.Windows.Forms.Label()
@@ -59,18 +63,14 @@ Partial Class FrmMiCuenta
         Me.LblApellidos = New System.Windows.Forms.Label()
         Me.TxtNombre = New System.Windows.Forms.TextBox()
         Me.LblNombre = New System.Windows.Forms.Label()
-        Me.PnlMiCartera = New System.Windows.Forms.Panel()
-        Me.LblTitleCartera = New System.Windows.Forms.Label()
-        Me.LblTitleSaldo = New System.Windows.Forms.Label()
-        Me.LblSaldo = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelContenidos.SuspendLayout()
+        Me.PnlMiCartera.SuspendLayout()
         Me.PanelErrores.SuspendLayout()
         Me.PnlCategorias.SuspendLayout()
         Me.PnlMisDatos.SuspendLayout()
-        Me.PnlMiCartera.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -166,6 +166,53 @@ Partial Class FrmMiCuenta
         Me.PanelContenidos.Name = "PanelContenidos"
         Me.PanelContenidos.Size = New System.Drawing.Size(597, 495)
         Me.PanelContenidos.TabIndex = 1
+        '
+        'PnlMiCartera
+        '
+        Me.PnlMiCartera.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PnlMiCartera.Controls.Add(Me.LblSaldo)
+        Me.PnlMiCartera.Controls.Add(Me.LblTitleSaldo)
+        Me.PnlMiCartera.Controls.Add(Me.LblTitleCartera)
+        Me.PnlMiCartera.Location = New System.Drawing.Point(0, 94)
+        Me.PnlMiCartera.Name = "PnlMiCartera"
+        Me.PnlMiCartera.Size = New System.Drawing.Size(597, 378)
+        Me.PnlMiCartera.TabIndex = 30
+        '
+        'LblSaldo
+        '
+        Me.LblSaldo.AutoSize = True
+        Me.LblSaldo.BackColor = System.Drawing.Color.White
+        Me.LblSaldo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSaldo.Location = New System.Drawing.Point(144, 64)
+        Me.LblSaldo.MinimumSize = New System.Drawing.Size(150, 26)
+        Me.LblSaldo.Name = "LblSaldo"
+        Me.LblSaldo.Size = New System.Drawing.Size(150, 31)
+        Me.LblSaldo.TabIndex = 2
+        Me.LblSaldo.Text = "0 h"
+        Me.LblSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblTitleSaldo
+        '
+        Me.LblTitleSaldo.AutoSize = True
+        Me.LblTitleSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitleSaldo.Location = New System.Drawing.Point(16, 68)
+        Me.LblTitleSaldo.Name = "LblTitleSaldo"
+        Me.LblTitleSaldo.Size = New System.Drawing.Size(122, 24)
+        Me.LblTitleSaldo.TabIndex = 1
+        Me.LblTitleSaldo.Text = "Saldo actual: "
+        '
+        'LblTitleCartera
+        '
+        Me.LblTitleCartera.AutoSize = True
+        Me.LblTitleCartera.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitleCartera.Location = New System.Drawing.Point(11, 12)
+        Me.LblTitleCartera.Name = "LblTitleCartera"
+        Me.LblTitleCartera.Size = New System.Drawing.Size(123, 26)
+        Me.LblTitleCartera.TabIndex = 0
+        Me.LblTitleCartera.Text = "Mi Cartera"
         '
         'PanelErrores
         '
@@ -509,53 +556,6 @@ Partial Class FrmMiCuenta
         Me.LblNombre.Text = "Nombre:"
         Me.LblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'PnlMiCartera
-        '
-        Me.PnlMiCartera.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PnlMiCartera.Controls.Add(Me.LblSaldo)
-        Me.PnlMiCartera.Controls.Add(Me.LblTitleSaldo)
-        Me.PnlMiCartera.Controls.Add(Me.LblTitleCartera)
-        Me.PnlMiCartera.Location = New System.Drawing.Point(0, 94)
-        Me.PnlMiCartera.Name = "PnlMiCartera"
-        Me.PnlMiCartera.Size = New System.Drawing.Size(597, 378)
-        Me.PnlMiCartera.TabIndex = 30
-        '
-        'LblTitleCartera
-        '
-        Me.LblTitleCartera.AutoSize = True
-        Me.LblTitleCartera.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTitleCartera.Location = New System.Drawing.Point(11, 12)
-        Me.LblTitleCartera.Name = "LblTitleCartera"
-        Me.LblTitleCartera.Size = New System.Drawing.Size(123, 26)
-        Me.LblTitleCartera.TabIndex = 0
-        Me.LblTitleCartera.Text = "Mi Cartera"
-        '
-        'LblTitleSaldo
-        '
-        Me.LblTitleSaldo.AutoSize = True
-        Me.LblTitleSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTitleSaldo.Location = New System.Drawing.Point(16, 64)
-        Me.LblTitleSaldo.Name = "LblTitleSaldo"
-        Me.LblTitleSaldo.Size = New System.Drawing.Size(122, 24)
-        Me.LblTitleSaldo.TabIndex = 1
-        Me.LblTitleSaldo.Text = "Saldo actual: "
-        '
-        'LblSaldo
-        '
-        Me.LblSaldo.AutoSize = True
-        Me.LblSaldo.BackColor = System.Drawing.Color.White
-        Me.LblSaldo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblSaldo.Location = New System.Drawing.Point(144, 64)
-        Me.LblSaldo.MinimumSize = New System.Drawing.Size(150, 26)
-        Me.LblSaldo.Name = "LblSaldo"
-        Me.LblSaldo.Size = New System.Drawing.Size(150, 26)
-        Me.LblSaldo.TabIndex = 2
-        Me.LblSaldo.Text = "0 h"
-        Me.LblSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
         'FrmMiCuenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -576,14 +576,14 @@ Partial Class FrmMiCuenta
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContenidos.ResumeLayout(False)
         Me.PanelContenidos.PerformLayout()
+        Me.PnlMiCartera.ResumeLayout(False)
+        Me.PnlMiCartera.PerformLayout()
         Me.PanelErrores.ResumeLayout(False)
         Me.PanelErrores.PerformLayout()
         Me.PnlCategorias.ResumeLayout(False)
         Me.PnlCategorias.PerformLayout()
         Me.PnlMisDatos.ResumeLayout(False)
         Me.PnlMisDatos.PerformLayout()
-        Me.PnlMiCartera.ResumeLayout(False)
-        Me.PnlMiCartera.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

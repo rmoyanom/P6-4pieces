@@ -165,7 +165,7 @@ Public Class FrmMiCuenta
         End If
         Dim daoUsuario = New DAO.DaoUsuario()
 
-        If (daoUsuario.ModificarUsuarioSolo(nuevoUsuario)) Then
+        If (daoUsuario.ModificarUsuario(nuevoUsuario)) Then
             BtnCancelEdit_Click(sender, e)
             Main.updateUserOnEdit(nuevoUsuario.Id)
         Else

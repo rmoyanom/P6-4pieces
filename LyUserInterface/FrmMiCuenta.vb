@@ -48,6 +48,7 @@ Public Class FrmMiCuenta
     End Function
 
     Private Sub loadCategorias()
+        CblCategorias.DataSource = Nothing
         Dim dao As New LyDataAcces.DAO.DaoCategoria
         Dim list As List(Of LyBussinesModel.Categoria) = dao.GetAllCategorias
         If list.Count > 0 Then
@@ -180,6 +181,7 @@ Public Class FrmMiCuenta
         PnlCategorias.Enabled = True
         PnlMisDatos.Visible = False
         PnlMisDatos.Enabled = False
+        loadCategorias()
         loadMarkedCategorias()
     End Sub
 

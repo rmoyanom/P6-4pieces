@@ -154,5 +154,7 @@ Public Class UcListaAnuncios
         RaiseEvent OnClickButton(DirectCast(sender, Button).Tag)
     End Sub
 
+    Private Sub PnPrincipal_Paint(sender As Object, e As PaintEventArgs) Handles PnPrincipal.Paint
 
+    End Sub
 End Class

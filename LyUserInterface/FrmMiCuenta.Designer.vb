@@ -63,6 +63,7 @@ Partial Class FrmMiCuenta
         Me.LblApellidos = New System.Windows.Forms.Label()
         Me.TxtNombre = New System.Windows.Forms.TextBox()
         Me.LblNombre = New System.Windows.Forms.Label()
+        Me.BtnVolver = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,6 +79,7 @@ Partial Class FrmMiCuenta
         Me.TableLayoutPanel1.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.BtnVolver, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnMiCuenta, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.BtnMiCartera, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 0)
@@ -93,6 +95,7 @@ Partial Class FrmMiCuenta
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 495)
         Me.TableLayoutPanel1.TabIndex = 0
         '
@@ -556,6 +559,19 @@ Partial Class FrmMiCuenta
         Me.LblNombre.Text = "Nombre:"
         Me.LblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'BtnVolver
+        '
+        Me.BtnVolver.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnVolver.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnVolver.Image = Global.LyUserInterface.My.Resources.Resources.back
+        Me.BtnVolver.Location = New System.Drawing.Point(3, 354)
+        Me.BtnVolver.Name = "BtnVolver"
+        Me.BtnVolver.Size = New System.Drawing.Size(214, 116)
+        Me.BtnVolver.TabIndex = 8
+        Me.BtnVolver.Text = "VOLVER"
+        Me.BtnVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.BtnVolver.UseVisualStyleBackColor = True
+        '
         'FrmMiCuenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -628,4 +644,5 @@ Partial Class FrmMiCuenta
     Friend WithEvents LblTitleCartera As Label
     Friend WithEvents LblSaldo As Label
     Friend WithEvents LblTitleSaldo As Label
+    Friend WithEvents BtnVolver As Button
 End Class

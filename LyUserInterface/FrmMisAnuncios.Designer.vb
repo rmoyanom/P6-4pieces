@@ -257,10 +257,10 @@ Partial Class FrmMisAnuncios
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Controls.Add(Me.Panel8, 0, 1)
         Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel3, 2, 1)
         Me.TableLayoutPanel4.Controls.Add(Me.LblTituloVentana, 0, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel2, 1, 1)
+        Me.TableLayoutPanel4.Controls.Add(Me.Panel8, 0, 1)
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 5)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 2
@@ -464,9 +464,9 @@ Partial Class FrmMisAnuncios
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(787, 497)
-        Me.Controls.Add(Me.PnVerGestionarAnuncio)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.PnVerGestionarAnuncio)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmMisAnuncios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

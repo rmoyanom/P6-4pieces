@@ -75,11 +75,16 @@ Public Class FrmMiCuenta
         Next
     End Sub
 
-    Private Sub IniciarVentana_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Main.AbribVentana(Me)
-        CargarDatosPanelPpal()
-        loadCategorias()
+
+    Sub FrmMisAnuncios_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+        If Me.Visible = True Then
+            Main.AbribVentana(Me)
+            CargarDatosPanelPpal()
+            loadCategorias()
+        End If
+
     End Sub
+
 
     Private Sub Volver_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
         Main.VolverAlMenu(Me)
@@ -217,5 +222,9 @@ Public Class FrmMiCuenta
         PnlMisDatos.Enabled = False
         PnlMiCartera.Visible = True
         PnlMiCartera.Enabled = True
+    End Sub
+
+    Private Sub BtnVolver_Click(sender As Object, e As EventArgs) Handles BtnVolver.Click
+        Dispose()
     End Sub
 End Class

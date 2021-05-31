@@ -159,6 +159,9 @@ Public Class FrmMisAnuncios
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
         Dim dao As LyDataAcces.DAO.DaoServicios = New LyDataAcces.DAO.DaoServicios
+        Dim datos As DTOServicios = New DTOServicios()
+        datos.titulo = TxtTitulo.Text
+        datos.descripcion = RtxtDescripcion.Text
 
     End Sub
 

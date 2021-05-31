@@ -442,6 +442,75 @@ namespace LyDataAcces.DAO
 
     
         //Modificar un servicio
+        public bool ModificarServicio(DTOServicios datos)
+        {
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+
+                    DTOServiciosDetalles resultados = null;
+                    var queryServicios = from b in db.Servicios where b.id == datos.id select b;
+
+                    if (queryServicios.Count() > 0)
+                    {
+                        ORM.Servicios sv = queryServicios.FirstOrDefault();
+                        if (sv.Candidatura != null && sv.Candidatura.Count() > 0)
+                        {
+
+                            if(datos.titulo != null)
+                            {
+                                sv.titulo = datos.titulo;
+                            }
+
+                            if(datos.descripcion != null)
+                            {
+                                sv.descripcion = datos.descripcion;
+                            }
+
+
+                            //Creación de las categorias
+                            if (datos.Categorias != null)
+                            {
+                                if (datos.Categorias.Count > 0)
+                                {
+                                    var queryCategorias = from b in db.Categorias select b;
+
+                                    ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                                    //elimna todos las categorias que no esten marcadas
+                                    sv.Categorias.Clear();
+                                    foreach (LyBussinesModel.DTO.DTOCategoria categoria in datos.Categorias)
+                                    {
+                                        ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                                        if (categoriaSeleccionada != null)
+                                        {
+                                            nuevasCategorias.Add(categoriaSeleccionada);
+                                        }
+
+                                    }
+                                    sv.Categorias = nuevasCategorias;
+                                }
+                            }
+                        }
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        _Errores = new Exception("No se encontro el servicio");
+                        return false;
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return false;
+            }
+        }
+
         //Dar de baja un servicio (Finalizar)
 
         public bool FinalizarServicio(int idServicio)
@@ -485,6 +554,6 @@ namespace LyDataAcces.DAO
                 _Errores = ex;
                 return false;
             }
-}
+        }
     }
 }

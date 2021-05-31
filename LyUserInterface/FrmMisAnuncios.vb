@@ -3,11 +3,11 @@
 Public Class FrmMisAnuncios
 
     Private _Servicio As LyBussinesModel.DTO.DTOServiciosDetalles
-    Private _
+    Private _Editando As Boolean = False
+
     Sub FrmMisAnuncios_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         Main.AbribVentana(Me)
     End Sub
-
     Private Sub IniciarVentana_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BtnActivos_Click(sender, e)
     End Sub
@@ -39,7 +39,6 @@ Public Class FrmMisAnuncios
     Private Sub UcListaAnuncios_OnClickButton(id As Integer) Handles UcListaAnuncios.OnClickButton
         LoadServicioParaGestion(id)
     End Sub
-
     Private Sub BtnVolver_Click(sender As Object, e As EventArgs) Handles BtnVolver.Click
         Dispose()
     End Sub
@@ -52,9 +51,19 @@ Public Class FrmMisAnuncios
     Public Sub LoadServicioParaGestion(idServicio As Integer)
         PrepararSoloVisualizacion()
         Dim Dao As New LyDataAcces.DAO.DaoServicios
+        Dim listaCandidaturas As New List(Of DTOListadoCandidaturasEnServicio)
 
         _Servicio = Dao.GetServiciosDetalles(idServicio, Main.UsuarioAutenticado.Id)
         If _Servicio IsNot Nothing Then
+            listaCandidaturas = Dao.GetListadoCandidaturas(_Servicio.id)
+            DTGCandidaturas.DataSource = Nothing
+
+            If listaCandidaturas IsNot Nothing Then
+                DTGCandidaturas.DataSource = listaCandidaturas
+                DTGCandidaturas.Columns.Item(0).Visible = False
+            End If
+
+
             TxtTitulo.Text = _Servicio.Titulo
             RtxtDescripcion.Text = _Servicio.Descripcion
 
@@ -95,16 +104,6 @@ Public Class FrmMisAnuncios
             Me.Close()
         End If
     End Sub
-    Private Sub LoadCategorias()
-        ChkList.DataSource = Nothing
-        Dim dao As New LyDataAcces.DAO.DaoCategoria
-        Dim list As List(Of LyBussinesModel.Categoria) = dao.GetAllCategorias
-        If list.Count > 0 Then
-            ChkList.DataSource = list
-            ChkList.ValueMember = "Id"
-            ChkList.DisplayMember = "Nombre"
-        End If
-    End Sub
     Private Sub BtnFinalizar_Click(sender As Object, e As EventArgs) Handles BtnFinalizar.Click
         Dim dao As LyDataAcces.DAO.DaoServicios = New LyDataAcces.DAO.DaoServicios()
 
@@ -124,10 +123,15 @@ Public Class FrmMisAnuncios
         End If
     End Sub
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles BtnEditar.Click
-        PrepararEdicion()
+        If Not _Editando Then
+            PrepararEdicion()
+        Else
+            PrepararSoloVisualizacion()
+        End If
+
     End Sub
     Private Sub PrepararEdicion()
-
+        _Editando = True
         BtnFinalizar.Visible = False
         BtnEditar.Text = "CANCELAR EDICIÓN"
 
@@ -143,6 +147,7 @@ Public Class FrmMisAnuncios
 
     End Sub
     Private Sub PrepararSoloVisualizacion()
+        _Editando = False
         BtnFinalizar.Visible = True
         BtnEditar.Text = "EDICIÓN"
 
@@ -156,16 +161,40 @@ Public Class FrmMisAnuncios
         TxtTitulo.ReadOnly = True
         RtxtDescripcion.ReadOnly = True
     End Sub
-
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
         Dim dao As LyDataAcces.DAO.DaoServicios = New LyDataAcces.DAO.DaoServicios
         Dim datos As DTOServicios = New DTOServicios()
+
+        datos.id = _Servicio.id
         datos.titulo = TxtTitulo.Text
         datos.descripcion = RtxtDescripcion.Text
+        datos.Categorias = ReadCategorias()
 
+        If dao.ModificarServicio(datos) Then
+            LoadServicioParaGestion(datos.id)
+            PrepararSoloVisualizacion()
+        Else
+            MsgBox("Se ha producido un error " + DirectCast(dao, LyDataAcces.DAO.IDao).Errores.Message)
+        End If
     End Sub
-
-
+    Private Sub LoadCategorias()
+        ChkList.DataSource = Nothing
+        Dim dao As New LyDataAcces.DAO.DaoCategoria
+        Dim list As List(Of LyBussinesModel.Categoria) = dao.GetAllCategorias
+        If list.Count > 0 Then
+            ChkList.DataSource = list
+            ChkList.ValueMember = "Id"
+            ChkList.DisplayMember = "Nombre"
+        End If
+    End Sub
+    Private Function ReadCategorias() As List(Of LyBussinesModel.DTO.DTOCategoria)
+        Dim retorno As New List(Of DTOCategoria)
+        For Each cat In ChkList.CheckedItems
+            Dim categoria = DirectCast(cat, LyBussinesModel.Categoria)
+            retorno.Add(New DTOCategoria(categoria.Id, categoria.Nombre))
+        Next
+        Return retorno
+    End Function
 #End Region
 
 

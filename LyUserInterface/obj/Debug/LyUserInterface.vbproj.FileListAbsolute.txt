@@ -22,7 +22,6 @@ C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmMiCuenta.resources
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmMisServicios.resources
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmMisAnuncios.resources
-C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmServicios.resources
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmRegistroUsuario.resources
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\EntityFramework.SqlServer.xml

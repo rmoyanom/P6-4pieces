@@ -23,7 +23,14 @@ namespace TestDataAccesConsole
             LyDataAcces.DAO.DaoCandidatura _Daocandidatura = new LyDataAcces.DAO.DaoCandidatura();
             LyDataAcces.XML.DaoXmlRead _DaoXml = new LyDataAcces.XML.DaoXmlRead();
 
+            resultados = _DaoUsuario.RegistrarUsuario(new LyBussinesModel.DTO.DTOUsuario("prueba",
+                                                                                        "prueba",
+                                                                                        "prueba",
+                                                                                        "aprueba",
+                                                                                        "correofalso@falso.com",
+                                                                                        Usuario.CreateHash("b", "b")));
 
+            return;
             const int ESPACIOS_LINEAS = 45;
             //Inicio de Aplicación de test
             Console.ForegroundColor = ConsoleColor.Green;

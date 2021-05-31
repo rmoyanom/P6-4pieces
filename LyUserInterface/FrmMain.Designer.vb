@@ -62,7 +62,7 @@ Partial Class FrmMain
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 498)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 620)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'BtnMiCuenta
@@ -130,7 +130,7 @@ Partial Class FrmMain
         '
         Me.Panel3.BackColor = System.Drawing.Color.Azure
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(0, 477)
+        Me.Panel3.Location = New System.Drawing.Point(0, 599)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(220, 21)
@@ -146,7 +146,7 @@ Partial Class FrmMain
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(220, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(564, 498)
+        Me.Panel1.Size = New System.Drawing.Size(873, 620)
         Me.Panel1.TabIndex = 1
         '
         'BtnAddAnuncio
@@ -154,7 +154,7 @@ Partial Class FrmMain
         Me.BtnAddAnuncio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnAddAnuncio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnAddAnuncio.Image = Global.LyUserInterface.My.Resources.Resources.add1
-        Me.BtnAddAnuncio.Location = New System.Drawing.Point(383, 49)
+        Me.BtnAddAnuncio.Location = New System.Drawing.Point(692, 49)
         Me.BtnAddAnuncio.Name = "BtnAddAnuncio"
         Me.BtnAddAnuncio.Size = New System.Drawing.Size(179, 42)
         Me.BtnAddAnuncio.TabIndex = 7
@@ -172,7 +172,7 @@ Partial Class FrmMain
         Me.UcListaAnuncios.BackColor = System.Drawing.Color.Azure
         Me.UcListaAnuncios.Location = New System.Drawing.Point(3, 92)
         Me.UcListaAnuncios.Name = "UcListaAnuncios"
-        Me.UcListaAnuncios.Size = New System.Drawing.Size(558, 379)
+        Me.UcListaAnuncios.Size = New System.Drawing.Size(867, 501)
         Me.UcListaAnuncios.TabIndex = 3
         Me.UcListaAnuncios.TextoBotones = "MÁS DETALLES..."
         '
@@ -180,9 +180,9 @@ Partial Class FrmMain
         '
         Me.Panel4.BackColor = System.Drawing.Color.Azure
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel4.Location = New System.Drawing.Point(0, 477)
+        Me.Panel4.Location = New System.Drawing.Point(0, 599)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(564, 21)
+        Me.Panel4.Size = New System.Drawing.Size(873, 21)
         Me.Panel4.TabIndex = 2
         '
         'Label1
@@ -200,7 +200,7 @@ Partial Class FrmMain
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(784, 498)
+        Me.ClientSize = New System.Drawing.Size(1093, 620)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

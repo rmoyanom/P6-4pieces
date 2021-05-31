@@ -379,6 +379,7 @@ namespace LyDataAcces.DAO
                             //Si la función recibe la id de usuario que quiere solicitar se verifica si ya esta solicitada
                             foreach (ORM.Candidatura candidatura in candidaturas)
                             {
+
                                 if((candidatura.estado == (int)EstadoCandidatura.PENDIENTE
                                     ||  candidatura.estado == (int)EstadoCandidatura.ACEPTADA ))
                                 {
@@ -437,10 +438,63 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
-       
+
+        public List<DTOListadoCandidaturasEnServicio> GetListadoCandidaturas(int idServicio)
+        {
+            try
+            {
+
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    List<DTOListadoCandidaturasEnServicio> resultados =new List<DTOListadoCandidaturasEnServicio>();
+
+                    var queryServicios = from b in db.Servicios where b.id == idServicio select b;
+
+                    if (queryServicios.Count() > 0)
+                    {
+
+                        ORM.Servicios sv = queryServicios.FirstOrDefault();
+                        if (sv.idCreador != null)
+                        {
+                            if(sv.Candidatura.Count > 0)
+                            {
+                                foreach(ORM.Candidatura candidatura in sv.Candidatura)
+                                {
+                                    resultados.Add(new DTOListadoCandidaturasEnServicio
+                                    {
+                                        Id = candidatura.id,
+                                        Nombre = candidatura.Usuarios.nombreUsuario,
+                                        Usuario = candidatura.Usuarios.nombre,
+                                        Apellido = candidatura.Usuarios.apellidos,
+                                        Correo = candidatura.Usuarios.correo,
+                                        Telefono = candidatura.Usuarios.telefono,
+                                        Horas_Solicitadas = (int)candidatura.horasRequeridas,
+                                        Fecha_Inscripcion = (DateTime)candidatura.fechaInscripcion,
+                                        Estado = (EstadoCandidatura)candidatura.estado
+                                    });
+                                }
+                            }
+                        }
+
+                        return resultados;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+        }
 
 
-    
+
         //Modificar un servicio
         public bool ModificarServicio(DTOServicios datos)
         {
@@ -451,56 +505,52 @@ namespace LyDataAcces.DAO
 
                     DTOServiciosDetalles resultados = null;
                     var queryServicios = from b in db.Servicios where b.id == datos.id select b;
+                    ORM.Servicios sv = queryServicios.FirstOrDefault();
 
-                    if (queryServicios.Count() > 0)
+
+                    if (sv != null)
                     {
-                        ORM.Servicios sv = queryServicios.FirstOrDefault();
-                        if (sv.Candidatura != null && sv.Candidatura.Count() > 0)
+
+                        if (datos.titulo != null)
                         {
+                            sv.titulo = datos.titulo;
+                        }
 
-                            if(datos.titulo != null)
+                        if (datos.descripcion != null)
+                        {
+                            sv.descripcion = datos.descripcion;
+                        }
+
+
+                        //Creación de las categorias
+                        if (datos.Categorias != null)
+                        {
+                            if (datos.Categorias.Count > 0)
                             {
-                                sv.titulo = datos.titulo;
-                            }
+                                var queryCategorias = from b in db.Categorias select b;
 
-                            if(datos.descripcion != null)
-                            {
-                                sv.descripcion = datos.descripcion;
-                            }
-
-
-                            //Creación de las categorias
-                            if (datos.Categorias != null)
-                            {
-                                if (datos.Categorias.Count > 0)
+                                ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                                //elimna todos las categorias que no esten marcadas
+                                sv.Categorias.Clear();
+                                foreach (LyBussinesModel.DTO.DTOCategoria categoria in datos.Categorias)
                                 {
-                                    var queryCategorias = from b in db.Categorias select b;
-
-                                    ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
-                                    //elimna todos las categorias que no esten marcadas
-                                    sv.Categorias.Clear();
-                                    foreach (LyBussinesModel.DTO.DTOCategoria categoria in datos.Categorias)
+                                    ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                                    if (categoriaSeleccionada != null)
                                     {
-                                        ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
-                                        if (categoriaSeleccionada != null)
-                                        {
-                                            nuevasCategorias.Add(categoriaSeleccionada);
-                                        }
-
+                                        nuevasCategorias.Add(categoriaSeleccionada);
                                     }
-                                    sv.Categorias = nuevasCategorias;
+
                                 }
+                                sv.Categorias = nuevasCategorias;
                             }
                         }
+
                         db.SaveChanges();
                         return true;
-                    }
-                    else
-                    {
+                    }else{
                         _Errores = new Exception("No se encontro el servicio");
                         return false;
                     }
-                    return true;
                 }
 
             }

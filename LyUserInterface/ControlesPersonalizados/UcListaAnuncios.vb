@@ -1,17 +1,29 @@
 ﻿Imports System.ComponentModel
 Public Class UcListaAnuncios
     Private Const MARGEN = 5
+    Private _TextoBotones As String
+
     Private _ListaPaneles As New List(Of Panel)
+
+    <Browsable(True)>
+    Public Property TextoBotones As String
+        Get
+            Return _TextoBotones
+        End Get
+        Set(value As String)
+            _TextoBotones = value
+        End Set
+    End Property
+
     Public Delegate Sub enviarId(id As Integer)
     Public Event OnClickButton As enviarId
-    Public Sub ConstruirDatos(items As List(Of LyBussinesModel.Servicio))
+    Public Sub ConstruirDatos(items As List(Of LyBussinesModel.DTO.DTOServicios))
         Dim count As Integer = 0
         PnPrincipal.Controls.Clear()
 
-
-
-        If Not items Is Nothing Then
-            For Each elemento As LyBussinesModel.Servicio In items
+        If items IsNot Nothing AndAlso items.Count > 0 Then
+            PnPrincipal.Visible = True
+            For Each elemento As LyBussinesModel.DTO.DTOServicios In items
                 Dim nuevoPanel As New Panel
                 Dim posicion As Point = PnDefault.Location
                 Dim size As Point = PnDefault.Size
@@ -24,6 +36,8 @@ Public Class UcListaAnuncios
                 Dim fecha As New Label
                 Dim pnLateral As New Panel
                 Dim bntVisualizar As New Button
+                Dim tags As New Label
+
 
                 posicion.Y += count * PnDefault.Size.Height
                 posicion.Y += MARGEN * count
@@ -48,20 +62,23 @@ Public Class UcListaAnuncios
                     .Location = btnDefaultVisualizar.Location
                     .Size = btnDefaultVisualizar.Size
                     .Anchor = btnDefaultVisualizar.Anchor
-                    .Tag = elemento.Id
+                    .Tag = elemento.id
                     .Font = btnDefaultVisualizar.Font
-                    .Text = btnDefaultVisualizar.Text
+                    .Text = _TextoBotones
                     .BackColor = btnDefaultVisualizar.BackColor
                     .FlatStyle = btnDefaultVisualizar.FlatStyle
                 End With
 
+
+
+
                 ClonarLabel("LblTitle" + count.ToString,
                             titulo,
-                            LbldefaultTitle, elemento.Titulo)
+                            LbldefaultTitle, elemento.titulo)
 
                 ClonarLabel("lblDescripcion" + count.ToString,
                             descripcion,
-                            LblDdefaultDescripcion, elemento.Descripcion)
+                            LblDdefaultDescripcion, elemento.descripcion)
 
                 ClonarLabel("lblTituloCreado" + count.ToString,
                             tituloCreador,
@@ -69,7 +86,7 @@ Public Class UcListaAnuncios
 
                 ClonarLabel("lblCreado" + count.ToString,
                             creador,
-                            lblDefaultNombre, elemento.Creador.Nombre)
+                            lblDefaultNombre, elemento.nombreCreador)
 
                 ClonarLabel("lblTituloFecha" + count.ToString,
                             tituloFecha,
@@ -77,8 +94,11 @@ Public Class UcListaAnuncios
 
                 ClonarLabel("lblFecha" + count.ToString,
                             fecha, lblDefaultFecha,
-                            elemento.FechaDeInicio.ToString)
+                            elemento.fechaCreacion.ToString)
 
+                ClonarLabel("lblTags" + count.ToString, tags,
+                            LblDefaultTags, String.Join("   ",
+                                                        elemento.Categorias.Select(Function(x) "#" + x.nombre)))
 
                 pnLateral.Controls.Add(tituloCreador)
                 pnLateral.Controls.Add(creador)
@@ -91,7 +111,7 @@ Public Class UcListaAnuncios
 
                 nuevoPanel.Controls.Add(titulo)
                 nuevoPanel.Controls.Add(descripcion)
-
+                nuevoPanel.Controls.Add(tags)
 
                 PnPrincipal.Controls.Add(nuevoPanel)
 
@@ -105,6 +125,8 @@ Public Class UcListaAnuncios
                 End If
 
             Next
+        Else
+            PnPrincipal.Visible = False
         End If
     End Sub
 

@@ -118,8 +118,10 @@ namespace TestDataAccesConsole
             categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(listaCategorias[0].Id));
             categoriasApuntadas.Add(new LyBussinesModel.DTO.DTOCategoria(listaCategorias[1].Id));
 
-            LyBussinesModel.DTO.DTOUsuario cambioUsuario = new LyBussinesModel.DTO.DTOUsuario(user.Id);
-            cambioUsuario.Categorias = categoriasApuntadas;
+            LyBussinesModel.DTO.DTOUsuario cambioUsuario = new LyBussinesModel.DTO.DTOUsuario(user.Id)
+            {
+                Categorias = categoriasApuntadas
+            };
             VerificarOperacion("Asignacion de categorias", _DaoUsuario.ModificarUsuario(cambioUsuario), _DaoUsuario);
             #endregion
 

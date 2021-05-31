@@ -22,7 +22,32 @@ LyUserInterface
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="P:LyUserInterface.My.Resources.Resources.add">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.add1">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:LyUserInterface.My.Resources.Resources.ajustes">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.anuncioEncurso">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.anuncioFin">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.back">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -37,7 +62,22 @@ LyUserInterface
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:LyUserInterface.My.Resources.Resources.publicOf">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.publicOn">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:LyUserInterface.My.Resources.Resources.servicios">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:LyUserInterface.My.Resources.Resources.usuario">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 namespace LyBussinesModel
 {
 
+    public enum EstadoCandidatura { PENDIENTE, ACEPTADA, CANCELADA, FINALIZADA }
+    public enum CanceladoPor { CANDIDATO, OFERTANTE }
 
     public class Candidatura
     {
-        public enum EstadoCandidatura{PENDIENTE,ACEPTADA,CANCELADA,FINALIZADA}
-        public enum CanceladoPor{CANDIDATO,OFERTANTE}
+
 
         private int _Id;
         private Usuario _Candidato;

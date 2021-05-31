@@ -24,7 +24,7 @@ namespace LyDataAcces.DAO
             set => _Errores = value;
         }
 
-        public String getError() { return _Errores.Message; }
+       
         /// <summary>
         /// Registra un usuario en la base de datos
         /// </summary>
@@ -53,13 +53,39 @@ namespace LyDataAcces.DAO
                         return false;
                     }
 
-                    ORM.Usuarios nuevoUsuario = new ORM.Usuarios();
-                    nuevoUsuario.nombreUsuario = datos.NombreUsuario;
-                    nuevoUsuario.nombre = datos.Nombre;
-                    nuevoUsuario.apellidos = datos.Apellidos;
-                    nuevoUsuario.correo = datos.Correo;
-                    nuevoUsuario.telefono = datos.Telefono;
-                    nuevoUsuario.hasPassword = datos.HasContraseña;
+                    ORM.Usuarios nuevoUsuario = new ORM.Usuarios
+                    {
+                        nombreUsuario = datos.NombreUsuario,
+                        nombre = datos.Nombre,
+                        apellidos = datos.Apellidos,
+                        correo = datos.Correo,
+                        telefono = datos.Telefono,
+                        hasPassword = datos.HasContraseña
+                    };
+
+
+                    //Creación de las categorias
+                    if (datos.Categorias != null)
+                    {
+                        if (datos.Categorias.Count > 0)
+                        {
+                            var queryCategorias = from b in db.Categorias select b;
+
+                            ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                            //elimna todos las categorias que no esten marcadas
+                            foreach (LyBussinesModel.DTO.DTOCategoria categoria in datos.Categorias)
+                            {
+                                ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                                if (categoriaSeleccionada != null)
+                                {
+                                    nuevasCategorias.Add(categoriaSeleccionada);
+                                }
+
+                            }
+                            nuevoUsuario.Categorias = nuevasCategorias;
+                        }
+                    }
+
                     db.Usuarios.Add(nuevoUsuario);
                     db.SaveChanges();
                     return true;
@@ -87,7 +113,6 @@ namespace LyDataAcces.DAO
                 using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
                     String hash = Usuario.CreateHash(usuario, password);
-                    ORM.Usuarios userEncontrado;
                     //Se realiza una busqueda del nombre en BD
                     var query = from b in db.Usuarios
                                 where b.hasPassword == hash
@@ -215,7 +240,8 @@ namespace LyDataAcces.DAO
                                               dbuser.apellidos,
                                               dbuser.tiempoAcumulado,
                                               dbuser.telefono,
-                                              dbuser.correo)
+                                              dbuser.correo,
+                                              Convert.ToInt32(dbuser.horasAcumuladas))
                         {
                             //Recogida de las categorias
                             Categorias = new List<Categoria>()
@@ -285,7 +311,8 @@ namespace LyDataAcces.DAO
                                                 userEncontrado.apellidos,
                                                 userEncontrado.tiempoAcumulado,
                                                 userEncontrado.telefono,
-                                                userEncontrado.correo)
+                                                userEncontrado.correo,
+                                                Convert.ToInt32(userEncontrado.horasAcumuladas))
                             {
 
                                 //Recogida de las categorias
@@ -346,16 +373,16 @@ namespace LyDataAcces.DAO
                         if (userEncontrado != null)
                         {
 
+
                             perfil = new DTOUsuario(userEncontrado.nombreUsuario,
                                                 userEncontrado.nombre,
                                                 userEncontrado.apellidos,
                                                 userEncontrado.telefono,
                                                 userEncontrado.correo,
-                                                (int)userEncontrado.tiempoAcumulado)
+                                                Convert.ToInt32(userEncontrado.horasAcumuladas))
                             {
-
-                                //Recogida de las categorias
-                                Categorias = new List<DTOCategoria>()
+                                id = userEncontrado.id,
+                                Categorias = new List<DTOCategoria>()   //Recogida de las categorias
                             };
                             foreach (ORM.Categorias categoria in userEncontrado.Categorias)
                             {

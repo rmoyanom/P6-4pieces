@@ -67,6 +67,7 @@
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="EFModelBancoTiempo.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="horasAcumuladas" ColumnName="horasAcumuladas" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="hasPassword" ColumnName="hasPassword" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />

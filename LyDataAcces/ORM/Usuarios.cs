@@ -30,6 +30,7 @@ namespace LyDataAcces.ORM
         public Nullable<int> tiempoAcumulado { get; set; }
         public string telefono { get; set; }
         public string correo { get; set; }
+        public Nullable<int> horasAcumuladas { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Candidatura> Candidatura { get; set; }

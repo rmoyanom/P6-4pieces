@@ -85,6 +85,7 @@
     <NavigationProperty Name="Candidatura" Relationship="Self.FK_Candidatura_Usuarios" FromRole="Usuarios" ToRole="Candidatura" />
     <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_Usuarios" FromRole="Usuarios" ToRole="Servicios" />
     <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Usuarios" FromRole="Usuarios" ToRole="Categorias" />
+    <Property Name="horasAcumuladas" Type="Int32" />
   </EntityType>
   <Association Name="FK_Candidatura_Aceptada_Candidatura">
     <End Role="Candidatura" Type="Self.Candidatura" Multiplicity="1" />

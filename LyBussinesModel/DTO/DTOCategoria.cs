@@ -11,6 +11,10 @@ namespace LyBussinesModel.DTO
         public int idCategoria;
         public String nombre;
 
+        public DTOCategoria()
+        {
+        }
+
         public DTOCategoria(int id)
         {
             idCategoria = id;
@@ -25,6 +29,16 @@ namespace LyBussinesModel.DTO
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
+        }
+
+        public List<Categoria> ListConverter(List<DTOCategoria> lista)
+        {
+            var convertedList = new List<Categoria>();
+            foreach (var categoria in lista)
+            {
+                convertedList.Add(new Categoria(categoria.idCategoria, categoria.nombre));
+            }
+            return convertedList;
         }
     }
 }

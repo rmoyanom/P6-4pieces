@@ -168,8 +168,11 @@ namespace LyDataAcces.DAO
 
                     ORM.Usuarios usuarioBD = query.First();
 
-                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0 && usuarioBD.nombreUsuario != editedUser.Nombre)
-                        usuarioBD.nombreUsuario = editedUser.Nombre;
+                    if (editedUser.NombreUsuario != null && editedUser.NombreUsuario.Length > 0 && usuarioBD.nombreUsuario != editedUser.NombreUsuario)
+                        usuarioBD.nombreUsuario = editedUser.NombreUsuario;
+
+                    if (editedUser.Nombre != null && editedUser.Nombre.Length > 0 && usuarioBD.nombre != editedUser.Nombre)
+                        usuarioBD.nombre = editedUser.Nombre;
 
                     if (editedUser.Apellidos != null && editedUser.Apellidos.Length > 0 && usuarioBD.apellidos != editedUser.Apellidos)
                         usuarioBD.apellidos = editedUser.Apellidos;
@@ -186,23 +189,22 @@ namespace LyDataAcces.DAO
                     //Edición de las categorias
                     if (editedUser.Categorias != null)
                     {
-                        if (editedUser.Categorias.Count > 0)
+                        
+                        var queryCategorias = from b in db.Categorias select b;
+                        usuarioBD.Categorias.Clear();
+                        ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
+                        //elimna todos las categorias que no esten marcadas
+                        foreach (LyBussinesModel.DTO.DTOCategoria categoria in editedUser.Categorias)
                         {
-                            var queryCategorias = from b in db.Categorias select b;
-
-                            ICollection<ORM.Categorias> nuevasCategorias = new List<ORM.Categorias>();
-                            //elimna todos las categorias que no esten marcadas
-                            foreach (LyBussinesModel.DTO.DTOCategoria categoria in editedUser.Categorias)
+                            ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
+                            if (categoriaSeleccionada != null)
                             {
-                                ORM.Categorias categoriaSeleccionada = queryCategorias.First(c => c.id == categoria.idCategoria);
-                                if (categoriaSeleccionada != null)
-                                {
-                                    nuevasCategorias.Add(categoriaSeleccionada);
-                                }
-
+                                nuevasCategorias.Add(categoriaSeleccionada);
                             }
-                            usuarioBD.Categorias = nuevasCategorias;
+
                         }
+                        usuarioBD.Categorias = nuevasCategorias;
+                        
                     }
                     db.SaveChanges();
                     return true;
@@ -304,7 +306,10 @@ namespace LyDataAcces.DAO
 
                         if (userEncontrado != null)
                         {
-
+                            if(userEncontrado.tiempoAcumulado == null)
+                            {
+                                userEncontrado.tiempoAcumulado = 0;
+                            }
                             perfil = new Usuario(userEncontrado.id,
                                                 userEncontrado.nombreUsuario,
                                                 userEncontrado.nombre,
@@ -404,5 +409,6 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+
     }
 }

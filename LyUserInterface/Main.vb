@@ -74,7 +74,10 @@ Module Main
 
 #Region "Funciones de Acceso"
     Private Usuario As LyBussinesModel.Usuario
-
+    Public Function updateUserOnEdit(id As Integer)
+        Dim Dao As New LyDataAcces.DAO.DaoUsuario
+        Main.Usuario = Dao.GetPerfilUsuario(id)
+    End Function
     Public Function Login(usuario As String, contraseña As String) As Boolean
         Dim Dao As New LyDataAcces.DAO.DaoUsuario
         Dim idUsuario As Integer = -1

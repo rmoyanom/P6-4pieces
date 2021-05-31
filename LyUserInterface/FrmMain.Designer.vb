@@ -32,9 +32,9 @@ Partial Class FrmMain
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BtnAddAnuncio = New System.Windows.Forms.Button()
+        Me.UcListaAnuncios = New LyUserInterface.UcListaAnuncios()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.UcListaAnuncios = New LyUserInterface.UcListaAnuncios()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,6 +163,19 @@ Partial Class FrmMain
         Me.BtnAddAnuncio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.BtnAddAnuncio.UseVisualStyleBackColor = True
         '
+        'UcListaAnuncios
+        '
+        Me.UcListaAnuncios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcListaAnuncios.AutoScroll = True
+        Me.UcListaAnuncios.BackColor = System.Drawing.Color.Azure
+        Me.UcListaAnuncios.Location = New System.Drawing.Point(3, 92)
+        Me.UcListaAnuncios.Name = "UcListaAnuncios"
+        Me.UcListaAnuncios.Size = New System.Drawing.Size(558, 379)
+        Me.UcListaAnuncios.TabIndex = 3
+        Me.UcListaAnuncios.TextoBotones = "MÁS DETALLES..."
+        '
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.Azure
@@ -181,19 +194,6 @@ Partial Class FrmMain
         Me.Label1.Size = New System.Drawing.Size(335, 39)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Tablón de anuncios"
-        '
-        'UcListaAnuncios
-        '
-        Me.UcListaAnuncios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcListaAnuncios.AutoScroll = True
-        Me.UcListaAnuncios.BackColor = System.Drawing.Color.Azure
-        Me.UcListaAnuncios.Location = New System.Drawing.Point(3, 92)
-        Me.UcListaAnuncios.Name = "UcListaAnuncios"
-        Me.UcListaAnuncios.Size = New System.Drawing.Size(558, 379)
-        Me.UcListaAnuncios.TabIndex = 3
-        Me.UcListaAnuncios.TextoBotones = "MÁS DETALLES..."
         '
         'FrmMain
         '

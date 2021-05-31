@@ -40,15 +40,15 @@ Partial Class FrmMisAnuncios
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.BtnSalir = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.BtnFinalizar = New System.Windows.Forms.Button()
+        Me.BtnEditar = New System.Windows.Forms.Button()
+        Me.lblAccionesTitulo = New System.Windows.Forms.Label()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LblTituloVentana = New System.Windows.Forms.Label()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.RtxtDescripcion = New System.Windows.Forms.RichTextBox()
         Me.TxtTitulo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -259,7 +259,7 @@ Partial Class FrmMisAnuncios
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel4.Controls.Add(Me.Panel8, 0, 1)
         Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel3, 2, 1)
-        Me.TableLayoutPanel4.Controls.Add(Me.Label5, 0, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.LblTituloVentana, 0, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel2, 1, 1)
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 5)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
@@ -272,9 +272,9 @@ Partial Class FrmMisAnuncios
         'Panel8
         '
         Me.Panel8.Controls.Add(Me.BtnSalir)
-        Me.Panel8.Controls.Add(Me.Button2)
-        Me.Panel8.Controls.Add(Me.Button1)
-        Me.Panel8.Controls.Add(Me.Label3)
+        Me.Panel8.Controls.Add(Me.BtnFinalizar)
+        Me.Panel8.Controls.Add(Me.BtnEditar)
+        Me.Panel8.Controls.Add(Me.lblAccionesTitulo)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel8.Location = New System.Drawing.Point(3, 37)
         Me.Panel8.Name = "Panel8"
@@ -295,37 +295,37 @@ Partial Class FrmMisAnuncios
         Me.BtnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.BtnSalir.UseVisualStyleBackColor = True
         '
-        'Button2
+        'BtnFinalizar
         '
-        Me.Button2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.BtnFinalizar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(3, 73)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(144, 43)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "FINALIZAR"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BtnFinalizar.Location = New System.Drawing.Point(3, 73)
+        Me.BtnFinalizar.Name = "BtnFinalizar"
+        Me.BtnFinalizar.Size = New System.Drawing.Size(144, 43)
+        Me.BtnFinalizar.TabIndex = 1
+        Me.BtnFinalizar.Text = "FINALIZAR"
+        Me.BtnFinalizar.UseVisualStyleBackColor = True
         '
-        'Button1
+        'BtnEditar
         '
-        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.BtnEditar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(3, 24)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(144, 43)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "EDITAR ANUNCIO"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BtnEditar.Location = New System.Drawing.Point(3, 24)
+        Me.BtnEditar.Name = "BtnEditar"
+        Me.BtnEditar.Size = New System.Drawing.Size(144, 43)
+        Me.BtnEditar.TabIndex = 1
+        Me.BtnEditar.Text = "EDITAR ANUNCIO"
+        Me.BtnEditar.UseVisualStyleBackColor = True
         '
-        'Label3
+        'lblAccionesTitulo
         '
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(3, 5)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(145, 24)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "ACCIONES"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.lblAccionesTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAccionesTitulo.Location = New System.Drawing.Point(3, 5)
+        Me.lblAccionesTitulo.Name = "lblAccionesTitulo"
+        Me.lblAccionesTitulo.Size = New System.Drawing.Size(145, 24)
+        Me.lblAccionesTitulo.TabIndex = 0
+        Me.lblAccionesTitulo.Text = "ACCIONES"
+        Me.lblAccionesTitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'TableLayoutPanel3
         '
@@ -366,24 +366,24 @@ Partial Class FrmMisAnuncios
         Me.DataGridView1.Size = New System.Drawing.Size(304, 426)
         Me.DataGridView1.TabIndex = 1
         '
-        'Label5
+        'LblTituloVentana
         '
-        Me.TableLayoutPanel4.SetColumnSpan(Me.Label5, 3)
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(3, 3)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(3)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(773, 28)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "GESTIONAR ANUNCIO"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.TableLayoutPanel4.SetColumnSpan(Me.LblTituloVentana, 3)
+        Me.LblTituloVentana.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LblTituloVentana.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTituloVentana.Location = New System.Drawing.Point(3, 3)
+        Me.LblTituloVentana.Margin = New System.Windows.Forms.Padding(3)
+        Me.LblTituloVentana.Name = "LblTituloVentana"
+        Me.LblTituloVentana.Size = New System.Drawing.Size(773, 28)
+        Me.LblTituloVentana.TabIndex = 0
+        Me.LblTituloVentana.Text = "GESTIONAR ANUNCIO"
+        Me.LblTituloVentana.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.ColumnCount = 1
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314.0!))
-        Me.TableLayoutPanel2.Controls.Add(Me.Button3, 0, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.BtnGuardar, 0, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.RtxtDescripcion, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.TxtTitulo, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 0)
@@ -401,18 +401,18 @@ Partial Class FrmMisAnuncios
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(314, 454)
         Me.TableLayoutPanel2.TabIndex = 2
         '
-        'Button3
+        'BtnGuardar
         '
-        Me.Button3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.BtnGuardar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(3, 398)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(308, 53)
-        Me.Button3.TabIndex = 1
-        Me.Button3.Text = "GUARDAR"
-        Me.Button3.UseVisualStyleBackColor = True
-        Me.Button3.Visible = False
+        Me.BtnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGuardar.Location = New System.Drawing.Point(3, 398)
+        Me.BtnGuardar.Name = "BtnGuardar"
+        Me.BtnGuardar.Size = New System.Drawing.Size(308, 53)
+        Me.BtnGuardar.TabIndex = 1
+        Me.BtnGuardar.Text = "GUARDAR"
+        Me.BtnGuardar.UseVisualStyleBackColor = True
+        Me.BtnGuardar.Visible = False
         '
         'RtxtDescripcion
         '
@@ -464,9 +464,9 @@ Partial Class FrmMisAnuncios
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(787, 497)
+        Me.Controls.Add(Me.PnVerGestionarAnuncio)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Controls.Add(Me.PnVerGestionarAnuncio)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmMisAnuncios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -502,9 +502,9 @@ Partial Class FrmMisAnuncios
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents Panel8 As Panel
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Label3 As Label
+    Friend WithEvents BtnFinalizar As Button
+    Friend WithEvents BtnEditar As Button
+    Friend WithEvents lblAccionesTitulo As Label
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents Label4 As Label
     Friend WithEvents DataGridView1 As DataGridView
@@ -512,8 +512,8 @@ Partial Class FrmMisAnuncios
     Friend WithEvents TxtTitulo As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents ChkList As CheckedListBox
-    Friend WithEvents Label5 As Label
+    Friend WithEvents LblTituloVentana As Label
     Friend WithEvents BtnSalir As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents BtnGuardar As Button
     Friend WithEvents BtnVolver As Button
 End Class

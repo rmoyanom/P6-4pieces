@@ -2,12 +2,14 @@
 Imports LyBussinesModel.DTO
 
 Public Class FrmVisualizarAnuncio
+    Public LanzarEdicionAnuncio As Boolean = False
+
     Private _Servicio As LyBussinesModel.DTO.DTOServiciosDetalles
 
 
     Public Sub CargarAnuncio(idServicio As Integer)
         Dim Dao As New LyDataAcces.DAO.DaoServicios
-
+        LanzarEdicionAnuncio = False
         _Servicio = Dao.GetServiciosDetalles(idServicio, Main.UsuarioAutenticado.Id)
         If _Servicio IsNot Nothing Then
             LblUsuario.Text = _Servicio.Creador.NombreUsuario
@@ -40,6 +42,7 @@ Public Class FrmVisualizarAnuncio
             End If
 
         Else
+            Me.DialogResult = DialogResult.None
             Me.Close()
         End If
     End Sub
@@ -47,7 +50,9 @@ Public Class FrmVisualizarAnuncio
 
     Private Sub BtnCrearSolicitud_Click(sender As Object, e As EventArgs) Handles BtnCrearSolicitud.Click
         If _Servicio.Creador.id = UsuarioAutenticado.Id Then
-            'LANZAR ACCION PARA IR A GESTION DE ANUNCIOS
+            'LANZAR ACCION PARA IR A GESTION DE ANUNCIOS+
+            Main.AuxiliarIdServicioInteraccion = _Servicio.id
+            Me.DialogResult = DialogResult.Yes
         Else
             PnEnvioSolicitud.Visible = True
             PnEnvioSolicitud.BringToFront()
@@ -107,4 +112,5 @@ Public Class FrmVisualizarAnuncio
         BtnCrearSolicitud.Enabled = False
         PnEnvioSolicitud.Visible = False
     End Sub
+
 End Class

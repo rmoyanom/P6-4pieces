@@ -2,6 +2,7 @@
 
 Module Main
     Private _MensajeError As String
+    Private _AuxiliarIdServicioInteraccion As Integer
 
 
 
@@ -21,6 +22,15 @@ Module Main
         Get
             Return Usuario
         End Get
+    End Property
+
+    Public Property AuxiliarIdServicioInteraccion As Integer
+        Get
+            Return _AuxiliarIdServicioInteraccion
+        End Get
+        Set(value As Integer)
+            _AuxiliarIdServicioInteraccion = value
+        End Set
     End Property
 
 

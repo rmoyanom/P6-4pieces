@@ -113,6 +113,7 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+   
         //Listar N servicios (sólo activos)
         /// <summary>
         /// Devuelve N Servicios. Si p != null devuelve N servicios a partir de la página p
@@ -150,6 +151,7 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }        
+ 
         //Listar servicios de un usuario (Todos)
         /// <summary>
         /// Listado de Servicios de un usuario.
@@ -180,6 +182,7 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+
         /// <summary>
         /// Método para realizar la petición del listado que se repite en los métodos para listar todos o listar de user
         /// </summary>
@@ -400,7 +403,8 @@ namespace LyDataAcces.DAO
                             Descripcion = sv.descripcion,
                             CantidadSolicitudes = cantidadServicios,
                             FechaDeInicio = sv.fechaCreacion,
-                            SePuedeSolicitar = puedeSolicitarse
+                            SePuedeSolicitar = puedeSolicitarse,
+                            Finalizado = (bool)sv.finalizado
                         };
 
                         if(idCreador > 0)
@@ -439,5 +443,48 @@ namespace LyDataAcces.DAO
     
         //Modificar un servicio
         //Dar de baja un servicio (Finalizar)
+
+        public bool FinalizarServicio(int idServicio)
+        {
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+
+                    DTOServiciosDetalles resultados = null;
+                    var queryServicios = from b in db.Servicios where b.id == idServicio select b;
+
+                    if (queryServicios.Count() > 0)
+                    {
+                        ORM.Servicios sv = queryServicios.FirstOrDefault();
+                        if (sv.Candidatura != null && sv.Candidatura.Count() > 0)
+                        {
+                            sv.Candidatura.Count();
+                            //TODO si tiene candidaturas, se recorren las que esten con estado finalizada y se obtiene
+                            //La puntuación para realizar media
+
+                            var candidaturas = sv.Candidatura.Where(x => x.estado == (int)EstadoCandidatura.ACEPTADA);
+                            if (candidaturas.Count() > 0)
+                            {
+                                _Errores = new Exception("No puede dar de baja el servicio habiendo servicios esperando a ser finalizados");
+                                return false;
+                            }
+                        }
+
+                        sv.finalizado = true;
+                        db.SaveChanges();
+                        return true;
+                    }else{
+                        _Errores = new Exception("No se encontro el servicio");
+                        return false;
+                    }
+                    return true;
+                }
+
+            } catch (Exception ex){
+                _Errores = ex;
+                return false;
+            }
+}
     }
 }

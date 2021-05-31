@@ -53,14 +53,15 @@
 
     Private Sub VisualizarServicio(id As Integer) Handles UcListaAnuncios.OnClickButton
         FrmVisualizarAnuncio.CargarAnuncio(id)
-        FrmVisualizarAnuncio.ShowDialog()
+        If FrmVisualizarAnuncio.ShowDialog() = DialogResult.Yes Then
+            FrmMisAnuncios.LoadServicioParaGestion(Main.AuxiliarIdServicioInteraccion)
+            Main.AbrirApartado(Me, FrmMisAnuncios)
+        End If
     End Sub
 
     Private Sub BtnAddAnuncio_Click(sender As Object, e As EventArgs) Handles BtnAddAnuncio.Click
         FrmCrearAnuncio.ClearText()
         FrmCrearAnuncio.ShowDialog()
-        LoadServicios()
     End Sub
-
 
 End Class

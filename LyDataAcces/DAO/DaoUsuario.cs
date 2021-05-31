@@ -381,9 +381,8 @@ namespace LyDataAcces.DAO
                                                 userEncontrado.correo,
                                                 Convert.ToInt32(userEncontrado.horasAcumuladas))
                             {
-
-                                //Recogida de las categorias
-                                Categorias = new List<DTOCategoria>()
+                                id = userEncontrado.id,
+                                Categorias = new List<DTOCategoria>()   //Recogida de las categorias
                             };
                             foreach (ORM.Categorias categoria in userEncontrado.Categorias)
                             {

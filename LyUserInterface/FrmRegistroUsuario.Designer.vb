@@ -66,6 +66,7 @@ Partial Class FrmRegistroUsuario
         '
         resources.ApplyResources(Me.TxtPassword, "TxtPassword")
         Me.TxtPassword.Name = "TxtPassword"
+        Me.TxtPassword.UseSystemPasswordChar = True
         '
         'LblTitleDatosPersonales
         '

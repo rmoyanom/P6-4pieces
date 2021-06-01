@@ -24,19 +24,20 @@ Partial Class FrmMiCuenta
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMiCuenta))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.BtnVolver = New System.Windows.Forms.Button()
         Me.BtnMiCuenta = New System.Windows.Forms.Button()
         Me.BtnMiCartera = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PtcLogo = New System.Windows.Forms.PictureBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PanelContenidos = New System.Windows.Forms.Panel()
+        Me.PanelErrores = New System.Windows.Forms.Panel()
+        Me.LblError = New System.Windows.Forms.Label()
+        Me.LblTitleMiPerfil = New System.Windows.Forms.Label()
         Me.PnlMiCartera = New System.Windows.Forms.Panel()
         Me.LblSaldo = New System.Windows.Forms.Label()
         Me.LblTitleSaldo = New System.Windows.Forms.Label()
         Me.LblTitleCartera = New System.Windows.Forms.Label()
-        Me.PanelErrores = New System.Windows.Forms.Panel()
-        Me.LblError = New System.Windows.Forms.Label()
-        Me.LblTitleMiPerfil = New System.Windows.Forms.Label()
         Me.PnlCategorias = New System.Windows.Forms.Panel()
         Me.BtnSaveCategorias = New System.Windows.Forms.Button()
         Me.LblTitleCategoriasList = New System.Windows.Forms.Label()
@@ -63,13 +64,12 @@ Partial Class FrmMiCuenta
         Me.LblApellidos = New System.Windows.Forms.Label()
         Me.TxtNombre = New System.Windows.Forms.TextBox()
         Me.LblNombre = New System.Windows.Forms.Label()
-        Me.BtnVolver = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelContenidos.SuspendLayout()
-        Me.PnlMiCartera.SuspendLayout()
         Me.PanelErrores.SuspendLayout()
+        Me.PnlMiCartera.SuspendLayout()
         Me.PnlCategorias.SuspendLayout()
         Me.PnlMisDatos.SuspendLayout()
         Me.SuspendLayout()
@@ -98,6 +98,19 @@ Partial Class FrmMiCuenta
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 495)
         Me.TableLayoutPanel1.TabIndex = 0
+        '
+        'BtnVolver
+        '
+        Me.BtnVolver.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BtnVolver.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnVolver.Image = Global.LyUserInterface.My.Resources.Resources.back
+        Me.BtnVolver.Location = New System.Drawing.Point(3, 354)
+        Me.BtnVolver.Name = "BtnVolver"
+        Me.BtnVolver.Size = New System.Drawing.Size(214, 116)
+        Me.BtnVolver.TabIndex = 8
+        Me.BtnVolver.Text = "VOLVER"
+        Me.BtnVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.BtnVolver.UseVisualStyleBackColor = True
         '
         'BtnMiCuenta
         '
@@ -159,9 +172,9 @@ Partial Class FrmMiCuenta
         'PanelContenidos
         '
         Me.PanelContenidos.BackColor = System.Drawing.Color.Azure
-        Me.PanelContenidos.Controls.Add(Me.PnlMiCartera)
         Me.PanelContenidos.Controls.Add(Me.PanelErrores)
         Me.PanelContenidos.Controls.Add(Me.LblTitleMiPerfil)
+        Me.PanelContenidos.Controls.Add(Me.PnlMiCartera)
         Me.PanelContenidos.Controls.Add(Me.PnlCategorias)
         Me.PanelContenidos.Controls.Add(Me.PnlMisDatos)
         Me.PanelContenidos.Dock = System.Windows.Forms.DockStyle.Fill
@@ -169,6 +182,37 @@ Partial Class FrmMiCuenta
         Me.PanelContenidos.Name = "PanelContenidos"
         Me.PanelContenidos.Size = New System.Drawing.Size(597, 495)
         Me.PanelContenidos.TabIndex = 1
+        '
+        'PanelErrores
+        '
+        Me.PanelErrores.BackColor = System.Drawing.Color.Azure
+        Me.PanelErrores.Controls.Add(Me.LblError)
+        Me.PanelErrores.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PanelErrores.Location = New System.Drawing.Point(0, 474)
+        Me.PanelErrores.Name = "PanelErrores"
+        Me.PanelErrores.Size = New System.Drawing.Size(597, 21)
+        Me.PanelErrores.TabIndex = 2
+        '
+        'LblError
+        '
+        Me.LblError.AutoSize = True
+        Me.LblError.BackColor = System.Drawing.Color.Transparent
+        Me.LblError.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.5!)
+        Me.LblError.ForeColor = System.Drawing.Color.Red
+        Me.LblError.Location = New System.Drawing.Point(19, 1)
+        Me.LblError.Name = "LblError"
+        Me.LblError.Size = New System.Drawing.Size(0, 17)
+        Me.LblError.TabIndex = 24
+        '
+        'LblTitleMiPerfil
+        '
+        Me.LblTitleMiPerfil.AutoSize = True
+        Me.LblTitleMiPerfil.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitleMiPerfil.Location = New System.Drawing.Point(6, 9)
+        Me.LblTitleMiPerfil.Name = "LblTitleMiPerfil"
+        Me.LblTitleMiPerfil.Size = New System.Drawing.Size(199, 55)
+        Me.LblTitleMiPerfil.TabIndex = 0
+        Me.LblTitleMiPerfil.Text = "Mi perfil"
         '
         'PnlMiCartera
         '
@@ -216,37 +260,6 @@ Partial Class FrmMiCuenta
         Me.LblTitleCartera.Size = New System.Drawing.Size(123, 26)
         Me.LblTitleCartera.TabIndex = 0
         Me.LblTitleCartera.Text = "Mi Cartera"
-        '
-        'PanelErrores
-        '
-        Me.PanelErrores.BackColor = System.Drawing.Color.Azure
-        Me.PanelErrores.Controls.Add(Me.LblError)
-        Me.PanelErrores.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelErrores.Location = New System.Drawing.Point(0, 474)
-        Me.PanelErrores.Name = "PanelErrores"
-        Me.PanelErrores.Size = New System.Drawing.Size(597, 21)
-        Me.PanelErrores.TabIndex = 2
-        '
-        'LblError
-        '
-        Me.LblError.AutoSize = True
-        Me.LblError.BackColor = System.Drawing.Color.Transparent
-        Me.LblError.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.5!)
-        Me.LblError.ForeColor = System.Drawing.Color.Red
-        Me.LblError.Location = New System.Drawing.Point(19, 1)
-        Me.LblError.Name = "LblError"
-        Me.LblError.Size = New System.Drawing.Size(0, 17)
-        Me.LblError.TabIndex = 24
-        '
-        'LblTitleMiPerfil
-        '
-        Me.LblTitleMiPerfil.AutoSize = True
-        Me.LblTitleMiPerfil.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTitleMiPerfil.Location = New System.Drawing.Point(6, 9)
-        Me.LblTitleMiPerfil.Name = "LblTitleMiPerfil"
-        Me.LblTitleMiPerfil.Size = New System.Drawing.Size(199, 55)
-        Me.LblTitleMiPerfil.TabIndex = 0
-        Me.LblTitleMiPerfil.Text = "Mi perfil"
         '
         'PnlCategorias
         '
@@ -559,19 +572,6 @@ Partial Class FrmMiCuenta
         Me.LblNombre.Text = "Nombre:"
         Me.LblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'BtnVolver
-        '
-        Me.BtnVolver.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BtnVolver.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnVolver.Image = Global.LyUserInterface.My.Resources.Resources.back
-        Me.BtnVolver.Location = New System.Drawing.Point(3, 354)
-        Me.BtnVolver.Name = "BtnVolver"
-        Me.BtnVolver.Size = New System.Drawing.Size(214, 116)
-        Me.BtnVolver.TabIndex = 8
-        Me.BtnVolver.Text = "VOLVER"
-        Me.BtnVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.BtnVolver.UseVisualStyleBackColor = True
-        '
         'FrmMiCuenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -592,10 +592,10 @@ Partial Class FrmMiCuenta
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContenidos.ResumeLayout(False)
         Me.PanelContenidos.PerformLayout()
-        Me.PnlMiCartera.ResumeLayout(False)
-        Me.PnlMiCartera.PerformLayout()
         Me.PanelErrores.ResumeLayout(False)
         Me.PanelErrores.PerformLayout()
+        Me.PnlMiCartera.ResumeLayout(False)
+        Me.PnlMiCartera.PerformLayout()
         Me.PnlCategorias.ResumeLayout(False)
         Me.PnlCategorias.PerformLayout()
         Me.PnlMisDatos.ResumeLayout(False)

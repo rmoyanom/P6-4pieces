@@ -209,15 +209,15 @@ namespace LyDataAcces.DAO
                 using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
                 {
                     //Se realiza una busqueda de la categoria en BD
-                    var query = db.Candidatura.Find(idCandidatura);
+                    var candidatura = db.Candidatura.Find(idCandidatura);
 
-                    if (query == null)
+                    if (candidatura == null)
                     {
                         _Errores = new Exception("No se ha encontrado el id buscado");
                         return false;
                     }
 
-                   EstadoCandidatura estadoAnterior = (EstadoCandidatura)query.estado;
+                   EstadoCandidatura estadoAnterior = (EstadoCandidatura)candidatura.estado;
                     if (estadoAnterior != EstadoCandidatura.ACEPTADA)
                     {
                         _Errores = new Exception("La candidatura se encuentra " + estadoAnterior.ToString());
@@ -227,11 +227,34 @@ namespace LyDataAcces.DAO
 
   
                     ORM.Candidatura_Finalizada finalizada = new ORM.Candidatura_Finalizada();
-                    query.estado = (int)EstadoCandidatura.FINALIZADA;
+                    candidatura.estado = (int)EstadoCandidatura.FINALIZADA;
                     finalizada.valoracion = valoracion;
                     finalizada.comentarios = comentarios;
                     finalizada.horasGanadas = horasGanadas;
-                    query.Candidatura_Finalizada = finalizada;
+                    candidatura.Candidatura_Finalizada = finalizada;
+
+                    //REALIZAR CAMBIOS DE HORAS
+                    if(candidatura.Servicios.Usuarios.horasAcumuladas - horasGanadas < 0)
+                    {
+                        _Errores = new Exception("No pude darle estas horas lo maximo que tiene son: " +
+                            candidatura.Servicios.Usuarios.horasAcumuladas.ToString());
+                        return false;
+                    }
+
+                    candidatura.Servicios.Usuarios.horasAcumuladas -=  horasGanadas;
+
+                    int horasCandidato = horasGanadas;
+                    if(candidatura.Usuarios.horasAcumuladas != null && candidatura.Usuarios.horasAcumuladas > 0)
+                    {
+
+                        horasCandidato = horasCandidato + (int)candidatura.Usuarios.horasAcumuladas;
+                    }
+
+                   candidatura.Usuarios.horasAcumuladas = horasCandidato;
+
+
+
+
 
                     db.SaveChanges();
                     return true;

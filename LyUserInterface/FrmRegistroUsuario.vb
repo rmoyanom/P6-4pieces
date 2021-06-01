@@ -7,7 +7,7 @@ Public Class FrmRegistroUsuario
     Private Sub BtnRegistrarUsuario_Click(sender As Object, e As EventArgs) Handles BtnRegistrar.Click
 
         Dim nuevoUsuario = New DTO.DTOUsuario(
-            TxtNombreUsuario.Text,
+            TxtNombreUsuario.Text.ToLower(),
             TxtNombre.Text,
             TxtApellidos.Text,
             TxtTelefono.Text,

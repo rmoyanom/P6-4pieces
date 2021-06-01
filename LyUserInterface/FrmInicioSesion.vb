@@ -13,7 +13,7 @@ Public Class FrmInicioSesion
 
 
     Private Sub BtnIniciarSesion_Click(sender As Object, e As EventArgs) Handles BtnIniciarSesion.Click
-        If Login(TxtUsuario.Text, TxtContraseña.Text) Then
+        If Login(TxtUsuario.Text.ToLower(), TxtContraseña.Text) Then
             Me.Hide()
             FrmMain.Show()
         Else

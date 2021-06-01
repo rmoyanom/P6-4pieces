@@ -11,7 +11,8 @@ Public Class FrmMiCuenta
         TxtTelefono.Text = Main.UsuarioAutenticado.Telefono
         TxtEmail.Text = Main.UsuarioAutenticado.Correo
         TxtUsuario.Text = Main.UsuarioAutenticado.NombreUsuario
-        LblSaldo.Text = Main.UsuarioAutenticado.TiempoAcumulado.ToString() + " h."
+        LblSaldo.Text = Main.UsuarioAutenticado.HorasAcumuladas.ToString() + " h."
+
         LBoxCategorias.Items.Clear()
         For Each Categoria In Main.UsuarioAutenticado.Categorias
             LBoxCategorias.Items.Add(Categoria.Nombre)
@@ -227,4 +228,6 @@ Public Class FrmMiCuenta
     Private Sub BtnVolver_Click(sender As Object, e As EventArgs) Handles BtnVolver.Click
         Dispose()
     End Sub
+
+
 End Class

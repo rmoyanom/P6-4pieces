@@ -21,7 +21,7 @@ namespace LyDataAcces.DAO
             set => _Errores = value;
         }
 
-
+ 
         
         /// <summary>
         /// Lista de todas las categorías disponibles

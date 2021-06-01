@@ -463,8 +463,8 @@ namespace LyDataAcces.DAO
                                     resultados.Add(new DTOListadoCandidaturasEnServicio
                                     {
                                         Id = candidatura.id,
-                                        Nombre = candidatura.Usuarios.nombreUsuario,
-                                        Usuario = candidatura.Usuarios.nombre,
+                                        Nombre = candidatura.Usuarios.nombre,
+                                        Usuario = candidatura.Usuarios.nombreUsuario,
                                         Apellido = candidatura.Usuarios.apellidos,
                                         Correo = candidatura.Usuarios.correo,
                                         Telefono = candidatura.Usuarios.telefono,

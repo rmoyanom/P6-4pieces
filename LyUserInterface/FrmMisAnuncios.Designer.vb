@@ -26,6 +26,7 @@ Partial Class FrmMisAnuncios
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BtnAddAnuncio = New System.Windows.Forms.Button()
         Me.LblSubtitulo = New System.Windows.Forms.Label()
+        Me.UcListaAnuncios = New LyUserInterface.UcListaAnuncios()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -52,7 +53,6 @@ Partial Class FrmMisAnuncios
         Me.BtnFinalizar = New System.Windows.Forms.Button()
         Me.BtnEditar = New System.Windows.Forms.Button()
         Me.lblAccionesTitulo = New System.Windows.Forms.Label()
-        Me.UcListaAnuncios = New LyUserInterface.UcListaAnuncios()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -106,6 +106,19 @@ Partial Class FrmMisAnuncios
         Me.LblSubtitulo.TabIndex = 5
         Me.LblSubtitulo.Text = "Activos"
         Me.LblSubtitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'UcListaAnuncios
+        '
+        Me.UcListaAnuncios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UcListaAnuncios.AutoScroll = True
+        Me.UcListaAnuncios.BackColor = System.Drawing.Color.Azure
+        Me.UcListaAnuncios.Location = New System.Drawing.Point(3, 92)
+        Me.UcListaAnuncios.Name = "UcListaAnuncios"
+        Me.UcListaAnuncios.Size = New System.Drawing.Size(683, 456)
+        Me.UcListaAnuncios.TabIndex = 4
+        Me.UcListaAnuncios.TextoBotones = "Gestionar"
         '
         'Panel4
         '
@@ -259,7 +272,7 @@ Partial Class FrmMisAnuncios
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.ColumnCount = 1
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 516.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel3.Controls.Add(Me.Label4, 0, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.DTGCandidaturas, 0, 1)
         Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
@@ -268,8 +281,6 @@ Partial Class FrmMisAnuncios
         Me.TableLayoutPanel3.RowCount = 2
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49.0!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(487, 532)
         Me.TableLayoutPanel3.TabIndex = 2
         '
@@ -280,7 +291,7 @@ Partial Class FrmMisAnuncios
         Me.Label4.Location = New System.Drawing.Point(3, 3)
         Me.Label4.Margin = New System.Windows.Forms.Padding(3)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(510, 16)
+        Me.Label4.Size = New System.Drawing.Size(481, 16)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "LISTA CANDIDATURAS"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -289,18 +300,21 @@ Partial Class FrmMisAnuncios
         '
         Me.DTGCandidaturas.AllowUserToAddRows = False
         Me.DTGCandidaturas.AllowUserToDeleteRows = False
+        Me.DTGCandidaturas.AllowUserToResizeColumns = False
+        Me.DTGCandidaturas.AllowUserToResizeRows = False
         Me.DTGCandidaturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DTGCandidaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DTGCandidaturas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DTGCandidaturas.Location = New System.Drawing.Point(3, 25)
         Me.DTGCandidaturas.Name = "DTGCandidaturas"
+        Me.DTGCandidaturas.ReadOnly = True
         Me.DTGCandidaturas.RowHeadersVisible = False
         Me.DTGCandidaturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DTGCandidaturas.ShowCellErrors = False
         Me.DTGCandidaturas.ShowCellToolTips = False
         Me.DTGCandidaturas.ShowEditingIcon = False
         Me.DTGCandidaturas.ShowRowErrors = False
-        Me.DTGCandidaturas.Size = New System.Drawing.Size(510, 504)
+        Me.DTGCandidaturas.Size = New System.Drawing.Size(481, 504)
         Me.DTGCandidaturas.TabIndex = 1
         '
         'LblTituloVentana
@@ -453,19 +467,6 @@ Partial Class FrmMisAnuncios
         Me.lblAccionesTitulo.TabIndex = 0
         Me.lblAccionesTitulo.Text = "ACCIONES"
         Me.lblAccionesTitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'UcListaAnuncios
-        '
-        Me.UcListaAnuncios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcListaAnuncios.AutoScroll = True
-        Me.UcListaAnuncios.BackColor = System.Drawing.Color.Azure
-        Me.UcListaAnuncios.Location = New System.Drawing.Point(3, 92)
-        Me.UcListaAnuncios.Name = "UcListaAnuncios"
-        Me.UcListaAnuncios.Size = New System.Drawing.Size(683, 456)
-        Me.UcListaAnuncios.TabIndex = 4
-        Me.UcListaAnuncios.TextoBotones = "Gestionar"
         '
         'FrmMisAnuncios
         '

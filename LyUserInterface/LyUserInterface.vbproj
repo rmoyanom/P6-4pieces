@@ -92,6 +92,12 @@
     <Compile Include="FrmCrearAnuncio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmGestionCandidaturas.Designer.vb">
+      <DependentUpon>FrmGestionCandidaturas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestionCandidaturas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmInicioSesion.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCrearAnuncio.resx">
       <DependentUpon>FrmCrearAnuncio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestionCandidaturas.resx">
+      <DependentUpon>FrmGestionCandidaturas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInicioSesion.resx">
       <DependentUpon>FrmInicioSesion.vb</DependentUpon>

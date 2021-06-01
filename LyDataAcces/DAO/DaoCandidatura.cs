@@ -24,6 +24,43 @@ namespace LyDataAcces.DAO
         }
 
 
+
+        public Candidatura GetCandidatura(int idCandidatura)
+        {
+
+            try
+            {
+                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    DaoUsuario daoUsuario = new DaoUsuario();
+                    Candidatura retorno = new Candidatura();
+
+                    //Se realiza una busqueda de la categoria en BD
+                    var canDb = db.Candidatura.Find(idCandidatura);
+
+                    if (canDb == null)
+                    {
+                        _Errores = new Exception("No se ha encontrado el id buscado");
+                        return null;
+                    }
+
+
+                    retorno.Id = canDb.id;
+                    retorno.Candidato = daoUsuario.GetPerfilUsuario(canDb.Usuarios.id);
+                    retorno.FechaInscripcion = (DateTime)canDb.fechaInscripcion;
+                    retorno.HorasRequeridas = (int)canDb.horasRequeridas;
+                    retorno.Estado = (EstadoCandidatura)canDb.estado;
+
+                    return retorno;
+                }
+            }catch (Exception ex){
+                _Errores = ex;
+                return null;
+            }
+
+        }
+ 
+
         /// <summary>
         /// Crear candidatura
         /// </summary>
@@ -76,7 +113,7 @@ namespace LyDataAcces.DAO
         /// </summary>
         /// <param name="idCandidatura"></param>
         /// <returns></returns>
-        public bool CancelarCandidatura(int idCandidatura,EstadoCandidatura canceladopor,String motivo)
+        public bool CancelarCandidatura(int idCandidatura,CanceladoPor canceladopor,String motivo)
         {
             try
             {
@@ -93,14 +130,14 @@ namespace LyDataAcces.DAO
 
                     //para cancelar la candidatura no puede estar finalizada
                     EstadoCandidatura estadoAnterior = (EstadoCandidatura)query.estado;
-                    if (estadoAnterior == EstadoCandidatura.ACEPTADA || 
-                        estadoAnterior == EstadoCandidatura.PENDIENTE)
+                    if (estadoAnterior == EstadoCandidatura.FINALIZADA )
                     {
                         _Errores = new Exception("La candidatura se encuentra "+ estadoAnterior.ToString());
                         return false;
                     }
 
                     ORM.Candidatura_Cancelada cancelacion = new ORM.Candidatura_Cancelada();
+                    cancelacion.motivoCancelacion = motivo;
                     query.estado = (int?)EstadoCandidatura.CANCELADA;
                     query.Candidatura_Cancelada = cancelacion;
                     db.SaveChanges();
@@ -144,14 +181,14 @@ namespace LyDataAcces.DAO
                         return false;
                     }
 
-                    ORM.Candidatura aceptcandidatura = new ORM.Candidatura();
+
                     ORM.Candidatura_Aceptada aceptada = new ORM.Candidatura_Aceptada();
-                    aceptcandidatura.idUsuario = idCandidatura;
-                    aceptcandidatura.estado = (int?)EstadoCandidatura.FINALIZADA;
+
+                    query.estado = (int?)EstadoCandidatura.ACEPTADA;
                     aceptada.fechaAceptacion = DateTime.Now;
                     aceptada.horasAcordadas = horascaordadas;
                     aceptada.fechaAcordadaServicio = fechacordada;
-
+                    query.Candidatura_Aceptada = aceptada;
 
                     db.SaveChanges();
                     return true;
@@ -188,14 +225,14 @@ namespace LyDataAcces.DAO
                     }
 
 
-                    ORM.Candidatura candidaturafinalizada = new ORM.Candidatura();
+  
                     ORM.Candidatura_Finalizada finalizada = new ORM.Candidatura_Finalizada();
-                    candidaturafinalizada.estado = (int)EstadoCandidatura.FINALIZADA;
+                    query.estado = (int)EstadoCandidatura.FINALIZADA;
                     finalizada.valoracion = valoracion;
                     finalizada.comentarios = comentarios;
                     finalizada.horasGanadas = horasGanadas;
-
                     query.Candidatura_Finalizada = finalizada;
+
                     db.SaveChanges();
                     return true;
                 }

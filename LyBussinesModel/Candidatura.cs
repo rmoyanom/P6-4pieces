@@ -38,7 +38,7 @@ namespace LyBussinesModel
         private DateTime _FechaDeCancelacion;
         private String _MotivoCancelacíon;
         private CanceladoPor _AutorCancelado;
-
+        public Candidatura() { }
         public Candidatura(int id, Usuario candidato, Servicio servicio, EstadoCandidatura estado, DateTime fechaInscripcion, int horasRequeridas)
         {
             _Id = id;

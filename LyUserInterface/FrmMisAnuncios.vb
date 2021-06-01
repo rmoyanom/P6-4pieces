@@ -195,6 +195,21 @@ Public Class FrmMisAnuncios
         Next
         Return retorno
     End Function
+
+
+
+    Private Sub DTGCandidaturas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DTGCandidaturas.CellClick
+        If DTGCandidaturas.SelectedRows.Count > 0 Then
+            Dim dtoSel As DTOListadoCandidaturasEnServicio = DTGCandidaturas.SelectedRows.Item(0).DataBoundItem
+
+            FrmGestionCandidaturas.OpenDialog(dtoSel.Id)
+            LoadServicioParaGestion(_Servicio.id)
+        End If
+    End Sub
+
+
+
+
 #End Region
 
 

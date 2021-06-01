@@ -478,7 +478,7 @@ Partial Class FrmMisAnuncios
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmMisAnuncios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FormNuevoUsuario"
+        Me.Text = "Banco del tiempo"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)

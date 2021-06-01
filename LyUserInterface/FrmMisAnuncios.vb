@@ -61,6 +61,10 @@ Public Class FrmMisAnuncios
             If listaCandidaturas IsNot Nothing Then
                 DTGCandidaturas.DataSource = listaCandidaturas
                 DTGCandidaturas.Columns.Item(0).Visible = False
+                DTGCandidaturas.Columns.Item("Fecha_Inscripcion").HeaderText = "Fecha"
+                DTGCandidaturas.Columns.Item("Horas_Solicitadas").HeaderText = "Horas Requeridas"
+                DTGCandidaturas.Columns.Item("Horas_Ganadas").HeaderText = "Horas Realizadas"
+
             End If
 
 
@@ -200,12 +204,14 @@ Public Class FrmMisAnuncios
 
     Private Sub DTGCandidaturas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DTGCandidaturas.CellClick
         If DTGCandidaturas.SelectedRows.Count > 0 Then
+            Dim selectIndex As Integer = DTGCandidaturas.SelectedRows.Item(0).Index
             Dim dtoSel As DTOListadoCandidaturasEnServicio = DTGCandidaturas.SelectedRows.Item(0).DataBoundItem
-
             FrmGestionCandidaturas.OpenDialog(dtoSel.Id)
             LoadServicioParaGestion(_Servicio.id)
+            DTGCandidaturas.Rows.Item(selectIndex).Selected = True
         End If
     End Sub
+
 
 
 

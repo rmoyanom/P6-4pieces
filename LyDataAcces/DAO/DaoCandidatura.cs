@@ -51,6 +51,13 @@ namespace LyDataAcces.DAO
                     retorno.HorasRequeridas = (int)canDb.horasRequeridas;
                     retorno.Estado = (EstadoCandidatura)canDb.estado;
 
+                    if(canDb.Candidatura_Finalizada != null && canDb.Candidatura_Finalizada.horasGanadas != null)
+                    {
+                        retorno.HorasGanadas = (int)canDb.Candidatura_Finalizada.horasGanadas;
+                    }else{
+                        retorno.HorasGanadas = 0;
+                    }
+
                     return retorno;
                 }
             }catch (Exception ex){

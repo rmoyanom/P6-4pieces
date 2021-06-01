@@ -306,6 +306,7 @@ Partial Class FrmMisAnuncios
         Me.DTGCandidaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DTGCandidaturas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DTGCandidaturas.Location = New System.Drawing.Point(3, 25)
+        Me.DTGCandidaturas.MultiSelect = False
         Me.DTGCandidaturas.Name = "DTGCandidaturas"
         Me.DTGCandidaturas.ReadOnly = True
         Me.DTGCandidaturas.RowHeadersVisible = False

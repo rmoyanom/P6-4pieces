@@ -43,6 +43,8 @@ Partial Class FrmGestionCandidaturas
         Me.LblFechaInscripcion = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.LblHorasRequeridas = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.LblHorasGanadas = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.LblTags = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -74,7 +76,7 @@ Partial Class FrmGestionCandidaturas
         Me.Label2.Location = New System.Drawing.Point(3, 3)
         Me.Label2.Margin = New System.Windows.Forms.Padding(3)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(118, 26)
+        Me.Label2.Size = New System.Drawing.Size(133, 26)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Usuario:"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -84,10 +86,10 @@ Partial Class FrmGestionCandidaturas
         Me.LblUsuario.AutoSize = True
         Me.LblUsuario.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblUsuario.Location = New System.Drawing.Point(127, 3)
+        Me.LblUsuario.Location = New System.Drawing.Point(142, 3)
         Me.LblUsuario.Margin = New System.Windows.Forms.Padding(3)
         Me.LblUsuario.Name = "LblUsuario"
-        Me.LblUsuario.Size = New System.Drawing.Size(334, 26)
+        Me.LblUsuario.Size = New System.Drawing.Size(378, 26)
         Me.LblUsuario.TabIndex = 1
         '
         'Label4
@@ -98,7 +100,7 @@ Partial Class FrmGestionCandidaturas
         Me.Label4.Location = New System.Drawing.Point(3, 35)
         Me.Label4.Margin = New System.Windows.Forms.Padding(3)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(118, 29)
+        Me.Label4.Size = New System.Drawing.Size(133, 29)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Nombre:"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -108,10 +110,10 @@ Partial Class FrmGestionCandidaturas
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNombre.Location = New System.Drawing.Point(127, 35)
+        Me.lblNombre.Location = New System.Drawing.Point(142, 35)
         Me.lblNombre.Margin = New System.Windows.Forms.Padding(3)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(334, 29)
+        Me.lblNombre.Size = New System.Drawing.Size(378, 29)
         Me.lblNombre.TabIndex = 1
         '
         'Label6
@@ -122,7 +124,7 @@ Partial Class FrmGestionCandidaturas
         Me.Label6.Location = New System.Drawing.Point(3, 70)
         Me.Label6.Margin = New System.Windows.Forms.Padding(3)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(118, 29)
+        Me.Label6.Size = New System.Drawing.Size(133, 29)
         Me.Label6.TabIndex = 1
         Me.Label6.Text = "Apellidos:"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -132,10 +134,10 @@ Partial Class FrmGestionCandidaturas
         Me.LblApellidos.AutoSize = True
         Me.LblApellidos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LblApellidos.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblApellidos.Location = New System.Drawing.Point(127, 70)
+        Me.LblApellidos.Location = New System.Drawing.Point(142, 70)
         Me.LblApellidos.Margin = New System.Windows.Forms.Padding(3)
         Me.LblApellidos.Name = "LblApellidos"
-        Me.LblApellidos.Size = New System.Drawing.Size(334, 29)
+        Me.LblApellidos.Size = New System.Drawing.Size(378, 29)
         Me.LblApellidos.TabIndex = 1
         '
         'Label8
@@ -146,7 +148,7 @@ Partial Class FrmGestionCandidaturas
         Me.Label8.Location = New System.Drawing.Point(3, 105)
         Me.Label8.Margin = New System.Windows.Forms.Padding(3)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(118, 31)
+        Me.Label8.Size = New System.Drawing.Size(133, 31)
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Telefono:"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -156,10 +158,10 @@ Partial Class FrmGestionCandidaturas
         Me.LblTelefono.AutoSize = True
         Me.LblTelefono.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LblTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTelefono.Location = New System.Drawing.Point(127, 105)
+        Me.LblTelefono.Location = New System.Drawing.Point(142, 105)
         Me.LblTelefono.Margin = New System.Windows.Forms.Padding(3)
         Me.LblTelefono.Name = "LblTelefono"
-        Me.LblTelefono.Size = New System.Drawing.Size(334, 31)
+        Me.LblTelefono.Size = New System.Drawing.Size(378, 31)
         Me.LblTelefono.TabIndex = 1
         '
         'Label10
@@ -170,7 +172,7 @@ Partial Class FrmGestionCandidaturas
         Me.Label10.Location = New System.Drawing.Point(3, 142)
         Me.Label10.Margin = New System.Windows.Forms.Padding(3)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(118, 25)
+        Me.Label10.Size = New System.Drawing.Size(133, 25)
         Me.Label10.TabIndex = 1
         Me.Label10.Text = "Correo:"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -180,16 +182,16 @@ Partial Class FrmGestionCandidaturas
         Me.LblCorreo.AutoSize = True
         Me.LblCorreo.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LblCorreo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCorreo.Location = New System.Drawing.Point(127, 142)
+        Me.LblCorreo.Location = New System.Drawing.Point(142, 142)
         Me.LblCorreo.Margin = New System.Windows.Forms.Padding(3)
         Me.LblCorreo.Name = "LblCorreo"
-        Me.LblCorreo.Size = New System.Drawing.Size(334, 25)
+        Me.LblCorreo.Size = New System.Drawing.Size(378, 25)
         Me.LblCorreo.TabIndex = 1
         '
         'Label12
         '
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(477, 58)
+        Me.Label12.Location = New System.Drawing.Point(541, 3)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(118, 39)
         Me.Label12.TabIndex = 1
@@ -198,7 +200,7 @@ Partial Class FrmGestionCandidaturas
         'LblEstado
         '
         Me.LblEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEstado.Location = New System.Drawing.Point(593, 48)
+        Me.LblEstado.Location = New System.Drawing.Point(568, 42)
         Me.LblEstado.Name = "LblEstado"
         Me.LblEstado.Size = New System.Drawing.Size(195, 58)
         Me.LblEstado.TabIndex = 1
@@ -208,7 +210,7 @@ Partial Class FrmGestionCandidaturas
         'BtnAceptar
         '
         Me.BtnAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAceptar.Location = New System.Drawing.Point(553, 189)
+        Me.BtnAceptar.Location = New System.Drawing.Point(575, 194)
         Me.BtnAceptar.Name = "BtnAceptar"
         Me.BtnAceptar.Size = New System.Drawing.Size(195, 51)
         Me.BtnAceptar.TabIndex = 2
@@ -218,7 +220,7 @@ Partial Class FrmGestionCandidaturas
         'BtnCancelar
         '
         Me.BtnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCancelar.Location = New System.Drawing.Point(553, 246)
+        Me.BtnCancelar.Location = New System.Drawing.Point(575, 251)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Size = New System.Drawing.Size(195, 51)
         Me.BtnCancelar.TabIndex = 2
@@ -228,7 +230,7 @@ Partial Class FrmGestionCandidaturas
         'BtnFinalizar
         '
         Me.BtnFinalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnFinalizar.Location = New System.Drawing.Point(553, 303)
+        Me.BtnFinalizar.Location = New System.Drawing.Point(575, 308)
         Me.BtnFinalizar.Name = "BtnFinalizar"
         Me.BtnFinalizar.Size = New System.Drawing.Size(195, 51)
         Me.BtnFinalizar.TabIndex = 2
@@ -254,17 +256,20 @@ Partial Class FrmGestionCandidaturas
         Me.TableLayoutPanel1.Controls.Add(Me.LblFechaInscripcion, 1, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.Label9, 0, 6)
         Me.TableLayoutPanel1.Controls.Add(Me.LblHorasRequeridas, 1, 6)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(7, 62)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label11, 0, 7)
+        Me.TableLayoutPanel1.Controls.Add(Me.LblHorasGanadas, 1, 7)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(7, 51)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 7
+        Me.TableLayoutPanel1.RowCount = 8
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(464, 266)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(523, 285)
         Me.TableLayoutPanel1.TabIndex = 3
         '
         'Label5
@@ -275,50 +280,74 @@ Partial Class FrmGestionCandidaturas
         Me.Label5.Location = New System.Drawing.Point(3, 173)
         Me.Label5.Margin = New System.Windows.Forms.Padding(3)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(118, 31)
+        Me.Label5.Size = New System.Drawing.Size(133, 31)
         Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Fecha"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.Label5.Text = "Fecha:"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LblFechaInscripcion
         '
         Me.LblFechaInscripcion.AutoSize = True
         Me.LblFechaInscripcion.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LblFechaInscripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblFechaInscripcion.Location = New System.Drawing.Point(127, 173)
+        Me.LblFechaInscripcion.Location = New System.Drawing.Point(142, 173)
         Me.LblFechaInscripcion.Margin = New System.Windows.Forms.Padding(3)
         Me.LblFechaInscripcion.Name = "LblFechaInscripcion"
-        Me.LblFechaInscripcion.Size = New System.Drawing.Size(334, 31)
+        Me.LblFechaInscripcion.Size = New System.Drawing.Size(378, 31)
         Me.LblFechaInscripcion.TabIndex = 1
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(3, 210)
         Me.Label9.Margin = New System.Windows.Forms.Padding(3)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(118, 77)
+        Me.Label9.Size = New System.Drawing.Size(133, 31)
         Me.Label9.TabIndex = 1
-        Me.Label9.Text = "Horas requeridas:"
-        Me.Label9.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.Label9.Text = "Horas Requeridas:"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LblHorasRequeridas
         '
         Me.LblHorasRequeridas.AutoSize = True
         Me.LblHorasRequeridas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LblHorasRequeridas.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblHorasRequeridas.Location = New System.Drawing.Point(127, 210)
+        Me.LblHorasRequeridas.Location = New System.Drawing.Point(142, 210)
         Me.LblHorasRequeridas.Margin = New System.Windows.Forms.Padding(3)
         Me.LblHorasRequeridas.Name = "LblHorasRequeridas"
-        Me.LblHorasRequeridas.Size = New System.Drawing.Size(334, 77)
+        Me.LblHorasRequeridas.Size = New System.Drawing.Size(378, 31)
         Me.LblHorasRequeridas.TabIndex = 1
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(3, 247)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(3)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(133, 35)
+        Me.Label11.TabIndex = 1
+        Me.Label11.Text = "Horas Ganadas:"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblHorasGanadas
+        '
+        Me.LblHorasGanadas.AutoSize = True
+        Me.LblHorasGanadas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LblHorasGanadas.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblHorasGanadas.Location = New System.Drawing.Point(142, 247)
+        Me.LblHorasGanadas.Margin = New System.Windows.Forms.Padding(3)
+        Me.LblHorasGanadas.Name = "LblHorasGanadas"
+        Me.LblHorasGanadas.Size = New System.Drawing.Size(378, 35)
+        Me.LblHorasGanadas.TabIndex = 1
         '
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(589, 157)
+        Me.Label3.Location = New System.Drawing.Point(611, 162)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(118, 29)
         Me.Label3.TabIndex = 1
@@ -330,7 +359,7 @@ Partial Class FrmGestionCandidaturas
         Me.LblTags.BackColor = System.Drawing.Color.PowderBlue
         Me.LblTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LblTags.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTags.Location = New System.Drawing.Point(7, 375)
+        Me.LblTags.Location = New System.Drawing.Point(7, 395)
         Me.LblTags.Margin = New System.Windows.Forms.Padding(3)
         Me.LblTags.Name = "LblTags"
         Me.LblTags.Size = New System.Drawing.Size(464, 68)
@@ -341,7 +370,7 @@ Partial Class FrmGestionCandidaturas
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(172, 355)
+        Me.Label7.Location = New System.Drawing.Point(172, 375)
         Me.Label7.Margin = New System.Windows.Forms.Padding(3)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(121, 16)
@@ -351,6 +380,8 @@ Partial Class FrmGestionCandidaturas
         '
         'PnAccion
         '
+        Me.PnAccion.Controls.Add(Me.LblEstado)
+        Me.PnAccion.Controls.Add(Me.Label12)
         Me.PnAccion.Controls.Add(Me.NudHoras)
         Me.PnAccion.Controls.Add(Me.lblInfo)
         Me.PnAccion.Controls.Add(Me.RtxtMotivoCancelacion)
@@ -417,17 +448,15 @@ Partial Class FrmGestionCandidaturas
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 477)
-        Me.Controls.Add(Me.PnAccion)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.LblTags)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.BtnFinalizar)
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.BtnAceptar)
-        Me.Controls.Add(Me.LblEstado)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PnAccion)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "FrmGestionCandidaturas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -471,4 +500,6 @@ Partial Class FrmGestionCandidaturas
     Friend WithEvents lblInfo As Label
     Friend WithEvents RtxtMotivoCancelacion As RichTextBox
     Friend WithEvents NudHoras As NumericUpDown
+    Friend WithEvents Label11 As Label
+    Friend WithEvents LblHorasGanadas As Label
 End Class

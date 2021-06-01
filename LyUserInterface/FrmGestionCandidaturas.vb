@@ -37,24 +37,28 @@
             LblFechaInscripcion.Text = _Cantidatura.FechaInscripcion.ToString()
             LblHorasRequeridas.Text = _Cantidatura.HorasRequeridas.ToString()
             LblTags.Text = String.Join("   ", _Cantidatura.Candidato.Categorias.Select(Function(x) "#" + x.Nombre))
-
+            LblHorasGanadas.Text = _Cantidatura.HorasGanadas.ToString()
             Select Case _Cantidatura.Estado
                 Case LyBussinesModel.EstadoCandidatura.PENDIENTE
                     BtnAceptar.Visible = True : BtnAceptar.Enabled = True
                     BtnCancelar.Visible = True : BtnCancelar.Enabled = True
                     LblEstado.Text = "PENDIENTE"
                     LblEstado.ForeColor = Color.Orange
+                    Label3.Visible = True
                 Case LyBussinesModel.EstadoCandidatura.ACEPTADA
                     BtnFinalizar.Visible = True : BtnCancelar.Enabled = True
                     BtnCancelar.Visible = True : BtnCancelar.Enabled = True
                     LblEstado.Text = "ACEPTADA"
                     LblEstado.ForeColor = Color.Lime
+                    Label3.Visible = True
                 Case LyBussinesModel.EstadoCandidatura.CANCELADA
                     LblEstado.Text = "CANCELADA"
                     LblEstado.ForeColor = Color.Red
+                    Label3.Visible = False
                 Case LyBussinesModel.EstadoCandidatura.FINALIZADA
                     LblEstado.Text = "FINALIZADA"
                     LblEstado.ForeColor = Color.Green
+                    Label3.Visible = False
             End Select
         End If
     End Sub
@@ -74,6 +78,7 @@
         LblHorasRequeridas.Text = ""
         LblEstado.Text = ""
         LblTags.Text = ""
+        LblHorasGanadas.Text = ""
     End Sub
 
     Private Sub BtnAccion_Click(sender As Object, e As EventArgs) Handles BtnAceptar.Click, BtnCancelar.Click, BtnFinalizar.Click
@@ -128,7 +133,5 @@
         LoadCandidatura(_Cantidatura.Id)
     End Sub
 
-    Private Sub FrmGestionCandidaturas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    End Sub
 End Class

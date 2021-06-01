@@ -311,6 +311,7 @@ namespace LyDataAcces.DAO
                             };
 
                             nuevoSErvicio.Categorias = new List<DTOCategoria>();
+                            
 
                             if (servicio.Categorias != null && servicio.Categorias.Count() > 0)
                             {
@@ -371,7 +372,7 @@ namespace LyDataAcces.DAO
 
                         if(sv.Candidatura != null && sv.Candidatura.Count() > 0)
                         {
-                            sv.Candidatura.Count();
+                            cantidadServicios = sv.Candidatura.Count();
                             //TODO si tiene candidaturas, se recorren las que esten con estado finalizada y se obtiene
                             //La puntuación para realizar media
 
@@ -415,7 +416,8 @@ namespace LyDataAcces.DAO
 
                         resultados.Categorias = new List<DTOCategoria>();
 
-                        if(sv.Categorias != null  && sv.Categorias.Count() > 0)
+                        
+                        if (sv.Categorias != null  && sv.Categorias.Count() > 0)
                         {
                             foreach (ORM.Categorias categoria in sv.Categorias)
                             {
@@ -460,18 +462,27 @@ namespace LyDataAcces.DAO
                             {
                                 foreach(ORM.Candidatura candidatura in sv.Candidatura)
                                 {
-                                    resultados.Add(new DTOListadoCandidaturasEnServicio
+                                    DTOListadoCandidaturasEnServicio nuevo = new DTOListadoCandidaturasEnServicio
+                                                                                {
+                                                                                    Id = candidatura.id,
+                                                                                    //Nombre = candidatura.Usuarios.nombre,
+                                                                                    Usuario = candidatura.Usuarios.nombreUsuario,
+                                                                                    //Apellido = candidatura.Usuarios.apellidos,
+                                                                                    //Correo = candidatura.Usuarios.correo,
+                                                                                    //Telefono = candidatura.Usuarios.telefono,
+                                                                                    Horas_Solicitadas = (int)candidatura.horasRequeridas,
+                                                                                    Horas_Ganadas = 0,
+                                                                                    Fecha_Inscripcion = (DateTime)candidatura.fechaInscripcion,
+                                                                                    Estado = (EstadoCandidatura)candidatura.estado
+                                                                                };
+                                  
+
+                                    if(candidatura.Candidatura_Finalizada != null && candidatura.Candidatura_Finalizada.horasGanadas != null)
                                     {
-                                        Id = candidatura.id,
-                                        Nombre = candidatura.Usuarios.nombre,
-                                        Usuario = candidatura.Usuarios.nombreUsuario,
-                                        Apellido = candidatura.Usuarios.apellidos,
-                                        Correo = candidatura.Usuarios.correo,
-                                        Telefono = candidatura.Usuarios.telefono,
-                                        Horas_Solicitadas = (int)candidatura.horasRequeridas,
-                                        Fecha_Inscripcion = (DateTime)candidatura.fechaInscripcion,
-                                        Estado = (EstadoCandidatura)candidatura.estado
-                                    });
+                                        nuevo.Horas_Ganadas = (int)candidatura.Candidatura_Finalizada.horasGanadas;
+                                    }
+                                    resultados.Add(nuevo);
+
                                 }
                             }
                         }

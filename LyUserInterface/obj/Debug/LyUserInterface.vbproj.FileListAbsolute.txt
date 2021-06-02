@@ -7,7 +7,6 @@ C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\LyDataAcces.dll
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\EntityFramework.dll
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\LyBussinesModel.pdb
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\LyDataAcces.pdb
-C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\LyDataAcces.dll.config
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\EntityFramework.xml
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.vbprojAssemblyReference.cache
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.Resources.resources

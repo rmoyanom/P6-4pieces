@@ -14,6 +14,5 @@ C:\Users\luisn\source\repos\4piecesP6\TestDataAccesConsole\obj\Debug\TestDataAcc
 C:\Users\luisn\source\repos\4piecesP6\TestDataAccesConsole\obj\Debug\TestDataAccesConsole.pdb
 C:\Users\luisn\source\repos\4piecesP6\TestDataAccesConsole\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\luisn\source\repos\4piecesP6\TestDataAccesConsole\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\luisn\source\repos\4piecesP6\TestDataAccesConsole\bin\Debug\LyDataAcces.dll.config
 C:\Users\luisn\source\repos\4piecesP6\TestDataAccesConsole\bin\Debug\ORM\BANCOTIEMPOBD.mdf
 C:\Users\luisn\source\repos\4piecesP6\TestDataAccesConsole\bin\Debug\ORM\BANCOTIEMPOBD_log.ldf

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDataAccesConsole", "Tes
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LyUserInterface", "LyUserInterface\LyUserInterface.vbproj", "{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalacion", "Instalacion\Instalacion.vdproj", "{6CCBD09C-AD3D-4EBA-9CF5-93A9393023B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C5A1E6D-B929-4847-832D-FCDA0D9DA5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCBD09C-AD3D-4EBA-9CF5-93A9393023B4}.Debug|Any CPU.ActiveCfg = Debug
+		{6CCBD09C-AD3D-4EBA-9CF5-93A9393023B4}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

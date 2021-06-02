@@ -11,7 +11,6 @@ C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.csproj.C
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.csproj.CopyComplete
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.dll
 C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Debug\LyDataAcces.pdb
-C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Debug\LyDataAcces.dll.config
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyDataAcces\bin\Debug\LyDataAcces.dll.config
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyDataAcces\bin\Debug\LyDataAcces.dll
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyDataAcces\bin\Debug\LyDataAcces.pdb

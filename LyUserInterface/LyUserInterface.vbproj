@@ -47,6 +47,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ico.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -84,6 +87,12 @@
       <DependentUpon>UcListaAnuncios.vb</DependentUpon>
     </Compile>
     <Compile Include="ControlesPersonalizados\UcListaAnuncios.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\UcListaCandidaturas.Designer.vb">
+      <DependentUpon>UcListaCandidaturas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\UcListaCandidaturas.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FrmCrearAnuncio.Designer.vb">
@@ -162,6 +171,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ControlesPersonalizados\UcListaAnuncios.resx">
       <DependentUpon>UcListaAnuncios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesPersonalizados\UcListaCandidaturas.resx">
+      <DependentUpon>UcListaCandidaturas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCrearAnuncio.resx">
       <DependentUpon>FrmCrearAnuncio.vb</DependentUpon>
@@ -258,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

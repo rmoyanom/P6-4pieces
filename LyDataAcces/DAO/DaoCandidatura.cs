@@ -37,6 +37,8 @@ namespace LyDataAcces.DAO
         /// <returns>
         /// Cierto o falso.
         /// </returns>
+
+
         public Candidatura GetCandidatura(int idCandidatura)
         {
 

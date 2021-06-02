@@ -31,10 +31,10 @@ Partial Class FrmMisServicios
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PtcLogo = New System.Windows.Forms.PictureBox()
         Me.PnlContenido = New System.Windows.Forms.Panel()
-        Me.UcListaServicios = New LyUserInterface.UcListaAnuncios()
+        Me.UcListaCandidaturas = New LyUserInterface.UcListaCandidaturas()
+        Me.LblCurrentMenu = New System.Windows.Forms.Label()
         Me.PnlError = New System.Windows.Forms.Panel()
         Me.LblTitleServicios = New System.Windows.Forms.Label()
-        Me.LblCurrentMenu = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PtcLogo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,7 +45,7 @@ Partial Class FrmMisServicios
         '
         Me.Panel3.BackColor = System.Drawing.Color.Azure
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(0, 474)
+        Me.Panel3.Location = New System.Drawing.Point(0, 599)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(220, 21)
@@ -73,7 +73,7 @@ Partial Class FrmMisServicios
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 495)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(220, 620)
         Me.TableLayoutPanel1.TabIndex = 4
         '
         'BtnVolver
@@ -144,35 +144,42 @@ Partial Class FrmMisServicios
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PnlContenido.BackColor = System.Drawing.Color.LightGray
+        Me.PnlContenido.Controls.Add(Me.UcListaCandidaturas)
         Me.PnlContenido.Controls.Add(Me.LblCurrentMenu)
-        Me.PnlContenido.Controls.Add(Me.UcListaServicios)
         Me.PnlContenido.Controls.Add(Me.PnlError)
         Me.PnlContenido.Controls.Add(Me.LblTitleServicios)
         Me.PnlContenido.Location = New System.Drawing.Point(220, 0)
         Me.PnlContenido.Name = "PnlContenido"
-        Me.PnlContenido.Size = New System.Drawing.Size(528, 495)
+        Me.PnlContenido.Size = New System.Drawing.Size(874, 620)
         Me.PnlContenido.TabIndex = 5
         '
-        'UcListaServicios
+        'UcListaCandidaturas
         '
-        Me.UcListaServicios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.UcListaServicios.AutoScroll = True
-        Me.UcListaServicios.BackColor = System.Drawing.Color.Azure
-        Me.UcListaServicios.Location = New System.Drawing.Point(1, 92)
-        Me.UcListaServicios.Name = "UcListaServicios"
-        Me.UcListaServicios.Size = New System.Drawing.Size(527, 382)
-        Me.UcListaServicios.TabIndex = 4
-        Me.UcListaServicios.TextoBotones = "Gestionar"
+        Me.UcListaCandidaturas.BackColor = System.Drawing.Color.FloralWhite
+        Me.UcListaCandidaturas.Location = New System.Drawing.Point(0, 94)
+        Me.UcListaCandidaturas.Name = "UcListaCandidaturas"
+        Me.UcListaCandidaturas.Size = New System.Drawing.Size(874, 502)
+        Me.UcListaCandidaturas.TabIndex = 6
+        Me.UcListaCandidaturas.TextoBotones = Nothing
+        '
+        'LblCurrentMenu
+        '
+        Me.LblCurrentMenu.AutoSize = True
+        Me.LblCurrentMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 22.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCurrentMenu.Location = New System.Drawing.Point(313, 6)
+        Me.LblCurrentMenu.Name = "LblCurrentMenu"
+        Me.LblCurrentMenu.Size = New System.Drawing.Size(112, 36)
+        Me.LblCurrentMenu.TabIndex = 5
+        Me.LblCurrentMenu.Text = "Activas"
+        Me.LblCurrentMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PnlError
         '
         Me.PnlError.BackColor = System.Drawing.Color.Azure
         Me.PnlError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PnlError.Location = New System.Drawing.Point(0, 474)
+        Me.PnlError.Location = New System.Drawing.Point(0, 599)
         Me.PnlError.Name = "PnlError"
-        Me.PnlError.Size = New System.Drawing.Size(528, 21)
+        Me.PnlError.Size = New System.Drawing.Size(874, 21)
         Me.PnlError.TabIndex = 2
         '
         'LblTitleServicios
@@ -181,29 +188,19 @@ Partial Class FrmMisServicios
         Me.LblTitleServicios.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTitleServicios.Location = New System.Drawing.Point(4, 3)
         Me.LblTitleServicios.Name = "LblTitleServicios"
-        Me.LblTitleServicios.Size = New System.Drawing.Size(237, 39)
+        Me.LblTitleServicios.Size = New System.Drawing.Size(303, 39)
         Me.LblTitleServicios.TabIndex = 0
-        Me.LblTitleServicios.Text = "Mis Servicios"
-        '
-        'LblCurrentMenu
-        '
-        Me.LblCurrentMenu.AutoSize = True
-        Me.LblCurrentMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCurrentMenu.Location = New System.Drawing.Point(426, 60)
-        Me.LblCurrentMenu.Name = "LblCurrentMenu"
-        Me.LblCurrentMenu.Size = New System.Drawing.Size(89, 29)
-        Me.LblCurrentMenu.TabIndex = 5
-        Me.LblCurrentMenu.Text = "Activos"
-        Me.LblCurrentMenu.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblTitleServicios.Text = "Mis Candidaturas"
         '
         'FrmMisServicios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(747, 495)
+        Me.ClientSize = New System.Drawing.Size(1093, 620)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.PnlContenido)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimumSize = New System.Drawing.Size(800, 534)
         Me.Name = "FrmMisServicios"
         Me.Text = "FormMisServicios"
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -223,8 +220,8 @@ Partial Class FrmMisServicios
     Friend WithEvents Panel2 As Panel
     Friend WithEvents PtcLogo As PictureBox
     Friend WithEvents PnlContenido As Panel
-    Friend WithEvents UcListaServicios As UcListaAnuncios
     Friend WithEvents PnlError As Panel
     Friend WithEvents LblTitleServicios As Label
     Friend WithEvents LblCurrentMenu As Label
+    Friend WithEvents UcListaCandidaturas As UcListaCandidaturas
 End Class

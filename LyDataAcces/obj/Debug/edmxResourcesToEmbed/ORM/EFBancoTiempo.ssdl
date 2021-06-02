@@ -73,16 +73,6 @@
     <Property Name="fechaCreacion" Type="datetime" />
     <Property Name="finalizado" Type="bit" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="id" />
@@ -181,7 +171,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Categorias_Usuarios_Categorias1">
+  <Association Name="FK_Categorias_Usuarios_Categorias2">
     <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
     <End Role="Categorias_Usuarios" Type="Self.Categorias_Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -193,7 +183,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Categorias_Usuarios_Usuarios1">
+  <Association Name="FK_Categorias_Usuarios_Usuarios2">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
     <End Role="Categorias_Usuarios" Type="Self.Categorias_Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
@@ -226,7 +216,6 @@
     <EntitySet Name="Categorias_Servicios" EntityType="Self.Categorias_Servicios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categorias_Usuarios" EntityType="Self.Categorias_Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Candidatura_Aceptada_Candidatura" Association="Self.FK_Candidatura_Aceptada_Candidatura">
       <End Role="Candidatura" EntitySet="Candidatura" />
@@ -256,11 +245,11 @@
       <End Role="Servicios" EntitySet="Servicios" />
       <End Role="Categorias_Servicios" EntitySet="Categorias_Servicios" />
     </AssociationSet>
-    <AssociationSet Name="FK_Categorias_Usuarios_Categorias1" Association="Self.FK_Categorias_Usuarios_Categorias1">
+    <AssociationSet Name="FK_Categorias_Usuarios_Categorias2" Association="Self.FK_Categorias_Usuarios_Categorias2">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Categorias_Usuarios" EntitySet="Categorias_Usuarios" />
     </AssociationSet>
-    <AssociationSet Name="FK_Categorias_Usuarios_Usuarios1" Association="Self.FK_Categorias_Usuarios_Usuarios1">
+    <AssociationSet Name="FK_Categorias_Usuarios_Usuarios2" Association="Self.FK_Categorias_Usuarios_Usuarios2">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Categorias_Usuarios" EntitySet="Categorias_Usuarios" />
     </AssociationSet>

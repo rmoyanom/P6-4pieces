@@ -26,3 +26,5 @@ D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcc
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.csproj.CopyComplete
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.dll
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyDataAcces\obj\Debug\LyDataAcces.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Debug\ORM\BANCOTIEMPOBD.mdf
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Debug\ORM\BANCOTIEMPOBD_log.ldf

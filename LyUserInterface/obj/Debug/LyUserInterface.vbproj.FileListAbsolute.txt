@@ -67,3 +67,6 @@ D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUse
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmGestionCandidaturas.resources
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmGestionCandidaturas.resources
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.UcListaCandidaturas.resources
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\ORM\BANCOTIEMPOBD.mdf
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\bin\Debug\ORM\BANCOTIEMPOBD_log.ldf
+C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.UcListaCandidaturas.resources

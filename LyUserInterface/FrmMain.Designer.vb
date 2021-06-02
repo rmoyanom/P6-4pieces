@@ -87,7 +87,7 @@ Partial Class FrmMain
         Me.BtnMiServicios.Name = "BtnMiServicios"
         Me.BtnMiServicios.Size = New System.Drawing.Size(214, 124)
         Me.BtnMiServicios.TabIndex = 1
-        Me.BtnMiServicios.Text = "Mis Servicios"
+        Me.BtnMiServicios.Text = "Mis Candidaturas"
         Me.BtnMiServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.BtnMiServicios.UseVisualStyleBackColor = True
         '

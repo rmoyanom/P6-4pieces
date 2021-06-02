@@ -24,6 +24,63 @@ namespace LyDataAcces.DAO
         }
 
 
+        public List<Candidatura> GetListaCandidaturas(Usuario usuario, Boolean estado)
+        {
+            var listado = new List<Candidatura>();
+            try
+            {
+                using(ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+                {
+                    DaoUsuario daoUsuario = new DaoUsuario();
+                    Candidatura retorno = new Candidatura();
+                    var query = from c in db.Candidatura
+                                    where c.idUsuario == usuario.Id
+                                    && (c.estado == 0 || c.estado == 1)
+                                    orderby c.fechaInscripcion descending
+                                    select c;
+                    if (!estado)
+                    { 
+                        query = from c in db.Candidatura
+                                where c.idUsuario == usuario.Id
+                                    && (c.estado == 2 || c.estado == 3)
+                                orderby c.fechaInscripcion descending
+                                select c;
+                    }
+
+
+                    // Por cada resultado...
+                    foreach (ORM.Candidatura candidato in query.ToList<ORM.Candidatura>())
+                    {
+                        var queryServicios = from b in db.Servicios where b.id == candidato.idServicio select b;
+                        var daoServicio = queryServicios.FirstOrDefault();
+                        var estadoCandidatura = EstadoCandidatura.PENDIENTE;
+                        if (candidato.estado == 1) { estadoCandidatura = EstadoCandidatura.ACEPTADA; }
+                        else if (candidato.estado == 2) { estadoCandidatura = EstadoCandidatura.CANCELADA; }
+                        else if (candidato.estado == 3) { estadoCandidatura = EstadoCandidatura.FINALIZADA; }
+                        var servicio = new Servicio(
+                            daoServicio.titulo,
+                            daoServicio.descripcion,
+                            daoServicio.fechaCreacion,
+                            daoServicio.id,
+                            usuario,
+                            (bool)daoServicio.finalizado
+                            );
+                        Candidatura candidatura = new Candidatura(
+                            candidato.id, usuario, servicio, estadoCandidatura, (DateTime)candidato.fechaInscripcion, (int)candidato.horasRequeridas);
+
+                        listado.Add(candidatura);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _Errores = ex;
+                return null;
+            }
+
+            return listado;
+        }
 
         public Candidatura GetCandidatura(int idCandidatura)
         {

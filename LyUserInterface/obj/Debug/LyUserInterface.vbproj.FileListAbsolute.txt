@@ -54,7 +54,6 @@ D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUse
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmMisServicios.resources
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmMisAnuncios.resources
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmRegistroUsuario.resources
-D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmServicios.resources
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmVisualizarAnuncio.resources
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.Resources.resources
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmRegistroUsuario.es.resources
@@ -66,3 +65,5 @@ D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUse
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.xml
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.pdb
 C:\Users\luisn\source\repos\4piecesP6\LyUserInterface\obj\Debug\LyUserInterface.FrmGestionCandidaturas.resources
+D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.FrmGestionCandidaturas.resources
+D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyUserInterface\obj\Debug\LyUserInterface.UcListaCandidaturas.resources

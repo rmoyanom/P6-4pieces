@@ -1,0 +1,16 @@
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\ORM\BANCOTIEMPOBD.mdf
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\ORM\BANCOTIEMPOBD_log.ldf
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\LyDataAcces.dll.config
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\LyDataAcces.dll
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\LyDataAcces.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\EntityFramework.dll
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\LyBussinesModel.dll
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\LyBussinesModel.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\EntityFramework.xml
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Release\LyDataAcces.csprojAssemblyReference.cache
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Release\LyDataAcces.csproj.CoreCompileInputs.cache
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Release\LyDataAcces.csproj.CopyComplete
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Release\LyDataAcces.dll
+C:\Users\luisn\source\repos\4piecesP6\LyDataAcces\obj\Release\LyDataAcces.pdb

@@ -62,6 +62,7 @@
     Private Sub BtnAddAnuncio_Click(sender As Object, e As EventArgs) Handles BtnAddAnuncio.Click
         FrmCrearAnuncio.ClearText()
         FrmCrearAnuncio.ShowDialog()
+        LoadServicios()
     End Sub
 
 End Class

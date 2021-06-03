@@ -1,0 +1,5 @@
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Release\LyBussinesModel.dll
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Release\LyBussinesModel.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Release\LyBussinesModel.csproj.CoreCompileInputs.cache
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Release\LyBussinesModel.dll
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Release\LyBussinesModel.pdb

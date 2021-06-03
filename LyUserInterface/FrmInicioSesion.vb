@@ -2,14 +2,14 @@
 Imports LyDataAcces
 
 Public Class FrmInicioSesion
-#If DEBUG Then
-    Private Sub FrmInicioSesion_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        If Login("a", "a") Then
-            Me.Hide()
-            FrmMain.Show()
-        End If
-    End Sub
-#End If
+    '#If DEBUG Then
+    '    Private Sub FrmInicioSesion_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+    '        If Login("a", "a") Then
+    '            Me.Hide()
+    '            FrmMain.Show()
+    '        End If
+    '    End Sub
+    '#End If
 
 
     Private Sub BtnIniciarSesion_Click(sender As Object, e As EventArgs) Handles BtnIniciarSesion.Click
@@ -39,6 +39,6 @@ Public Class FrmInicioSesion
     End Sub
 
     Private Sub FrmInicioSesion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Main.VerificarSiExisteBD()
     End Sub
 End Class

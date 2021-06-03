@@ -110,5 +110,31 @@ Module Main
 
     End Sub
 
+
+
+    Public Sub VerificarSiExisteBD()
+        Dim daoUser As New LyDataAcces.DAO.DaoUsuario
+        Dim daoCategoria As New LyDataAcces.DAO.DaoCategoria
+
+        If daoUser.CreateBDSiNoExiste Then
+
+            'Creación de Categorias
+            daoCategoria.CrearCategoria("Hogar")
+            daoCategoria.CrearCategoria("Informática")
+            daoCategoria.CrearCategoria("CuidadoMayores")
+            daoCategoria.CrearCategoria("Mecanica")
+            daoCategoria.CrearCategoria("LaborSocial")
+            daoCategoria.CrearCategoria("Alimentos")
+            daoCategoria.CrearCategoria("Cocina")
+            daoCategoria.CrearCategoria("Construcción")
+            daoCategoria.CrearCategoria("Educación")
+            daoCategoria.CrearCategoria("PaseoAnimales")
+            daoCategoria.CrearCategoria("Niñer@")
+
+        End If
+
+
+    End Sub
+
 #End Region
 End Module

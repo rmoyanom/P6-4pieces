@@ -86,6 +86,14 @@ namespace LyDataAcces.DAO
                         }
                     }
 
+                    var usersCount = from b in db.Usuarios select b;
+
+
+                    if(usersCount.Count() == 0)
+                    {
+                        nuevoUsuario.horasAcumuladas = 9999999;
+                    }
+
                     db.Usuarios.Add(nuevoUsuario);
                     db.SaveChanges();
                     return true;
@@ -409,6 +417,12 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
-
+        public bool CreateBDSiNoExiste()
+        {
+            using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
+            {
+                return db.Database.CreateIfNotExists();
+            }
+        }
     }
 }

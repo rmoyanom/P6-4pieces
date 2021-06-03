@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace LyDataAcces.DAO
 {
+    /// <summary>
+    /// Interfaz para controlar los errores de los daos
+    /// </summary>
     public interface IDao
     {
         Exception Errores

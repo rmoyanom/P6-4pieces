@@ -82,7 +82,7 @@ namespace LyDataAcces.DAO
 
         }
 
-        //Listar servicios (sólo activos)
+        
         /// <summary>
         /// Petición del listado de Servicios no finalizados
         /// </summary>
@@ -114,75 +114,6 @@ namespace LyDataAcces.DAO
             }
         }
    
-        //Listar N servicios (sólo activos)
-        /// <summary>
-        /// Devuelve N Servicios. Si p != null devuelve N servicios a partir de la página p
-        /// NOTA: La p equivale a la página a mostrar, por lo que en la función siempre se le restará 1 
-        /// porque para la página 1 se muestran los N primeros y no se salta ningún resultado.
-        /// </summary>
-        /// <param name="n">Número de servicios a mostrar</param>
-        /// <param name="p">Página Actual del registro</param>
-        /// <returns>Listado de Servicios </returns>
-        public List<Servicio> ListadoServicios(int n, int? p)
-        {
-            try
-            {
-                List<Servicio> allServicios = new List<Servicio>();
-                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
-                {
-                    var queryServicios = from b in db.Servicios where b.finalizado == false select b;
-
-                    if (queryServicios.Count() > 0)
-                    {
-
-                        int page = p == null || p < 0 ? 0 : (int) p - 1;
-                        var queryResult = page == 0 ? queryServicios.Take(n).ToList() : queryServicios.Skip(n * page).Take(n).ToList();
-
-                        return PeticionListado(queryResult);
-                    }
-                    else { return null; }
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                _Errores = ex;
-                return null;
-            }
-        }        
- 
-        //Listar servicios de un usuario (Todos)
-        /// <summary>
-        /// Listado de Servicios de un usuario.
-        /// </summary>
-        /// <param name="usuario"></param>
-        /// <returns></returns>
-        public List<Servicio> ListadoServiciosUsuario(Usuario usuario)
-        {
-            try
-            {
-                List<Servicio> allServicios = new List<Servicio>();
-                using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())
-                {
-                    var queryServicios = from b in db.Servicios where b.idCreador == usuario.Id select b;
-
-                    if (queryServicios.Count() > 0)
-                    {
-                        return PeticionListado(queryServicios.ToList());
-                    }
-                    else { return null; }
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                _Errores = ex;
-                return null;
-            }
-        }
-
         /// <summary>
         /// Método para realizar la petición del listado que se repite en los métodos para listar todos o listar de user
         /// </summary>
@@ -232,8 +163,12 @@ namespace LyDataAcces.DAO
             }
         }
 
-       
-
+        /// <summary>
+        /// Lista los datos visuales de los servicios creados por un usuario
+        /// </summary>
+        /// <param name="idUsuario">id del usuario</param>
+        /// <param name="finalizados">estado de los servicios a mostrar</param>
+        /// <returns></returns>
         public List<DTOServicios> GetListServicios(int idUsuario, Boolean finalizados)
         {
             try
@@ -285,6 +220,11 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+
+        /// <summary>
+        /// Lista todos los servicios
+        /// </summary>
+        /// <returns></returns>
         public List<DTOServicios> GetListServicios()
         {
             try
@@ -340,6 +280,13 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+       
+        /// <summary>
+        /// Muestra los detalles de un servicio
+        /// </summary>
+        /// <param name="idServicio">idServicio</param>
+        /// <param name="idUsuarioQueQuiereSolicitarla">usuario de la applicación para determinar restricciones</param>
+        /// <returns></returns>
         public DTOServiciosDetalles GetServiciosDetalles(int idServicio, int idUsuarioQueQuiereSolicitarla = -1)
         {
             try
@@ -440,7 +387,12 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
-
+     
+        /// <summary>
+       /// Lista todas las candidaturas de un servicio
+       /// </summary>
+       /// <param name="idServicio">id del servicio</param>
+       /// <returns></returns>
         public List<DTOListadoCandidaturasEnServicio> GetListadoCandidaturas(int idServicio)
         {
             try
@@ -504,9 +456,11 @@ namespace LyDataAcces.DAO
             }
         }
 
-
-
-        //Modificar un servicio
+        /// <summary>
+        /// Modifica un servicio, los datos null no cuentan en la operación
+        /// </summary>
+        /// <param name="datos">Dto obligatorio id</param>
+        /// <returns></returns>
         public bool ModificarServicio(DTOServicios datos)
         {
             try
@@ -572,8 +526,11 @@ namespace LyDataAcces.DAO
             }
         }
 
-        //Dar de baja un servicio (Finalizar)
-
+        /// <summary>
+     ///  Finalizar un servicio
+     /// </summary>
+     /// <param name="idServicio"> id del servicio</param>
+     /// <returns></returns>
         public bool FinalizarServicio(int idServicio)
         {
             try

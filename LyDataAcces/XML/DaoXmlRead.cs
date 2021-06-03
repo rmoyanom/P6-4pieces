@@ -7,6 +7,10 @@ using System.Xml;
 
 namespace LyDataAcces.XML
 {
+
+    /// <summary>
+    /// Controlador para acceder a una fuente xml
+    /// </summary>
     public class DaoXmlRead : DAO.IDao
     {
         private Exception _Errores;

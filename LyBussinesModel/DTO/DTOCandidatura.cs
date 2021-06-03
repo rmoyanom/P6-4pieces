@@ -7,6 +7,9 @@ using static LyBussinesModel.Candidatura;
 
 namespace LyBussinesModel.DTO
 {
+    /// <summary>
+    /// DTO para compartir los datos de Candidatura. se usa para crear y modificar y visualizar
+    /// </summary>
     public class DTOCandidatura
     {
         public int Id;

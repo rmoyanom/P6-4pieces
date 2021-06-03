@@ -353,6 +353,11 @@ namespace LyDataAcces.DAO
 
         }
 
+        /// <summary>
+        /// Muetra los detalles de un usuario
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
         public DTOUsuario GetDetellaUsuario(int idUsuario)
         {
 
@@ -417,6 +422,11 @@ namespace LyDataAcces.DAO
                 return null;
             }
         }
+
+        /// <summary>
+        /// Funcion para verificar si la base de dato existe, si no existe la crea.
+        /// </summary>
+        /// <returns></returns>
         public bool CreateBDSiNoExiste()
         {
             using (ORM.EFBancoTiempo db = new ORM.EFBancoTiempo())

@@ -23,7 +23,12 @@ namespace LyDataAcces.DAO
             set => _Errores = value;
         }
 
-
+        /// <summary>
+        /// Listado de candidatura de un usuario y en un estado determinado
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="estado"></param>
+        /// <returns>devuelve todas las candidaturas</returns>
         public List<Candidatura> GetListaCandidaturas(Usuario usuario, Boolean estado)
         {
             var listado = new List<Candidatura>();
@@ -82,6 +87,11 @@ namespace LyDataAcces.DAO
             return listado;
         }
 
+        /// <summary>
+        /// Consultar una candidatura
+        /// </summary>
+        /// <param name="idCandidatura">Id Candidatura</param>
+        /// <returns></returns>
         public Candidatura GetCandidatura(int idCandidatura)
         {
 
@@ -145,19 +155,6 @@ namespace LyDataAcces.DAO
                     newcandidatura.idServicio = candidatura.IdServicio;
                     newcandidatura.idUsuario = candidatura.IdUsuario;
                     newcandidatura.horasRequeridas = candidatura.HorasRequeridas;
-/*
-                    newcandidatura.Candidatura_Finalizada.valoracion = candidatura.Valoracion;
-                    newcandidatura.Candidatura_Finalizada.comentarios = candidatura.Comentarios;
-                    newcandidatura.Candidatura_Finalizada.horasGanadas = candidatura.HorasGanadas;
-
-                    newcandidatura.Candidatura_Aceptada.fechaAceptacion = candidatura.FechaAceptacion;
-                    newcandidatura.Candidatura_Aceptada.fechaAcordadaServicio = candidatura.FechaAcordadaServicio;
-                    newcandidatura.Candidatura_Aceptada.horasAcordadas = candidatura.HorasAcordadas;
-
-                    newcandidatura.Candidatura_Cancelada.fechaCancelacion = candidatura.FechaDeCancelacion;
-                    newcandidatura.Candidatura_Cancelada.motivoCancelacion = candidatura.MotivoCancelacíon;
-                    newcandidatura.Candidatura_Cancelada.autorCancelado = (int?)candidatura.AutorCancelado;
-*/
                     db.Candidatura.Add(newcandidatura);
                     db.SaveChanges();
                     return true;
@@ -266,6 +263,14 @@ namespace LyDataAcces.DAO
 
         }
 
+        /// <summary>
+        /// Finaliza una candidatura
+        /// </summary>
+        /// <param name="idCandidatura">el id</param>
+        /// <param name="horasGanadas">Horas que asigna el ofertante al user que ha realizado el servicio</param>
+        /// <param name="valoracion">Valoración del ofertante sobre el trabajo </param>
+        /// <param name="comentarios">Vaoración textual</param>
+        /// <returns></returns>
         public bool FinalizarCandidatura(int idCandidatura, int horasGanadas, int valoracion, String comentarios)
         {
             try

@@ -1,4 +1,7 @@
-﻿Public Class FrmCrearAnuncio
+﻿''' <summary>
+''' Formulario usado para crear anuncios por los usuarios
+''' </summary>
+Public Class FrmCrearAnuncio
     Public Sub ClearText()
         TxtTitulo.Text = ""
         RtxtDescripcion.Text = ""

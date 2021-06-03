@@ -89,12 +89,6 @@
     <Compile Include="ControlesPersonalizados\UcListaAnuncios.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesPersonalizados\UcListaCandidaturas.Designer.vb">
-      <DependentUpon>UcListaCandidaturas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ControlesPersonalizados\UcListaCandidaturas.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="FrmCrearAnuncio.Designer.vb">
       <DependentUpon>FrmCrearAnuncio.vb</DependentUpon>
     </Compile>
@@ -171,9 +165,6 @@
   <ItemGroup>
     <EmbeddedResource Include="ControlesPersonalizados\UcListaAnuncios.resx">
       <DependentUpon>UcListaAnuncios.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlesPersonalizados\UcListaCandidaturas.resx">
-      <DependentUpon>UcListaCandidaturas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCrearAnuncio.resx">
       <DependentUpon>FrmCrearAnuncio.vb</DependentUpon>

@@ -22,13 +22,17 @@ Public Class FrmMisServicios
     End Sub
 
 
+<<<<<<< HEAD
     ''' <summary>
     ''' UcListaServicios_Load.
     ''' </summary>
+=======
+>>>>>>> parent of bd5b989 (Mis Candidaturas)
     Private Sub UcListaServicios_Load(sender As Object, e As EventArgs) Handles UcListaServicios.Load
         Dim listaServiciosUser As List(Of DTO.DTOServicios)
         LblCurrentMenu.Text = "Activos"
         UploadListaServicios(listaServiciosUser, True)
+<<<<<<< HEAD
     End Sub
 
     ''' <summary>
@@ -55,19 +59,28 @@ Public Class FrmMisServicios
         Return dao.GetListaCandidaturas(UsuarioAutenticado, estado)
     End Function
 	
+=======
+    End Sub
+
+    Private Sub UploadListaServicios(listaServiciosUser As List(Of DTO.DTOServicios), estado As Boolean)
+        Dim dao As DAO.DaoServicios = New DAO.DaoServicios()
+        Dim dto As DTO.DTOServicios = New DTO.DTOServicios()
+        listaServiciosUser = dao.GetListServicios(UsuarioAutenticado.Id, estado)
+    End Sub
+>>>>>>> parent of bd5b989 (Mis Candidaturas)
     Private Sub BtnActivos_Click(sender As Object, e As EventArgs) Handles BtnActivos.Click
-        Dim listaCandidaturasUser As List(Of Candidatura)
-        LblCurrentMenu.Text = "Activas"
-        UcListaCandidaturas.ConstruirDatos(UploadListaCandidaturas(True))
+        Dim listaServiciosUser As List(Of DTO.DTOServicios)
+        LblCurrentMenu.Text = "Activos"
+        UploadListaServicios(listaServiciosUser, True)
     End Sub
 
     ''' <summary>
     ''' BtnFinalizados_Click.
     ''' </summary>
     Private Sub BtnFinalizados_Click(sender As Object, e As EventArgs) Handles BtnFinalizados.Click
-        Dim listaCandidaturasUser As List(Of Candidatura)
-        LblCurrentMenu.Text = "Finalizadas"
-        UcListaCandidaturas.ConstruirDatos(UploadListaCandidaturas(False))
+        Dim listaServiciosUser As List(Of DTO.DTOServicios)
+        LblCurrentMenu.Text = "Finalizados"
+        UploadListaServicios(listaServiciosUser, False)
     End Sub
 
     ''' <summary>
@@ -77,16 +90,4 @@ Public Class FrmMisServicios
         Dispose()
     End Sub
 
-    Private Sub Cancelacion_EventHandler() Handles UcListaCandidaturas.OnClickButton
-        Dim estado As Boolean = True
-        Dim listaCandidaturasUser As List(Of Candidatura)
-        If (LblCurrentMenu.Text = "Finalizadas") Then
-            estado = False
-        End If
-        LblCurrentMenu.Text = "Activas"
-        UcListaCandidaturas.ConstruirDatos(UploadListaCandidaturas(estado))
-    End Sub
-    Private Sub FrmMisServicios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

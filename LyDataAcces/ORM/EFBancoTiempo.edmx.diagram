@@ -20,6 +20,7 @@
         <AssociationConnector Association="EFModelBancoTiempo.FK_Servicios_Usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="EFModelBancoTiempo.Categorias_Servicios" ManuallyRouted="false" />
         <AssociationConnector Association="EFModelBancoTiempo.Categorias_Usuarios" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EFModelBancoTiempo.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

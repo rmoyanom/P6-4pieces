@@ -1,11 +1,11 @@
-C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Debug\LyBussinesModel.dll
-C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Debug\LyBussinesModel.pdb
-C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.csproj.CoreCompileInputs.cache
-C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.dll
-C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.pdb
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyBussinesModel\bin\Debug\LyBussinesModel.dll
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyBussinesModel\bin\Debug\LyBussinesModel.pdb
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyBussinesModel\obj\Debug\LyBussinesModel.csprojAssemblyReference.cache
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyBussinesModel\obj\Debug\LyBussinesModel.csproj.CoreCompileInputs.cache
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyBussinesModel\obj\Debug\LyBussinesModel.dll
 D:\AAA_FPDAM\P6_BolsaDeTiempo\4Pieces\P6-4pieces\LyBussinesModel\obj\Debug\LyBussinesModel.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Debug\LyBussinesModel.dll
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\bin\Debug\LyBussinesModel.pdb
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.csproj.CoreCompileInputs.cache
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.dll
+C:\Users\luisn\source\repos\4piecesP6\LyBussinesModel\obj\Debug\LyBussinesModel.pdb

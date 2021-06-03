@@ -35,5 +35,6 @@ namespace LyDataAcces.ORM
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Servicios> Servicios { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

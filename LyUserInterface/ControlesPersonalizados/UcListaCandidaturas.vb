@@ -2,6 +2,9 @@
 Imports LyBussinesModel
 Imports LyDataAcces.DAO
 
+''' <summary>
+''' Control para crear una lista personalizada para mostrar candidaturas
+''' </summary>
 Public Class UcListaCandidaturas
     Private Const MARGEN = 5
     Private _TextoBotones As String

@@ -3,6 +3,10 @@ Imports LyBussinesModel
 Imports LyBussinesModel.DTO
 Imports LyDataAcces
 
+
+''' <summary>
+''' Formulario para la gestión de los datos del perfil de un usuario
+''' </summary>
 Public Class FrmMiCuenta
 
     Private Sub CargarDatosPanelPpal()

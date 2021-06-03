@@ -1,6 +1,9 @@
 ﻿Imports System.Text.RegularExpressions
 Imports LyDataAcces
 
+''' <summary>
+''' Formulario principal para realizar el loguin del usuario
+''' </summary>
 Public Class FrmInicioSesion
     '#If DEBUG Then
     '    Private Sub FrmInicioSesion_Shown(sender As Object, e As EventArgs) Handles Me.Shown

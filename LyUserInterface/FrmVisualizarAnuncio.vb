@@ -1,6 +1,9 @@
 ﻿Imports System.ComponentModel
 Imports LyBussinesModel.DTO
 
+''' <summary>
+''' formulario para visualizar un anuncios y sus detalles
+''' </summary>
 Public Class FrmVisualizarAnuncio
     Public LanzarEdicionAnuncio As Boolean = False
 

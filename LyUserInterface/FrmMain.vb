@@ -1,4 +1,7 @@
-﻿Public Class FrmMain
+﻿''' <summary>
+''' Formulario principal de la aplicación donde permite el acceso a los demas formularios de la aplicacion
+''' </summary>
+Public Class FrmMain
 
 
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
